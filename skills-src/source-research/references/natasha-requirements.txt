@@ -1,0 +1,19 @@
+# Tested isolated stack. Installed in the user's document project, not gateway.
+natasha==1.6.0
+pymorphy3==2.0.6
+pymorphy3-dicts-ru==2.4.417150.4580142
+razdel==0.5.0
+navec==0.10.0
+slovnet==0.6.0
+yargy==0.16.0
+numpy==2.5.3
+ipymarkup==0.9.0
+intervaltree==3.2.1
+sortedcontainers==2.4.0
+dawg2-python==0.9.0
+# Natasha still declares the old analyzer as a dependency; the adapter uses 3.
+pymorphy2==0.9.1
+pymorphy2-dicts-ru==2.4.417127.4579844
+dawg-python==0.7.2
+docopt==0.6.2
+setuptools==84.0.0
