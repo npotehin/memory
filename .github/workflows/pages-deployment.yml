@@ -6,40 +6,43 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   deployments: write
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
       - name: Build feed and styles index
         run: |
           python3 build_index.py
           python3 build_styles_index.py
+
       - name: Commit rebuilt pages
         run: |
           git config user.name "Никита Потехин"
           git config user.email "Npotehinru@gmail.com"
           git add index.html styles/index.html
-          git diff --staged --quiet || git commit -m "Пересобраны лента и галерея стилей [skip ci]"
-          git push || true
+          if git diff --staged --quiet; then
+            echo "Изменений нет"
+          else
+            git commit -m "Пересобраны лента и галерея стилей [skip ci]"
+            git push
+          fi
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy . --project-name=memory
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
