@@ -1,0 +1,541 @@
+<!DOCTYPE html><html lang="ru" data-style="cards" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f4f2ee"><title>Длинные материалы под телефон</title><style>
+:root{--bg:#f4f2ee;--card:#fff;--ink:#1d1d1f;--mut:#6b665f;--line:#e2ded7;--soft:#faf8f5;--warn:#d9a41a;--ok:#2b7a4b}
+[data-theme="dark"]{--bg:#0f0f10;--card:#1c1c1e;--ink:#f2f2f7;--mut:#98989f;--line:#333;--soft:#242426;--warn:#e0b446;--ok:#4aa06a}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Arial,sans-serif;
+color:var(--ink);background:var(--bg);font-size:16px;line-height:1.62;-webkit-text-size-adjust:100%}
+.wrap{max-width:820px;margin:0 auto;padding:0 12px 90px}
+.bar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:7px;overflow-x:auto;padding:9px 12px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:7px 13px;border-radius:999px;background:var(--soft);border:1px solid var(--line);
+color:var(--mut);font-size:13px;font-weight:550;text-decoration:none;white-space:nowrap}
+.chip:active{transform:scale(.96)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.switches{display:flex;gap:8px;padding:0 12px 9px;align-items:center}
+.seg{display:flex;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--mut);font-size:12px;font-weight:600;
+padding:6px 10px;border-radius:7px;font-family:inherit}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.seg.push{margin-left:auto}
+.allbtn{border:1px solid var(--line);background:var(--soft);color:var(--mut);font-size:12px;
+font-weight:600;padding:6px 11px;border-radius:9px;font-family:inherit}
+.hero{padding:22px 4px 4px}
+.hero .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.hero h1{font-size:26px;line-height:1.18;margin:8px 0 0;letter-spacing:-.02em}
+.hero p{color:var(--mut);font-size:14px;margin:8px 0 0}
+[data-style="cards"] .sec{background:var(--card);border:1px solid var(--line);border-radius:16px;
+padding:18px;margin:13px 0;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+[data-theme="dark"][data-style="cards"] .sec{box-shadow:none}
+[data-style="cards"] h2{font-size:19px;margin:0;display:flex;gap:10px;align-items:center}
+[data-style="cards"] h2::before{content:attr(data-n);font-size:12px;font-weight:700;background:var(--ink);
+color:var(--bg);width:24px;height:24px;border-radius:7px;display:inline-flex;align-items:center;
+justify-content:center;flex:0 0 24px}
+[data-style="compact"] .sec{padding:13px 0 13px 15px;border-left:3px solid var(--line);margin:0 0 2px}
+[data-style="compact"] h2{font-size:16px;margin:0}
+[data-style="compact"] p,[data-style="compact"] li{font-size:14.5px;line-height:1.5}
+h2{letter-spacing:-.01em}
+p{margin:9px 0}
+.mut{color:var(--mut);font-size:13.5px}
+.sp{margin:11px 0 0;border-radius:12px;background:var(--soft);border:1px solid var(--line);overflow:hidden}
+.sp>summary{list-style:none;cursor:pointer;padding:13px 14px;font-size:14.5px;font-weight:600;
+display:flex;align-items:center;gap:9px}
+.sp>summary::-webkit-details-marker{display:none}
+.sp>summary::before{content:"+";width:20px;height:20px;flex:0 0 20px;border-radius:6px;background:var(--ink);
+color:var(--bg);font-size:14px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}
+.sp[open]>summary::before{content:"\2013"}
+.sp>summary .t{flex:1}
+.sp>summary .hint{font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.sp[open]>summary .hint{display:none}
+.sp .in{padding:0 14px 15px;border-top:1px solid var(--line);font-size:14.5px}
+.sp .in p:first-child{margin-top:12px}
+.sp.tip{border-left:3px solid var(--warn)}
+.thesis{font-size:15.5px;margin:0}
+.flow{margin:13px 0 0}
+.node{background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:10px 12px;font-size:14px}
+.node b{display:block;font-size:12.5px;margin-bottom:1px}
+.arrow{text-align:center;color:var(--mut);font-size:14px;padding:3px 0}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th,td{padding:9px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);font-weight:650}
+tr:last-child td{border-bottom:none}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:var(--soft);
+border:1px solid var(--line);padding:1px 5px;border-radius:5px}
+pre{background:var(--ink);color:var(--bg);padding:14px 15px;border-radius:11px;overflow-x:auto;
+font-size:12.5px;line-height:1.55}
+pre code{background:none;border:0;padding:0;color:inherit}
+ul,ol{padding-left:20px;margin:8px 0}
+li{margin:4px 0}
+.steps{counter-reset:s;margin:10px 0 0;padding:0;list-style:none}
+.steps li{counter-increment:s;position:relative;padding-left:34px;margin:9px 0;font-size:14.5px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:22px;height:22px;
+border-radius:7px;background:var(--soft);border:1px solid var(--line);color:var(--mut);
+font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.badge{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+padding:2px 7px;border-radius:5px;background:var(--soft);border:1px solid var(--line);color:var(--mut)}
+.badge.ok{color:var(--ok);border-color:var(--ok)}
+.badge.warn{color:var(--warn);border-color:var(--warn)}
+.footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mut)}
+@media(max-width:420px){body{font-size:15.5px}.hero h1{font-size:23px}th,td{padding:8px 7px;font-size:13px}}
+</style></head><body><div class="bar"><div class="chips"><a class="chip" href="#mobile-reports">Ваш скилл</a></div><div class="switches"><div class="seg" role="group"><button data-s="cards">Карточки</button><button data-s="compact">Компакт</button></div><button class="allbtn" id="allBtn">Раскрыть всё</button><div class="seg push" role="group"><button data-t="light">Свет</button><button data-t="dark">Тьма</button></div></div></div><div class="wrap"><div class="hero"><div class="k">ИИ-Консьерж · скилл</div><h1>Длинные материалы под телефон</h1><p>личный · creative · Ваш основной инструмент</p></div><div class="sec" id="mobile-reports"><h2 data-n="1">Длинные материалы под телефон</h2><p class="thesis"><b>По нему собраны все отчёты в этой ленте. Настроен под iPhone X: чипы, тема, плотность, спойлеры.</b></p><div class="sect-mini">Файлы</div><table><tbody><tr><td><code>SKILL.md</code></td><td>Правила: что должно быть на странице, порядок работы, доставка</td><td><span class="badge ok">есть</span></td></tr><tr><td><code>references/mobile-long-reads.md</code></td><td>Опорная ширина 375 px, чипы, темы, спойлеры, схемы</td><td><span class="badge ok">есть</span></td></tr><tr><td><code>references/design.md</code></td><td>Типографика, палитра, композиция — общая рамка оформления</td><td><span class="badge ok">есть</span></td></tr><tr><td><code>references/reports.md</code></td><td>Отчёты: цифры, таблицы, графики, печать</td><td><span class="badge ok">есть</span></td></tr><tr><td><code>references/runtime-and-delivery.md</code></td><td>Публикация, Cloudflare, лента, входы, проверка</td><td><span class="badge ok">есть</span></td></tr></tbody></table><details class="sp"><summary><span class="t">Читать: SKILL.md</span><span class="hint">показать</span></summary><div class="in"><p>---</p>
+<p>name: mobile-reports</p>
+<p>description: &gt;-</p>
+<p>  Собирать длинный разбор, сравнение или техническое объяснение как HTML-страницу под чтение с телефона: закреплённые чипы навигации, переключатели темы и плотности, таблицы и схемы, которые не ломают узкий экран. Для обычных сайтов и лендингов — websites.</p>
+<p>---</p>
+<h2>Длинные материалы под телефон</h2>
+<p>Пользователь читает с телефона (iPhone X, ~375 CSS px) и не осиливает простыни</p>
+<p>текста в чате. Такой материал отдаётся отдельной HTML-страницей с навигацией,</p>
+<p>а не сообщением.</p>
+<p>Короткий ответ остаётся текстом в чате. Страница нужна, когда есть таблицы,</p>
+<p>схемы, несколько разделов или техническое разжёвывание.</p>
+<p>Это форк навыка <code>websites</code>; сборка, бандлинг, проверка и доставка — те же.</p>
+<p>Дополнительно читай <span class="lnk"><code>references/mobile-long-reads.md</code></span>:</p>
+<p>опорная ширина, чипы, переключение темы и плотности, схемы без картинок,</p>
+<p>что проверять на узком экране. Содержание отчёта — по <code>references/reports.md</code>,</p>
+<p>оформление новой страницы — по <code>references/design.md</code>.</p>
+<h3>Что должно быть на странице</h3>
+<ul>
+<li>закреплённая полоса с чипами на разделы (ссылки <code>#id</code>, свайп вбок);</li>
+<li>переключатель светлая/тёмная — читают вечером;</li>
+<li>переключатель плотности: «карточки» (воздух) и «компакт» (плотнее примерно</li>
+</ul>
+<p>  в полтора раза) — один экран, два варианта, без перезагрузки;</p>
+<ul>
+<li>тезис виден сразу, разжёвывание — под спойлером <code>&lt;details&gt;</code> (см.</li>
+</ul>
+<p>  <code>references/mobile-long-reads.md</code>, раздел «Тезис + раскрытие»);</p>
+<ul>
+<li>таблицы максимум в три колонки, блоки кода в собственной прокрутке;</li>
+<li>схемы потоком из блоков со стрелками и полоски вместо столбчатых диаграмм.</li>
+</ul>
+<h3>Рабочий процесс</h3>
+<ul>
+<li>Собрать содержание по <code>references/reports.md</code>: цифры, единицы, источники.</li>
+<li>Сверстать по <code>references/mobile-long-reads.md</code>; тему и плотность</li>
+</ul>
+<p>   переключать атрибутами на <code>&lt;html&gt;</code>, а не двумя отдельными файлами.</p>
+<ul>
+<li>Проверить на 375 px: нет горизонтального скролла, чипы не ломаются,</li>
+</ul>
+<p>   тёмная тема сохраняет контраст.</p>
+<ul>
+<li>Отдать файл вложением через механизм файлов. Постоянную ссылку обещать</li>
+</ul>
+<p>   только после отдельной публикации.</p>
+<h3>Доставка</h3>
+<p>Вложение в чат открывается встроенным просмотром мессенджера — вёрстка должна</p>
+<p>выглядеть там же, а не только в полноценном браузере. Прочее — в</p>
+<p><span class="lnk"><code>references/runtime-and-delivery.md</code></span>.</p></div></details><details class="sp"><summary><span class="t">Читать: references/mobile-long-reads.md</span><span class="hint">показать</span></summary><div class="in"><h2>Мобильное чтение длинных материалов</h2>
+<p>Режим для случая, когда отчёт будет читать человек с телефона, а не с</p>
+<p>десктопа. Применяется вместе с <code>reports.md</code>: там про содержание и точность</p>
+<p>данных, здесь — про то, как это переживает узкий экран и чтение лёжа.</p>
+<p>Признаки, что нужен этот режим: пользователь прямо говорит «читаю с</p>
+<p>телефона», «простыню текста не осилю», просит навигацию, схемы, чипы,</p>
+<p>несколько вариантов оформления, или просит присылать разжёванные разборы</p>
+<p>страницей, а не сообщением.</p>
+<h3>Опорная ширина</h3>
+<p>Целиться в 375 CSS px — это iPhone X и близкие по размеру экраны. Не</p>
+<p>полагаться на <code>width=device-width</code> как на достаточное: проверять, что при</p>
+<p>343–375 px нет горизонтального скролла, включая таблицы и блоки кода.</p>
+<p>Практические пределы, проверенные на реальной странице:</p>
+<ul>
+<li>база 15,5–16 px; заголовок 23–26 px;</li>
+<li>отступы по краям 12–18 px;</li>
+<li>таблица в три колонки помещается; четыре уже надо резать или переводить</li>
+</ul>
+<p>  в карточки;</p>
+<ul>
+<li>блок кода — уменьшать кегль до 12,5–13,5 px и разрешать прокрутку только</li>
+</ul>
+<p>  внутри блока, не странице целиком.</p>
+<h3>Что читается на телефоне, а что нет</h3>
+<p>Хорошо: таблицы, схемы, карточки, короткие списки, выноски.</p>
+<p>Плохо: сплошные абзацы длиннее экрана, широкие таблицы, вложенные списки на</p>
+<p>три уровня. Сплошной текст на телефоне — самое слабое место любой вёрстки;</p>
+<p>если материала много, дробить на блоки, а не увеличивать шрифт.</p>
+<h3>Навигация</h3>
+<p>Закреплённая полоса с чипами над контентом: <code>position: sticky; top: 0</code>.</p>
+<p>Чипы — ссылки <code>href="#id"</code> на заголовки разделов, горизонтальная прокрутка</p>
+<p>свайпом, <code>scrollbar-width: none</code> и <code>::-webkit-scrollbar { display: none }</code>,</p>
+<p>чтобы полоса не занимала высоту. Чип должен иметь <code>white-space: nowrap</code> и</p>
+<p><code>flex: 0 0 auto</code>, иначе подписи сломаются по строкам.</p>
+<p>На iPhone тап по чипу даёт мгновенный переход; у каждого раздела должен быть</p>
+<p>стабильный <code>id</code>. При закреплённой полосе разделу нужно смещение</p>
+<p><code>scroll-margin-top</code>, иначе заголовок уедет под полосу.</p>
+<h3>Переключение темы и плотности</h3>
+<p>Оба переключателя работают без перезагрузки: атрибуты на <code>&lt;html&gt;</code></p>
+<p>(<code>data-theme</code>, <code>data-style</code>), правила в CSS через <code>[data-theme="dark"] .card</code></p>
+<p>и небольшой скрипт, который меняет атрибут. Не делать два отдельных HTML —</p>
+<p>иначе пользователь не сможет сравнить варианты на одном экране.</p>
+<ul>
+<li>тема: светлая и тёмная, кнопка наверху. Тёмная нужна не как украшение, а</li>
+</ul>
+<p>  потому что читают вечером;</p>
+<ul>
+<li>плотность: «карточки» (воздух, тени, блок на раздел) против «компакт»</li>
+</ul>
+<p>  (плотнее в ~1,5 раза, левая цветная линейка вместо рамок). Компакт</p>
+<p>  выигрывает на длинных технических разборах, которые читают целиком.</p>
+<p>При смене темы не забыть, что в тёмной отдельные тени и белые подложки на</p>
+<p>глаз не читаются: заменять на <code>var(--soft)</code> и тонкую рамку.</p>
+<h3>Тезис + раскрытие: спойлеры</h3>
+<p>Плотность на телефоне даёт не только «карточки/компакт», но и раскрывающиеся</p>
+<p>блоки. Приём, проверенный на реальном пользователе: сверху остаётся один тезис,</p>
+<p>весь объём (определения, примеры, оговорки, большие таблицы) уходит под тап.</p>
+<ul>
+<li>сворачивать: нативный <code>&lt;details class="sp"&gt;&lt;summary&gt;…&lt;/summary&gt;&lt;div class="in"&gt;…&lt;/div&gt;&lt;/details&gt;</code></li>
+</ul>
+<p>  — работает без скрипта, доступен скринридером, печатается в PDF;</p>
+<ul>
+<li>маркер задавать через <code>summary::before</code>: «+» в свёрнутом, «–» в открытом</li>
+</ul>
+<p>  (<code>details[open] &gt; summary::before { content:"\2013" }</code>), <code>list-style: none</code> и</p>
+<p>  <code>::-webkit-details-marker { display: none }</code> — иначе Safari покажет свой</p>
+<p>  треугольник поверх;</p>
+<ul>
+<li>плюс, а не стрелка или треугольник: на телефоне стрелка путается с полосой</li>
+</ul>
+<p>  прокрутки, треугольник читается как пункт списка;</p>
+<ul>
+<li>подпись «показать» в шапке спойлера гаснет при открытии — видно, что уже</li>
+</ul>
+<p>  раскрыто;</p>
+<ul>
+<li>предупреждения — отдельный вид спойлера с цветной полосой слева: он опознаётся</li>
+</ul>
+<p>  свёрнутым, до прочтения;</p>
+<ul>
+<li>одна кнопка «Раскрыть всё / Свернуть всё» на всю страницу — кто читает подряд,</li>
+</ul>
+<p>  не должен тапать десять раз;</p>
+<ul>
+<li>не прятать схемы и ключевые таблицы: они и есть сообщение. Прятать текст.</li>
+</ul>
+<p>Чипы полезно подсвечивать по текущему разделу через <code>IntersectionObserver</code> с</p>
+<p><code>rootMargin: '-70px 0px -70% 0px'</code> — видно, где находишься в длинном материале.</p>
+<h3>Схемы и диаграммы без картинок</h3>
+<ul>
+<li>поток: вертикальный список блоков со стрелкой <code>↓</code> между ними. На телефоне</li>
+</ul>
+<p>  вертикальная схема читается лучше горизонтальной, которая требует скролла;</p>
+<ul>
+<li>полоски вместо столбцов, когда важен порядок величин, а не точное значение:</li>
+</ul>
+<p>  строка = подпись + трек + число, ширина в процентах;</p>
+<ul>
+<li>всё собирается CSS, без внешних изображений: работает офлайн, в тёмной теме</li>
+</ul>
+<p>  и при печати.</p>
+<h3>Проверка</h3>
+<p>Открыть на ширине 375 px и проверить: чипы прокручиваются и не ломаются,</p>
+<p>переключатели меняют вид без перезагрузки, ни одна таблица не выталкивает</p>
+<p>страницу по горизонтали, тёмная тема не теряет контраст.</p>
+<h3>Собирать страницу кодом, а не писать HTML руками</h3>
+<p>Проверено на нескольких отчётах подряд: держать базовую CSS и шапку с</p>
+<p>переключателями в одном переиспользуемом модуле (<code>htmlkit.py</code> в рабочей папке</p>
+<p>проекта), а каждый отчёт писать как вызов `page(title, kicker, subtitle,</p>
+<p>sections, footer)<code> со списком разделов и </code>spoiler(title, html, tip=…)`.</p>
+<p>Почему: ручная вёрстка на третий отчёт начинает разъезжаться — забывается</p>
+<p><code>white-space: nowrap</code> у чипа, <code>::-webkit-details-marker</code>, контраст в тёмной</p>
+<p>теме. В модуле всё это задаётся один раз, а отчёт остаётся только содержанием.</p>
+<p>Практические грабли, на которых уже спотыкались:</p>
+<ul>
+<li>CSS со знаком <code>%</code> внутри строки формата <code>%</code>-форматирования ломает сборку —</li>
+</ul>
+<p>  вставлять стиль через отдельное поле, а не склеивать одной строкой.</p>
+<ul>
+<li>Скрытый маркер <code>&lt;details&gt;</code> в Safari: без <code>list-style: none</code> и правила для</li>
+</ul>
+<p>  <code>::-webkit-details-marker</code> поверх плюса рисуется системный треугольник.</p>
+<ul>
+<li>Вложенный список состояний («готов / ждёт») удобнее таблицей с бейджами,</li>
+</ul>
+<p>  чем абзацем: на телефоне видно одним взглядом.</p>
+<h3>Доставка</h3>
+<p>Файл отдаётся вложением в чат — в мессенджере он открывается встроенным</p>
+<p>просмотром, и вёрстка должна выглядеть там же, а не только в полноценном</p>
+<p>браузере. Постоянная ссылка требует публикации, а это отдельный запрос;</p>
+<p>не обещать адрес раньше времени.</p>
+<h4>Постоянная ссылка: что важно сказать сразу</h4>
+<p>Публикация через GitHub Pages или Cloudflare Pages — отдельная задача, и до</p>
+<p>разговора о ней стоит честно назвать два ограничения, иначе обещание</p>
+<p>придётся забирать назад:</p>
+<ul>
+<li>у облачной машины нет входящего адреса, поэтому «открыть файл по ссылке с</li>
+</ul>
+<p>  моей машины» нельзя — нужен внешний хостинг;</p>
+<ul>
+<li>Cloudflare Pages на бесплатном тарифе <b>не делает сайт приватным</b>:</li>
+</ul>
+<p>  опубликованное доступно по адресу любому, кто его знает. Для закрытых</p>
+<p>  документов нужен Cloudflare Access (вход по почте) либо хранение ленты</p>
+<p>  внутри приватного репозитория без публикации. GitHub Pages на бесплатном</p>
+<p>  тарифе — тоже только публичный сайт.</p></div></details><details class="sp"><summary><span class="t">Читать: references/design.md</span><span class="hint">показать</span></summary><div class="in"><h2>Design for the brief</h2>
+<p>Adapted from Anthropic's Apache-2.0 frontend-design skill. Modified for</p>
+<p>MultiTool's standalone HTML workflow.</p>
+<p>Ground palette, typography, and composition in the subject, audience, and</p>
+<p>primary job of the page. Use the user's actual content throughout. Where the</p>
+<p>brief leaves room, choose a coherent direction instead of a generic template.</p>
+<p>Where it specifies a direction, follow it precisely.</p>
+<p>For new designs, make a compact plan before writing the page: 4–6 named color</p>
+<p>tokens, typefaces and their roles, one layout concept, and the element that</p>
+<p>will make this experience distinctive. Review those choices against the brief</p>
+<p>and revise anything that would appear unchanged in an unrelated project.</p>
+<p>Typography carries personality. Set deliberate sizes, weights, and spacing;</p>
+<p>use one family or a clearly differentiated pair. System fonts work well for</p>
+<p>offline artifacts; embed a font only when it adds enough value. Keep reading</p>
+<p>lines below about 80 characters. Avoid decoration disguised as hierarchy:</p>
+<p>unnecessary all-caps labels, italicizing a single headline word, or a label</p>
+<p>above every section do not automatically make the content clearer.</p>
+<p>Open with the most characteristic part of the subject: a headline, image,</p>
+<p>demonstration, or interactive moment. Build a progression in which each</p>
+<p>section adds substance and helps the visitor take the appropriate next step.</p>
+<p>A richer presentation does not need unrelated application features.</p>
+<p>Use structure to convey information. Numbering belongs to real sequences;</p>
+<p>cards, dividers, borders, and labels should communicate relationships rather</p>
+<p>than fill space. Avoid automatically producing the same cream / serif /</p>
+<p>terracotta palette, black / acid-green palette, newspaper layout, or uniformly</p>
+<p>rounded SaaS card grid regardless of the subject. These can fit a specific</p>
+<p>brief, but they are choices rather than defaults.</p>
+<p>Spend visual boldness in one place. Keep surrounding elements disciplined.</p>
+<p>Motion should answer a person's action or direct attention deliberately; a</p>
+<p>single purposeful reveal beats scattered entrances on every section. Respect</p>
+<p>reduced-motion preferences. Build responsive layouts, readable contrast,</p>
+<p>keyboard focus, and properly named controls without announcing them as features.</p>
+<p>Write from the visitor's perspective. Use familiar words, active verbs, and</p>
+<p>specific actions: a button says what will happen. Keep action names consistent</p>
+<p>through the flow. Explain errors with a useful next step and empty states with</p>
+<p>an invitation to act. Avoid fake testimonials, unverified numbers, and copy</p>
+<p>that sells functionality the page does not implement.</p>
+<p>Critique the rendered page when a browser is available. Check desktop and</p>
+<p>mobile, the primary interaction, and whether the visual hierarchy matches the</p>
+<p>brief. Fix what is visibly wrong and remove decoration that adds no meaning.</p></div></details><details class="sp"><summary><span class="t">Читать: references/reports.md</span><span class="hint">показать</span></summary><div class="in"><h2>Reports and data pages</h2>
+<p>Adapted from MultiTool's former <code>html-report</code> skill; its design guidance derives</p>
+<p>from Anthropic's Apache-2.0 frontend-design.</p>
+<p>Use this mode for findings, comparisons, metrics, and analysis presented as</p>
+<p>HTML. It shares the skill's export and browser checks. For a copied website or</p>
+<p>course use snapshot mode instead: report structure must not change its content.</p>
+<h3>Content and design</h3>
+<p>Design around the actual material and audience. A useful report can have a</p>
+<p>title with period/scope, a short answer or summary, thematic sections with</p>
+<p>evidence, and source/methodology notes. Include headline metrics only when the</p>
+<p>data has meaningful ones; a narrative document needs no invented KPI band.</p>
+<p>Choose tables, charts, and prose according to what makes the evidence legible.</p>
+<p>Read <code>design.md</code> for a new design, preserving any supplied branding.</p>
+<p>Every figure must trace back to the supplied or retrieved data. Keep units,</p>
+<p>periods, denominators, locale formatting, and comparison bases explicit.</p>
+<p>Preserve precision; distinguish estimates and illustrative data. Check that</p>
+<p>totals and percentages reconcile and that prose matches the figures. Missing</p>
+<p>values are missing values, not zero. Link actual sources where useful unless</p>
+<p>the user requested no outgoing links.</p>
+<p>Prefer readable lines, clear hierarchy, restrained emphasis, and responsive</p>
+<p>tables. Right-align comparable numeric columns, put units in their headings,</p>
+<p>and avoid making color the only way to read a result. A screenshot-shaped</p>
+<p>report is not a replacement for selectable text and semantic markup.</p>
+<h3>Charts</h3>
+<p>For small datasets, HTML tables, CSS bars, and inline SVG are portable. A</p>
+<p>vendored/built library can also be embedded when interaction warrants it; a</p>
+<p>CDN dependency cannot be part of an offline artifact. Avoid adding a chart</p>
+<p>where a few values are clearer in a table.</p>
+<ul>
+<li>Bar/column lengths must be proportional, with a zero baseline unless a</li>
+</ul>
+<p>  different baseline is explicitly explained. Show labels and units.</p>
+<ul>
+<li>Line charts need honest axes, periods, labels, and gaps for missing values.</li>
+<li>Pie/donut charts fit a few parts of one whole. Check the total and label</li>
+</ul>
+<p>  the segments; many categories usually read better as bars or a table.</p>
+<ul>
+<li>SVG viewBox, coordinates, and stroke sizes must leave room for labels.</li>
+</ul>
+<p>  Give graphics an accessible title/description and keep key values available</p>
+<p>  as text, including when JavaScript is disabled for a primarily static report.</p>
+<h3>Print and verify</h3>
+<p>Set the page language and title, semantic headings, useful captions, keyboard</p>
+<p>focus for controls, and readable contrast. Reports should print without</p>
+<p>clipped tables or missing content. A typical starting point is:</p>
+<pre><code>
+@media print {
+  body { background: white; color: black; }
+  main { max-width: none; margin: 0; padding: 0; }
+  nav, button, .screen-only { display: none; }
+  table, figure { break-inside: avoid; }
+  thead { display: table-header-group; }
+}
+</code></pre>
+<p>Adapt that rule for long tables; keeping a table together must not make it</p>
+<p>overflow the printed page. Expand report content hidden behind interactive</p>
+<p>controls for print, and inspect the actual print rendering when possible.</p>
+<p>Verify numbers, chart geometry, source attribution, mobile layout, and print</p>
+<p>output. For an interactive dashboard also test its actual filters and state.</p></div></details><details class="sp"><summary><span class="t">Читать: references/runtime-and-delivery.md</span><span class="hint">показать</span></summary><div class="in"><h2>Доставка и публикация мобильного отчёта</h2>
+<p>Файл отдаётся вложением в чат — в мессенджере он открывается встроенным</p>
+<p>просмотром, и вёрстка должна выглядеть там же, а не только в полноценном</p>
+<p>браузере. Постоянная ссылка требует публикации, а это отдельный запрос;</p>
+<p>не обещать адрес раньше времени.</p>
+<h3>Постоянная ссылка: что важно сказать сразу</h3>
+<p>Публикация через GitHub Pages или Cloudflare Pages — отдельная задача, и до</p>
+<p>разговора о ней стоит честно назвать два ограничения, иначе обещание</p>
+<p>придётся забирать назад:</p>
+<ul>
+<li>у облачной машины нет входящего адреса, поэтому «открыть файл по ссылке с</li>
+</ul>
+<p>  моей машины» нельзя — нужен внешний хостинг;</p>
+<ul>
+<li>Cloudflare Pages на бесплатном тарифе <b>не делает сайт приватным</b>:</li>
+</ul>
+<p>  опубликованное доступно по адресу любому, кто его знает. Для закрытых</p>
+<p>  документов нужен Cloudflare Access (вход по почте) либо хранение ленты</p>
+<p>  внутри приватного репозитория без публикации. GitHub Pages на бесплатном</p>
+<p>  тарифе — тоже только публичный сайт.</p>
+<h3>Лента обновлений вместо ссылок в чате</h3>
+<p>Рабочая схема, когда файлов много и человек читает с планшета: в корне</p>
+<p>репозитория лежит <code>index.html</code> — лента «что добавилось и когда», сгруппированная</p>
+<p>по папкам (Отчёты / Стили / Проекты) и с датами из <code>git log</code>. Человек обновляет</p>
+<p>одну страницу и видит новое, вместо того чтобы искать ссылку в переписке.</p>
+<p>Лента не собирается сама: нужен скрипт (<code>build_index.py</code>, даты берутся из</p>
+<p><code>git log --name-only --pretty=format:%cd --date=short</code>, при отсутствии записи —</p>
+<p><code>mtime</code>). Собирать её перед пушем.</p>
+<h3>Сначала проверить, что Actions вообще запускаются</h3>
+<p>Прежде чем отлаживать workflow, посмотреть, стартовал ли job хоть раз.</p>
+<p>Признак «не про код»: все прогоны падают примерно за секунду, у job нет ни</p>
+<p>одного выполненного шага, а логи отдаются как <code>BlobNotFound</code>.</p>
+<p>Тогда причина не в workflow. Притягивается она аннотацией чек-рана:</p>
+<p><code>GET /repos/{owner}/{repo}/check-runs/{job_id}/annotations</code> — запрос с</p>
+<p>заголовком авторизации, токен подставляется из окружения, а сам токен в</p>
+<p>команду не вписывают. Готовая формулировка, которая встречалась:</p>
+<p>&gt; The job was not started because recent account payments have failed or</p>
+<p>&gt; your spending limit needs to be increased.</p>
+<p>Это значит, что минуты Actions у аккаунта кончились или не привязана оплата, и</p>
+<p><b>никакой workflow не запустится</b>. Для приватного репозитория минуты платные:</p>
+<p>пара отладочных прогонов расходует бесплатный остаток целиком.</p>
+<p>В этом случае Actions не чинить — уходить на Git-интеграцию Cloudflare</p>
+<p>(следующий раздел) и удалять <code>.github/workflows/*</code>: мёртвый workflow только</p>
+<p>создаёт впечатление, что деплой настроен.</p>
+<h3>Git-интеграция Cloudflare Pages — предпочтительный путь</h3>
+<p>Если пользователь готов подключить репозиторий в панели Cloudflare, это</p>
+<p>лучше Actions: минуты GitHub не тратятся, workflow не нужен, деплой переживает</p>
+<p>любые проблемы с биллингом GitHub.</p>
+<p>Параметры для статики, которая уже лежит в репозитории собранной:</p>
+<pre><code>
+Framework preset     None
+Build command        пусто
+Build output dir     .
+Root directory       пусто
+Production branch    main
+</code></pre>
+<p>Дать интеграции доступ <b>только к нужному репозиторию</b>, не ко всем. Если</p>
+<p>репозитория нет в списке — GitHub → Settings → Applications → Cloudflare Pages</p>
+<p>→ Configure.</p>
+<p>Проверить результат можно без панели, по API проекта: <code>source.type</code> должен</p>
+<p>стать <code>github</code>, в <code>source.config</code> появиться <code>repo_name</code> и <code>production_branch</code>,</p>
+<p>а <code>latest_deployment.latest_stage.status</code> — <code>success</code>.</p>
+<p>У пользователя может быть несколько аккаунтов Cloudflare; список аккаунтов</p>
+<p>может вернуться пустым даже при живом токене. Тогда Account ID брать из</p>
+<p>прошлой переписки, а не из этого ответа, и проверять проект по нему напрямую.</p>
+<h3>Hours на новом репозитории</h3>
+<p>Новый репозиторий Pages не знает: проект надо один раз создать в панели и</p>
+<p>привязать к нему репозиторий. После этого каждый пуш пересобирает сайт сам.</p>
+<p>Имя проекта задаёт адрес: <code>имя-xxxx.pages.dev</code>, четыре символа добавляет</p>
+<p>Cloudflare. Имя репозитория ни на что не влияет. Переименование проекта</p>
+<p>меняет адрес, старый перестаёт открываться — выбирать сразу.</p>
+<h3>Диагностика красного деплоя</h3>
+<p>Логи job через API <b>не читаются</b>: запрос логов прогона отдаёт</p>
+<p><code>BlobNotFound</code> в XML. Поэтому причину искать так:</p>
+<ul>
+<li>Список прогонов: <code>/actions/runs?per_page=1</code> → <code>status</code>, <code>conclusion</code>.</li>
+<li>Шаги: <code>/actions/runs/{run_id}/jobs</code> → у каждого job <code>conclusion</code> по шагам;</li>
+</ul>
+<p>   это уже показывает, на каком шаге упало, без лога.</p>
+<ul>
+<li>Аннотации чек-рана — короткий текст причины, если шаги не стартовали.</li>
+<li>Прогнать те же команды локально на облачной машине — если локально чисто,</li>
+</ul>
+<p>   разница в окружении workflow (права, ветка, версия actions).</p>
+<ul>
+<li>Отдельно проверить токены прямыми запросами к API GitHub и Cloudflare:</li>
+</ul>
+<p>   если оба отвечают, проблема в workflow, а не в доступе.</p>
+<p>Пока workflow разбирается, публикацию не блокировать: собрать страницу и</p>
+<p>залить её напрямую с машины, а автоматизацию починить следом. Не отправлять</p>
+<p>пользователя смотреть логи в интерфейс GitHub, если он просил вести рутину</p>
+<p>через консьержа.</p>
+<h3>Про доступ и входы: проверенный порядок</h3>
+<p>Пользователь может создать отдельные сервисные аккаунты под консьержа</p>
+<p>(имя, GitHub, Cloudflare, почта) — это предпочтительнее доступа к личным.</p>
+<p>Дальше важны три вещи, на которых уже спотыкались.</p>
+<p><b>Вход — только через экран (<code>desktop</code> handoff).</b> Пароли в чат не</p>
+<p>принимаются. Пользователь открывает <code>screen_link</code> со своего устройства и</p>
+<p>входит сам; коды подтверждения читает в соседней вкладке там же, на экране.</p>
+<p>Сессия остаётся в профиле браузера облачной машины и переживает сон.</p>
+<p><b>Проверять, на какой машине вход.</b> Пользователь может залогиниться в</p>
+<p>своём браузере (или в виртуалке) и искренне считать, что вошёл «на облаке».</p>
+<p>Перед работой сверять факт: <code>desktop(screen_action='status')</code> показывает</p>
+<p>текущий <code>page.url</code>, скриншот — аватар или форму входа. Вход на домашней</p>
+<p>машине не переносится в облачную.</p>
+<p><b>Профиль браузера может не сохранять входы.</b> Перед обещанием «всё</p>
+<p>останется после перезапуска» проверить размер и содержимое профиля: пустой</p>
+<p>профиль (десятки килобайт, внутри только отчёты о сбоях) значит, что сессии</p>
+<p>живут в памяти и после сна пропадут. Тогда честно сказать: файлы и токены</p>
+<p>останутся, входы в панели придётся повторить. Токены, лежащие в git-remote и</p>
+<p>в секретах репозитория, от состояния браузера не зависят.</p>
+<p><b>Буфер обмена не общий.</b> Токен, скопированный в браузере пользователя на</p>
+<p>его устройстве, на облачной машине недоступен: <code>xclip</code>/<code>xsel</code> там могут</p>
+<p>отсутствовать, а <code>xdotool</code> вставляет только то, что уже в буфере дисплея.</p>
+<p>Попытки протащить токен через терминал на экране (<code>cat &gt; файл</code>,</p>
+<p><code>Ctrl+Shift+V</code>, <code>xdotool type</code>) на практике не срабатывают и съедают время.</p>
+<p>Не изобретать обходной путь: если вход через экран не завершён, честно</p>
+<p>попросить пользователя создать **fine-grained PAT на один репозиторий,</p>
+<p>право Contents: read/write, срок 7 дней** (создаётся в его собственном</p>
+<p>браузере за минуту), либо залить файлы через веб-интерфейс руками.</p>
+<p><b>Гигиена токена.</b> Если токен всё-таки прошёл через переписку — сразу после</p>
+<p>заливки удалить его из конфигурации машины и напомнить, что отозвать можно в</p>
+<p><code>Settings → Developer settings → Personal access tokens</code>. Никогда не хранить</p>
+<p>токен в репозитории, в скриптах или в ленте.</p>
+<h3>Что проверить после публикации</h3>
+<ul>
+<li>лента открывается по адресу и перечисляет свежие файлы с датами;</li>
+<li>ссылки из ленты ведут на существующие файлы (относительные пути, не абсолютные);</li>
+<li>если включён Access — без входа страница не открывается, с входом — открывается;</li>
+<li>деплой зелёный, и в истории деплоев Cloudflare видно новую ревизию.</li>
+</ul>
+<h3>Когда проверка из облака врёт</h3>
+<p><code>curl</code> с облачной машины может получить <code>000</code> и <code>TLS unexpected eof</code> на</p>
+<p>живом внешне сайте: сеть ходит через общий исходящий шлюз, и TLS до</p>
+<p>определённых хостов рвётся. Это не значит, что сайт лежит. Различать так:</p>
+<ul>
+<li>IPv4 (<code>curl -4</code>) может ответить <code>200</code>, пока общий запрос падает;</li>
+<li>адрес вида <code>&lt;hash&gt;.&lt;project&gt;.pages.dev</code> — адрес конкретного деплоя, он</li>
+</ul>
+<p>  отвечает независимо от основного домена;</p>
+<ul>
+<li>окончательная проверка — <code>desktop(action='browse')</code> с задачей «открыть</li>
+</ul>
+<p>  страницу и сказать заголовок и есть ли ошибка». Браузер на экране ходит</p>
+<p>  другим путём и видит то, что видит человек.</p>
+<p>Вывод делать по браузеру, а не по коду ответа <code>curl</code>. И не рассказывать</p>
+<p>пользователю про шлюз, если он просто спросил, работает ли сайт.</p></div></details></div><div class="footer"><a href="../skills.html" style="color:inherit">← Все скиллы</a> · <a href="../index.html" style="color:inherit">К обновлениям</a></div></div><script>
+const root=document.documentElement;
+const sp=document.querySelectorAll('details.sp');
+const allBtn=document.getElementById('allBtn');
+function setStyle(s){root.dataset.style=s;
+ document.querySelectorAll('[data-s]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.s===s));}
+function setTheme(t){root.dataset.theme=t;
+ document.querySelectorAll('[data-t]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===t));}
+document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>setStyle(b.dataset.s));
+document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+let allOpen=false;
+if(allBtn){allBtn.onclick=()=>{allOpen=!allOpen;sp.forEach(d=>d.open=allOpen);
+ allBtn.textContent=allOpen?'Свернуть всё':'Раскрыть всё';};}
+const chips=[...document.querySelectorAll('.chip')];
+const secs=chips.map(c=>document.querySelector(c.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+ const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  chips.forEach(c=>c.classList.remove('on'));
+  const c=chips.find(x=>x.getAttribute('href')==='#'+e.target.id);if(c)c.classList.add('on');}})},
+  {rootMargin:'-70px 0px -70% 0px'});
+ secs.forEach(s=>io.observe(s));
+}
+setStyle('cards');setTheme('light');
+</script></body></html>
