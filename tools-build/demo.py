@@ -1,0 +1,225 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""Демо: три стиля оформления HTML-отчёта для iPhone X.
+
+Стиль переключается кнопками вверху, навигация — чипами.
+"""
+
+DST = "/workspace/home/Documents/style-demo.html"
+
+CSS = r"""
+:root { --bg:#f4f2ee; --card:#fff; --ink:#1d1d1f; --mut:#6b665f; --line:#e2ded7;
+        --accent:#1d1d1f; --soft:#faf8f5; }
+[data-theme="dark"] { --bg:#111; --card:#1c1c1e; --ink:#f2f2f7; --mut:#98989f; --line:#333;
+        --accent:#f2f2f7; --soft:#242426; }
+
+/* -------- СТИЛЬ 2: КАРТОЧКИ -------- */
+[data-style="cards"] body { background:var(--bg); }
+[data-style="cards"] .sec { background:var(--card); border-radius:16px; padding:20px 18px;
+        margin:14px 0; box-shadow:0 1px 2px rgba(0,0,0,.05); border:1px solid var(--line); }
+[data-style="cards"] h2 { font-size:19px; margin:0 0 4px; display:flex; gap:10px; align-items:center; }
+[data-style="cards"] h2::before { content:attr(data-n); font-size:12px; background:var(--accent);
+        color:var(--bg); width:24px; height:24px; border-radius:7px; display:inline-flex;
+        align-items:center; justify-content:center; flex:0 0 24px; font-weight:700; }
+
+/* -------- СТИЛЬ 3: КОМПАКТ-СПИСОК -------- */
+[data-style="compact"] body { background:var(--bg); }
+[data-style="compact"] .sec { padding:14px 0 14px 16px; border-left:3px solid var(--line);
+        margin:0; }
+[data-style="compact"] .sec.units { border-left-color:#2b7a4b; }
+[data-style="compact"] .sec:hover { border-left-color:var(--accent); }
+[data-style="compact"] h2 { font-size:16px; margin:0 0 2px; letter-spacing:-.01em; }
+[data-style="compact"] p, [data-style="compact"] li { font-size:14.5px; line-height:1.5; }
+[data-style="compact"] .sec { margin-bottom:2px; }
+
+/* -------- общее -------- */
+* { box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html,body { margin:0; padding:0; }
+body { font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Arial,sans-serif;
+        color:var(--ink); font-size:16px; line-height:1.6; -webkit-text-size-adjust:100%; }
+.wrap { max-width:820px; margin:0 auto; padding:0 12px 90px; }
+
+/* верхняя панель */
+.bar { position:sticky; top:0; z-index:50; background:var(--bg);
+        border-bottom:1px solid var(--line); padding:8px 0 0; }
+.chips { display:flex; gap:7px; overflow-x:auto; padding:4px 12px 8px;
+        scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+.chips::-webkit-scrollbar { display:none; }
+.chip { flex:0 0 auto; padding:7px 13px; border-radius:999px; background:var(--soft);
+        border:1px solid var(--line); color:var(--mut); font-size:13px; font-weight:550;
+        text-decoration:none; white-space:nowrap; }
+.chip:active { transform:scale(.96); }
+
+/* переключатели */
+.switches { display:flex; gap:8px; padding:0 12px 9px; }
+.seg { display:flex; background:var(--soft); border:1px solid var(--line); border-radius:10px;
+        padding:3px; gap:2px; }
+.seg button { border:0; background:transparent; color:var(--mut); font-size:12px;
+        font-weight:600; padding:6px 10px; border-radius:7px; font-family:inherit; }
+.seg button[aria-pressed="true"] { background:var(--card); color:var(--ink);
+        box-shadow:0 1px 2px rgba(0,0,0,.12); }
+.seg.push { margin-left:auto; }
+
+.hero { padding:22px 4px 6px; }
+.hero .k { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--mut);
+        font-weight:600; }
+.hero h1 { font-size:26px; line-height:1.2; margin:8px 0 0; letter-spacing:-.02em; }
+.hero p { color:var(--mut); font-size:14px; margin:8px 0 0; }
+
+h2 { letter-spacing:-.01em; }
+p { margin:8px 0; }
+.mut { color:var(--mut); font-size:14px; }
+
+table { width:100%; border-collapse:collapse; margin:10px 0; font-size:14px; }
+th,td { padding:9px 10px; text-align:left; border-bottom:1px solid var(--line); }
+th { font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--mut);
+        font-weight:650; }
+tr:last-child td { border-bottom:none; }
+
+/* схема-поток */
+.flow { display:flex; flex-direction:column; gap:0; margin:14px 0; }
+.node { background:var(--soft); border:1px solid var(--line); border-radius:11px;
+        padding:11px 13px; font-size:14px; }
+.node b { display:block; font-size:13px; margin-bottom:1px; }
+.arrow { text-align:center; color:var(--mut); font-size:15px; line-height:1.1;
+        padding:3px 0; }
+
+/* полоски-диаграмма */
+.bars { margin:12px 0; display:flex; flex-direction:column; gap:9px; }
+.bar-row { display:flex; align-items:center; gap:9px; font-size:13px; }
+.bar-row .lb { flex:0 0 92px; color:var(--mut); }
+.bar-row .tr { flex:1; height:9px; background:var(--soft); border-radius:99px; overflow:hidden; }
+.bar-row .fl { height:100%; border-radius:99px; background:var(--accent); }
+.bar-row .vl { flex:0 0 auto; font-variant-numeric:tabular-nums; font-weight:650; }
+
+ul,ol { padding-left:20px; margin:8px 0; }
+li { margin:4px 0; }
+
+.note { background:var(--soft); border:1px solid var(--line); border-left:3px solid #d9a41a;
+        border-radius:0 10px 10px 0; padding:12px 14px; font-size:14px; margin:12px 0; }
+
+/* тёмная тема — правки карточек */
+[data-theme="dark"][data-style="cards"] .sec { box-shadow:none; }
+
+@media (max-width:420px){ body{font-size:15.5px;} .hero h1{font-size:23px;} }
+"""
+
+JS = r"""
+const root = document.documentElement;
+function setStyle(s){ root.dataset.style = s;
+  document.querySelectorAll('[data-s]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.s===s)); }
+function setTheme(t){ root.dataset.theme = t;
+  document.querySelectorAll('[data-t]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.t===t)); }
+document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>setStyle(b.dataset.s));
+document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+setStyle('cards'); setTheme('light');
+"""
+
+CHIPS = [("s1", "Чипы"), ("s2", "Стили"), ("s3", "Поток"), ("s4", "Таблица"),
+         ("s5", "Диаграмма"), ("s6", "Вывод")]
+
+chips_html = "".join(f'<a class="chip" href="#{i}">{n}</a>' for i, n in CHIPS)
+
+BODY = r"""
+<div class="hero">
+  <div class="k">ИИ-Консьерж · оформление</div>
+  <h1>Три стиля для мобильного</h1>
+  <p>Переключите оформление кнопками ниже и выберите, что читается легче.</p>
+</div>
+
+<div class="sec" id="s1">
+  <h2 data-n="1">Навигация чипами</h2>
+  <p>Полоса сверху закреплена. Тапнули — страница прыгнула к разделу. Свайпом чипы
+  прокручиваются вбок, если их больше, чем влезает.</p>
+  <div class="note">Этот блок — приём «выноска»: важное без выделения жирным.</div>
+</div>
+
+<div class="sec" id="s2">
+  <h2 data-n="2">Стили страницы</h2>
+  <p><b>Карточки</b> — воздух, тени, свой блок на раздел. Удобно читать лежа.</p>
+  <p><b>Компакт</b> — плотнее в полтора раза, левая линейка вместо рамок. Для длинных
+  технических разборов, где важно прочитать целиком.</p>
+  <p><b>Светлая и тёмная</b> — кнопка справа. Тёмная хороша вечером, глаза меньше устают.</p>
+</div>
+
+<div class="sec" id="s3">
+  <h2 data-n="3">Схема потока</h2>
+  <div class="flow">
+    <div class="node"><b>Устройство</b>данные → наружу</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Шлюз</b>только чтение</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Консьерж</b>принимает и отвечает</div>
+  </div>
+  <p class="mut">Схемы собираются кодом — без картинок, работают в тёмной теме.</p>
+</div>
+
+<div class="sec" id="s4">
+  <h2 data-n="4">Таблица</h2>
+  <table>
+    <thead><tr><th>Слой</th><th>Где</th><th>Когда</th></tr></thead>
+    <tbody>
+      <tr><td>Индекс</td><td>GitHub</td><td>Всегда</td></tr>
+      <tr><td>Проект</td><td>GitHub</td><td>По триггеру</td></tr>
+      <tr><td>Личное</td><td>Wiki</td><td>По теме</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="sec" id="s5">
+  <h2 data-n="5">Диаграмма без осей</h2>
+  <p class="mut">Когда цифры нужны для сравнения, а не для чтения точно.</p>
+  <div class="bars">
+    <div class="bar-row"><span class="lb">Директ</span><span class="tr"><span class="fl" style="width:82%"></span></span><span class="vl">86</span></div>
+    <div class="bar-row"><span class="lb">Метрика</span><span class="tr"><span class="fl" style="width:41%"></span></span><span class="vl">43</span></div>
+    <div class="bar-row"><span class="lb">Аудитории</span><span class="tr"><span class="fl" style="width:22%"></span></span><span class="vl">23</span></div>
+  </div>
+</div>
+
+<div class="sec" id="s6">
+  <h2 data-n="6">Что выбрать</h2>
+  <ul>
+    <li><b>Карточки</b> — по умолчанию для разборов и планов;</li>
+    <li><b>Компакт</b> — когда текста много и нужен лист целиком;</li>
+    <li>тёмная тема — для вечера и чтения в кровати.</li>
+  </ul>
+</div>
+"""
+
+SWITCHES = r"""
+<div class="switches">
+  <div class="seg" role="group" aria-label="Стиль">
+    <button data-s="cards">Карточки</button>
+    <button data-s="compact">Компакт</button>
+  </div>
+  <div class="seg push" role="group" aria-label="Тема">
+    <button data-t="light">☀︎</button>
+    <button data-t="dark">☾</button>
+  </div>
+</div>
+"""
+
+doc = f"""<!DOCTYPE html>
+<html lang="ru" data-style="cards" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f2ee">
+<title>Стили отчёта</title>
+<style>{CSS}</style>
+</head>
+<body>
+<div class="bar">
+  <div class="chips">{chips_html}</div>
+  {SWITCHES}
+</div>
+<div class="wrap">
+{BODY}
+</div>
+<script>{JS}</script>
+</body>
+</html>"""
+
+with open(DST, "w", encoding="utf-8") as f:
+    f.write(doc)
+print("OK", len(doc), "bytes ->", DST)

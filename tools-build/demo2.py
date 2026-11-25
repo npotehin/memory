@@ -1,0 +1,232 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""Демо v2: спойлеры «тезис + раскрытие», чипы с подсветкой, два стиля, тема."""
+import pathlib
+
+DST = pathlib.Path("/workspace/home/Documents/style-demo-v2.html")
+DST.parent.mkdir(parents=True, exist_ok=True)
+
+CSS = """
+:root{--bg:#f4f2ee;--card:#fff;--ink:#1d1d1f;--mut:#6b665f;--line:#e2ded7;--soft:#faf8f5}
+[data-theme="dark"]{--bg:#0f0f10;--card:#1c1c1e;--ink:#f2f2f7;--mut:#98989f;--line:#333;--soft:#242426}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Arial,sans-serif;
+color:var(--ink);background:var(--bg);font-size:16px;line-height:1.62;-webkit-text-size-adjust:100%}
+.wrap{max-width:820px;margin:0 auto;padding:0 12px 90px}
+.bar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:7px;overflow-x:auto;padding:9px 12px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:7px 13px;border-radius:999px;background:var(--soft);border:1px solid var(--line);
+color:var(--mut);font-size:13px;font-weight:550;text-decoration:none;white-space:nowrap}
+.chip:active{transform:scale(.96)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.switches{display:flex;gap:8px;padding:0 12px 9px;align-items:center}
+.seg{display:flex;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--mut);font-size:12px;font-weight:600;
+padding:6px 10px;border-radius:7px;font-family:inherit}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.seg.push{margin-left:auto}
+.allbtn{border:1px solid var(--line);background:var(--soft);color:var(--mut);font-size:12px;
+font-weight:600;padding:6px 11px;border-radius:9px;font-family:inherit}
+.hero{padding:22px 4px 4px}
+.hero .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.hero h1{font-size:26px;line-height:1.18;margin:8px 0 0;letter-spacing:-.02em}
+.hero p{color:var(--mut);font-size:14px;margin:8px 0 0}
+[data-style="cards"] .sec{background:var(--card);border:1px solid var(--line);border-radius:16px;
+padding:18px;margin:13px 0;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+[data-theme="dark"][data-style="cards"] .sec{box-shadow:none}
+[data-style="cards"] h2{font-size:19px;margin:0;display:flex;gap:10px;align-items:center}
+[data-style="cards"] h2::before{content:attr(data-n);font-size:12px;font-weight:700;background:var(--ink);
+color:var(--bg);width:24px;height:24px;border-radius:7px;display:inline-flex;align-items:center;
+justify-content:center;flex:0 0 24px}
+[data-style="compact"] .sec{padding:13px 0 13px 15px;border-left:3px solid var(--line);margin:0 0 2px}
+[data-style="compact"] h2{font-size:16px;margin:0}
+[data-style="compact"] p,[data-style="compact"] li{font-size:14.5px;line-height:1.5}
+h2{letter-spacing:-.01em}
+p{margin:9px 0}
+.mut{color:var(--mut);font-size:13.5px}
+.sp{margin:11px 0 0;border-radius:12px;background:var(--soft);border:1px solid var(--line);overflow:hidden}
+.sp>summary{list-style:none;cursor:pointer;padding:13px 14px;font-size:14.5px;font-weight:600;
+display:flex;align-items:center;gap:9px}
+.sp>summary::-webkit-details-marker{display:none}
+.sp>summary::before{content:"+";width:20px;height:20px;flex:0 0 20px;border-radius:6px;background:var(--ink);
+color:var(--bg);font-size:14px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}
+.sp[open]>summary::before{content:"\\2013"}
+.sp>summary .t{flex:1}
+.sp>summary .hint{font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.sp[open]>summary .hint{display:none}
+.sp .in{padding:0 14px 15px;border-top:1px solid var(--line);font-size:14.5px}
+.sp .in p:first-child{margin-top:12px}
+.sp.tip{border-left:3px solid #d9a41a}
+.thesis{font-size:15.5px;margin:0}
+.flow{margin:13px 0 0}
+.node{background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:10px 12px;font-size:14px}
+.node b{display:block;font-size:12.5px;margin-bottom:1px}
+.arrow{text-align:center;color:var(--mut);font-size:14px;padding:3px 0}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th,td{padding:9px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);font-weight:650}
+tr:last-child td{border-bottom:none}
+.bars{margin:10px 0 0;display:flex;flex-direction:column;gap:9px}
+.bar-row{display:flex;align-items:center;gap:9px;font-size:13px}
+.bar-row .lb{flex:0 0 88px;color:var(--mut)}
+.bar-row .tr{flex:1;height:9px;background:var(--soft);border-radius:99px;overflow:hidden}
+.bar-row .fl{height:100%;border-radius:99px;background:var(--ink)}
+.bar-row .vl{font-variant-numeric:tabular-nums;font-weight:650}
+ul,ol{padding-left:20px;margin:8px 0}
+li{margin:4px 0}
+.footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mut)}
+@media(max-width:420px){body{font-size:15.5px}.hero h1{font-size:23px}}
+"""
+
+JS = """
+const root=document.documentElement;
+const sp=document.querySelectorAll('details.sp');
+const allBtn=document.getElementById('allBtn');
+function setStyle(s){root.dataset.style=s;
+ document.querySelectorAll('[data-s]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.s===s));}
+function setTheme(t){root.dataset.theme=t;
+ document.querySelectorAll('[data-t]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===t));}
+document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>setStyle(b.dataset.s));
+document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+let allOpen=false;
+allBtn.onclick=()=>{allOpen=!allOpen;sp.forEach(d=>d.open=allOpen);
+ allBtn.textContent=allOpen?'Свернуть всё':'Раскрыть всё';};
+const chips=[...document.querySelectorAll('.chip')];
+const secs=chips.map(c=>document.querySelector(c.getAttribute('href'))).filter(Boolean);
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+ chips.forEach(c=>c.classList.remove('on'));
+ const c=chips.find(x=>x.getAttribute('href')==='#'+e.target.id);if(c)c.classList.add('on');}})},
+ {rootMargin:'-70px 0px -70% 0px'});
+secs.forEach(s=>io.observe(s));
+setStyle('cards');setTheme('light');
+"""
+
+CHIPS = [("s1","Тезис"),("s2","Акцент"),("s3","Поток"),("s4","Таблица"),("s5","Дальше")]
+chips_html = "".join('<a class="chip" href="#%s">%s</a>' % (i, n) for i, n in CHIPS)
+
+BODY = """
+<div class="hero">
+  <div class="k">ИИ-Консьерж · версия 2</div>
+  <h1>Тезис, а под ним — разжёвывание</h1>
+  <p>Сверху только вывод. Подробности открываются тапом, когда захочется.</p>
+</div>
+
+<div class="sec" id="s1">
+  <h2 data-n="1">Как это работает</h2>
+  <p class="thesis"><b>Главная мысль видна сразу</b>, а весь объём спрятан в раскрывашку.
+  Страница остаётся короткой, пока вы сами не попросите подробностей.</p>
+
+  <details class="sp">
+    <summary><span class="t">Что именно прячется</span><span class="hint">показать</span></summary>
+    <div class="in">
+      <p>Любой текст, который нужен не всегда: определения, устройство механизма,
+      примеры, оговорки, технические детали.</p>
+      <p>Тезис остаётся на виду. Если он понятен — спойлер можно не открывать вообще.
+      На длинном разборе это экономит два-три экрана прокрутки.</p>
+    </div>
+  </details>
+
+  <details class="sp">
+    <summary><span class="t">Почему плюс, а не стрелка</span><span class="hint">показать</span></summary>
+    <div class="in">
+      <p>Плюс однозначен. Стрелка на телефоне путается с полосой прокрутки, а треугольник
+      легко принять за элемент списка.</p>
+      <p>Кнопка «Раскрыть всё» сверху — для случая, когда хотите прочитать подряд, без тапов.</p>
+    </div>
+  </details>
+</div>
+
+<div class="sec" id="s2">
+  <h2 data-n="2">Спойлер с акцентом</h2>
+  <p class="thesis">Для предупреждений и «прочитайте, если соберётесь делать» — отдельный вид,
+  с жёлтой полосой сбоку.</p>
+
+  <details class="sp tip">
+    <summary><span class="t">Осторожно: это меняет поведение</span><span class="hint">показать</span></summary>
+    <div class="in">
+      <p>Такой блок виден даже свёрнутым — полоса отличает его от обычного пояснения.
+      Внутри можно дать и подробности, и шаги, если человек решил идти дальше.</p>
+    </div>
+  </details>
+</div>
+
+<div class="sec" id="s3">
+  <h2 data-n="3">Схема остаётся видимой</h2>
+  <p class="thesis">Картинки и схемы не прячем — они и есть главное.</p>
+  <div class="flow">
+    <div class="node"><b>Тезис</b>одна строка, видно сразу</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Спойлер</b>подробности по тапу</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Схема</b>всегда открыта</div>
+  </div>
+</div>
+
+<div class="sec" id="s4">
+  <h2 data-n="4">Таблицы тоже прячутся</h2>
+  <p class="thesis">Большая таблица на телефоне — это пять экранов. Пусть будет по запросу.</p>
+  <details class="sp">
+    <summary><span class="t">Сравнение слоёв памяти</span><span class="hint">показать</span></summary>
+    <div class="in">
+      <table>
+        <thead><tr><th>Слой</th><th>Где</th><th>Когда</th></tr></thead>
+        <tbody>
+          <tr><td>Индекс</td><td>GitHub</td><td>Всегда</td></tr>
+          <tr><td>Проект</td><td>GitHub</td><td>По триггеру</td></tr>
+          <tr><td>Личное</td><td>Wiki</td><td>По теме</td></tr>
+        </tbody>
+      </table>
+      <div class="bars">
+        <div class="bar-row"><span class="lb">Директ</span><span class="tr"><span class="fl" style="width:82%"></span></span><span class="vl">86</span></div>
+        <div class="bar-row"><span class="lb">Метрика</span><span class="tr"><span class="fl" style="width:41%"></span></span><span class="vl">43</span></div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<div class="sec" id="s5">
+  <h2 data-n="5">Что дальше</h2>
+  <p class="thesis">Если нравится — зашью в сборщик, и все отчёты будут такими.</p>
+  <ul>
+    <li>проверить оба стиля и тёмную тему;</li>
+    <li>сказать, что прятать по умолчанию;</li>
+    <li>пересобрать первый отчёт в новом виде.</li>
+  </ul>
+</div>
+
+<div class="footer">Версия 2 · спойлеры, чипы с подсветкой, «раскрыть всё»</div>
+"""
+
+SW = """
+<div class="switches">
+  <div class="seg" role="group"><button data-s="cards">Карточки</button><button data-s="compact">Компакт</button></div>
+  <button class="allbtn" id="allBtn">Раскрыть всё</button>
+  <div class="seg push" role="group"><button data-t="light">Свет</button><button data-t="dark">Тьма</button></div>
+</div>
+"""
+
+doc = """<!DOCTYPE html>
+<html lang="ru" data-style="cards" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f2ee">
+<title>Стили отчёта v2</title>
+<style>%s</style>
+</head>
+<body>
+<div class="bar">
+  <div class="chips">%s</div>
+  %s
+</div>
+<div class="wrap">
+%s
+</div>
+<script>%s</script>
+</body>
+</html>""" % (CSS, chips_html, SW, BODY, JS)
+
+DST.write_text(doc, encoding="utf-8")
+print("OK", len(doc), "bytes ->", DST)

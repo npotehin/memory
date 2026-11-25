@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="ru" data-style="cards" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f4f2ee"><title>Два варианта доступа</title><style>
+:root{--bg:#f4f2ee;--card:#fff;--ink:#1d1d1f;--mut:#6b665f;--line:#e2ded7;--soft:#faf8f5;--warn:#d9a41a;--ok:#2b7a4b}
+[data-theme="dark"]{--bg:#0f0f10;--card:#1c1c1e;--ink:#f2f2f7;--mut:#98989f;--line:#333;--soft:#242426;--warn:#e0b446;--ok:#4aa06a}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Arial,sans-serif;
+color:var(--ink);background:var(--bg);font-size:16px;line-height:1.62;-webkit-text-size-adjust:100%}
+.wrap{max-width:820px;margin:0 auto;padding:0 12px 90px}
+.bar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:7px;overflow-x:auto;padding:9px 12px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:7px 13px;border-radius:999px;background:var(--soft);border:1px solid var(--line);
+color:var(--mut);font-size:13px;font-weight:550;text-decoration:none;white-space:nowrap}
+.chip:active{transform:scale(.96)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.switches{display:flex;gap:8px;padding:0 12px 9px;align-items:center}
+.seg{display:flex;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--mut);font-size:12px;font-weight:600;
+padding:6px 10px;border-radius:7px;font-family:inherit}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.seg.push{margin-left:auto}
+.allbtn{border:1px solid var(--line);background:var(--soft);color:var(--mut);font-size:12px;
+font-weight:600;padding:6px 11px;border-radius:9px;font-family:inherit}
+.hero{padding:22px 4px 4px}
+.hero .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.hero h1{font-size:26px;line-height:1.18;margin:8px 0 0;letter-spacing:-.02em}
+.hero p{color:var(--mut);font-size:14px;margin:8px 0 0}
+[data-style="cards"] .sec{background:var(--card);border:1px solid var(--line);border-radius:16px;
+padding:18px;margin:13px 0;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+[data-theme="dark"][data-style="cards"] .sec{box-shadow:none}
+[data-style="cards"] h2{font-size:19px;margin:0;display:flex;gap:10px;align-items:center}
+[data-style="cards"] h2::before{content:attr(data-n);font-size:12px;font-weight:700;background:var(--ink);
+color:var(--bg);width:24px;height:24px;border-radius:7px;display:inline-flex;align-items:center;
+justify-content:center;flex:0 0 24px}
+[data-style="compact"] .sec{padding:13px 0 13px 15px;border-left:3px solid var(--line);margin:0 0 2px}
+[data-style="compact"] h2{font-size:16px;margin:0}
+[data-style="compact"] p,[data-style="compact"] li{font-size:14.5px;line-height:1.5}
+h2{letter-spacing:-.01em}
+p{margin:9px 0}
+.mut{color:var(--mut);font-size:13.5px}
+.sp{margin:11px 0 0;border-radius:12px;background:var(--soft);border:1px solid var(--line);overflow:hidden}
+.sp>summary{list-style:none;cursor:pointer;padding:13px 14px;font-size:14.5px;font-weight:600;
+display:flex;align-items:center;gap:9px}
+.sp>summary::-webkit-details-marker{display:none}
+.sp>summary::before{content:"+";width:20px;height:20px;flex:0 0 20px;border-radius:6px;background:var(--ink);
+color:var(--bg);font-size:14px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}
+.sp[open]>summary::before{content:"\2013"}
+.sp>summary .t{flex:1}
+.sp>summary .hint{font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.sp[open]>summary .hint{display:none}
+.sp .in{padding:0 14px 15px;border-top:1px solid var(--line);font-size:14.5px}
+.sp .in p:first-child{margin-top:12px}
+.sp.tip{border-left:3px solid var(--warn)}
+.thesis{font-size:15.5px;margin:0}
+.flow{margin:13px 0 0}
+.node{background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:10px 12px;font-size:14px}
+.node b{display:block;font-size:12.5px;margin-bottom:1px}
+.arrow{text-align:center;color:var(--mut);font-size:14px;padding:3px 0}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th,td{padding:9px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);font-weight:650}
+tr:last-child td{border-bottom:none}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:var(--soft);
+border:1px solid var(--line);padding:1px 5px;border-radius:5px}
+pre{background:var(--ink);color:var(--bg);padding:14px 15px;border-radius:11px;overflow-x:auto;
+font-size:12.5px;line-height:1.55}
+pre code{background:none;border:0;padding:0;color:inherit}
+ul,ol{padding-left:20px;margin:8px 0}
+li{margin:4px 0}
+.steps{counter-reset:s;margin:10px 0 0;padding:0;list-style:none}
+.steps li{counter-increment:s;position:relative;padding-left:34px;margin:9px 0;font-size:14.5px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:22px;height:22px;
+border-radius:7px;background:var(--soft);border:1px solid var(--line);color:var(--mut);
+font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.badge{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+padding:2px 7px;border-radius:5px;background:var(--soft);border:1px solid var(--line);color:var(--mut)}
+.badge.ok{color:var(--ok);border-color:var(--ok)}
+.badge.warn{color:var(--warn);border-color:var(--warn)}
+.footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mut)}
+@media(max-width:420px){body{font-size:15.5px}.hero h1{font-size:23px}th,td{padding:8px 7px;font-size:13px}}
+</style></head><body><div class="bar"><div class="chips"><a class="chip" href="#s1">Ответ</a><a class="chip" href="#s2">Схема</a><a class="chip" href="#s3">Доступ</a><a class="chip" href="#s4">Шаги</a><a class="chip" href="#s5">Приватность</a><a class="chip" href="#s6">Порядок</a></div><div class="switches"><div class="seg" role="group"><button data-s="cards">Карточки</button><button data-s="compact">Компакт</button></div><button class="allbtn" id="allBtn">Раскрыть всё</button><div class="seg push" role="group"><button data-t="light">Свет</button><button data-t="dark">Тьма</button></div></div></div><div class="wrap"><div class="hero"><div class="k">ИИ-Консьерж · инфраструктура</div><h1>Два варианта доступа</h1><p>Отдельные аккаунты под консьержа против доступа ко всему сразу.</p></div><div class="sec" id="s1"><h2 data-n="1">Какой вариант выбрать</h2>
+<p class="thesis"><b>Вариант 1 — отдельные аккаунты под консьержа.</b> Второй не возьму:
+доступ ко всем разработкам и управление серверами — это не «удобнее», это один сбой
+от потери всего, что у вас есть.</p>
+<p class="mut">Первый даёт тот же результат в работе. Разница только в том, насколько
+далеко разлетится мусор, если что-то пойдёт не так.</p>
+<table>
+<thead><tr><th></th><th>Вариант 1<br>отдельные</th><th>Вариант 2<br>ваши</th></tr></thead>
+<tbody>
+<tr><td><b>Публикация отчётов</b></td><td>работает</td><td>работает</td></tr>
+<tr><td><b>Живая лента</b></td><td>работает</td><td>работает</td></tr>
+<tr><td><b>Что под ударом</b></td><td>один репозиторий</td><td>всё: репо, серверы, биллинг</td></tr>
+<tr><td><b>Отзыв доступа</b></td><td>удалить аккаунт</td><td>менять пароли, чистить токены</td></tr>
+</tbody>
+</table>
+<details class="sp tip"><summary><span class="t">Почему не беру управление серверами</span><span class="hint">показать</span></summary><div class="in"><p>Сервер — это то, что не откатывается коммитом: базы, сертификаты, DNS,
+бэкапы, деньги у провайдера.</p>
+<p>Для наших задач он не нужен. Публикация страниц, коммиты в память, сборка
+отчётов живут в отдельном аккаунте и не касаются инфраструктуры.</p>
+<p>Понадобится что-то на сервере — сделаем узкий доступ под конкретную задачу,
+а не «всё сразу».</p></div></details></div><div class="sec" id="s2"><h2 data-n="2">Как это будет работать</h2>
+<div class="flow">
+  <div class="node"><b>Вы</b>пишете в чат — как сейчас</div>
+  <div class="arrow">↓</div>
+  <div class="node"><b>Консьерж</b>собирает HTML в вашем стиле</div>
+  <div class="arrow">↓</div>
+  <div class="node"><b>Приватный репозиторий</b>аккаунт консьержа, вы приглашены</div>
+  <div class="arrow">↓</div>
+  <div class="node"><b>GitHub Actions</b>собирает ленту из папки</div>
+  <div class="arrow">↓</div>
+  <div class="node"><b>Cloudflare Pages</b>публикует</div>
+  <div class="arrow">↓</div>
+  <div class="node"><b>Вы на планшете</b>обновляете ленту и видите новое</div>
+</div>
+<p class="mut">Лента — единственная страница, куда вы ходите. Всё остальное глубже.</p>
+</div><div class="sec" id="s3"><h2 data-n="3">Что может консьерж</h2>
+<p class="thesis">Узкий набор прав. Каждое — под задачу, а не «на всякий случай».</p>
+<table>
+<thead><tr><th>Право</th><th>Зачем</th><th>Чего не может</th></tr></thead>
+<tbody>
+<tr><td>Создать репозиторий</td><td>Память проектов</td><td>Видеть ваши другие репозитории</td></tr>
+<tr><td>Коммит и пуш в свой</td><td>Отчёты и память</td><td>Трогать чужие проекты</td></tr>
+<tr><td>Pages: деплой</td><td>Публикация ленты</td><td>DNS, домены, биллинг, Workers</td></tr>
+</tbody>
+</table>
+<details class="sp"><summary><span class="t">Как вы увидите всё сами</span><span class="hint">показать</span></summary><div class="in"><p>Вы приглашены в репозиторий с правом чтения: видите каждый коммит, автора,
+время и полный diff — что именно изменилось.</p>
+<p>В Cloudflare видите историю деплоев: когда опубликовано и что было до.</p>
+<p>Обе стороны прозрачны, обе отзываются без последствий.</p></div></details></div><div class="sec" id="s4"><h2 data-n="4">Что делаете вы</h2>
+<p class="thesis">Один вечер, три шага. Дальше работа идёт без вашего участия.</p>
+<ol class="steps">
+<li><b>Новый GitHub-аккаунт</b> под консьержа. Почта любая ваша, пароль отдельный.
+Пароль не передаёте — входите сами на моём экране.</li>
+<li><b>Пригласите основной аккаунт</b> в репозиторий с правом чтения — чтобы видеть историю.</li>
+<li><b>Новый Cloudflare-аккаунт</b> под консьержа. Токен с одним правом:
+Account → Cloudflare Pages → Edit.</li>
+</ol>
+<p class="mut">Оба аккаунта ваши. Меняете пароль или удаляете целиком в любой момент.</p>
+<details class="sp"><summary><span class="t">Вместо токена — просто вход</span><span class="hint">показать</span></summary><div class="in"><p>Можно войти сами на моём экране один раз, сессия сохранится в браузере,
+и токены не понадобятся вовсе.</p>
+<p>Вход через экран предпочтительнее: пароль не проходит через переписку
+и не остаётся ни в одном файле.</p></div></details></div><div class="sec" id="s5"><h2 data-n="5">Честная оговорка</h2>
+<p class="thesis"><b>Cloudflare Pages не делает сайт закрытым.</b> Опубликованное
+доступно по адресу любому, кто его знает.</p>
+<ul>
+<li><b>Cloudflare Access</b> — вход по вашей почте, бесплатно;</li>
+<li><b>адрес-неугадайка</b> — слабее, но иногда достаточно;</li>
+<li><b>без Pages</b> — лента в приватном репозитории.</li>
+</ul>
+<details class="sp tip"><summary><span class="t">Почему советую Access</span><span class="hint">показать</span></summary><div class="in"><p>Для документов по РКШ открытая страница плоха: конкуренты, подрядчики,
+случайные люди. Access закрывает это одной настройкой и не мешает работать:
+один вход по почте, дальше браузер помнит.</p>
+<p>Настраивается один раз на весь проект, действует на всё внутри.</p></div></details></div><div class="sec" id="s6"><h2 data-n="6">Что делаю я</h2>
+<p class="thesis">Пока аккаунтов нет — готовлю локально, время не простаивает.</p>
+<ul>
+<li>ленту <code>index.html</code> с историей файлов;</li>
+<li>workflow для Actions: лента собирается при каждом пуше;</li>
+<li>структуру памяти: стили, проекты, дашборд;</li>
+<li>переношу три сегодняшних отчёта в новый вид.</li>
+</ul>
+<p class="mut">Появятся аккаунты — заливаю и даю ссылку.</p>
+</div><div class="footer">Версия 1 · 25.11.2026 · приватный репозиторий, Pages, вход по почте</div></div><script>
+const root=document.documentElement;
+const sp=document.querySelectorAll('details.sp');
+const allBtn=document.getElementById('allBtn');
+function setStyle(s){root.dataset.style=s;
+ document.querySelectorAll('[data-s]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.s===s));}
+function setTheme(t){root.dataset.theme=t;
+ document.querySelectorAll('[data-t]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===t));}
+document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>setStyle(b.dataset.s));
+document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+let allOpen=false;
+if(allBtn){allBtn.onclick=()=>{allOpen=!allOpen;sp.forEach(d=>d.open=allOpen);
+ allBtn.textContent=allOpen?'Свернуть всё':'Раскрыть всё';};}
+const chips=[...document.querySelectorAll('.chip')];
+const secs=chips.map(c=>document.querySelector(c.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+ const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  chips.forEach(c=>c.classList.remove('on'));
+  const c=chips.find(x=>x.getAttribute('href')==='#'+e.target.id);if(c)c.classList.add('on');}})},
+  {rootMargin:'-70px 0px -70% 0px'});
+ secs.forEach(s=>io.observe(s));
+}
+setStyle('cards');setTheme('light');
+</script></body></html>

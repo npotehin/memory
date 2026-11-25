@@ -1,0 +1,184 @@
+<!DOCTYPE html><html lang="ru" data-style="cards" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f4f2ee"><title>Вход в аккаунты консьержа</title><style>
+:root{--bg:#f4f2ee;--card:#fff;--ink:#1d1d1f;--mut:#6b665f;--line:#e2ded7;--soft:#faf8f5;--warn:#d9a41a;--ok:#2b7a4b}
+[data-theme="dark"]{--bg:#0f0f10;--card:#1c1c1e;--ink:#f2f2f7;--mut:#98989f;--line:#333;--soft:#242426;--warn:#e0b446;--ok:#4aa06a}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Arial,sans-serif;
+color:var(--ink);background:var(--bg);font-size:16px;line-height:1.62;-webkit-text-size-adjust:100%}
+.wrap{max-width:820px;margin:0 auto;padding:0 12px 90px}
+.bar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:7px;overflow-x:auto;padding:9px 12px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:7px 13px;border-radius:999px;background:var(--soft);border:1px solid var(--line);
+color:var(--mut);font-size:13px;font-weight:550;text-decoration:none;white-space:nowrap}
+.chip:active{transform:scale(.96)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.switches{display:flex;gap:8px;padding:0 12px 9px;align-items:center}
+.seg{display:flex;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--mut);font-size:12px;font-weight:600;
+padding:6px 10px;border-radius:7px;font-family:inherit}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.seg.push{margin-left:auto}
+.allbtn{border:1px solid var(--line);background:var(--soft);color:var(--mut);font-size:12px;
+font-weight:600;padding:6px 11px;border-radius:9px;font-family:inherit}
+.hero{padding:22px 4px 4px}
+.hero .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.hero h1{font-size:26px;line-height:1.18;margin:8px 0 0;letter-spacing:-.02em}
+.hero p{color:var(--mut);font-size:14px;margin:8px 0 0}
+[data-style="cards"] .sec{background:var(--card);border:1px solid var(--line);border-radius:16px;
+padding:18px;margin:13px 0;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+[data-theme="dark"][data-style="cards"] .sec{box-shadow:none}
+[data-style="cards"] h2{font-size:19px;margin:0;display:flex;gap:10px;align-items:center}
+[data-style="cards"] h2::before{content:attr(data-n);font-size:12px;font-weight:700;background:var(--ink);
+color:var(--bg);width:24px;height:24px;border-radius:7px;display:inline-flex;align-items:center;
+justify-content:center;flex:0 0 24px}
+[data-style="compact"] .sec{padding:13px 0 13px 15px;border-left:3px solid var(--line);margin:0 0 2px}
+[data-style="compact"] h2{font-size:16px;margin:0}
+[data-style="compact"] p,[data-style="compact"] li{font-size:14.5px;line-height:1.5}
+h2{letter-spacing:-.01em}
+p{margin:9px 0}
+.mut{color:var(--mut);font-size:13.5px}
+.sp{margin:11px 0 0;border-radius:12px;background:var(--soft);border:1px solid var(--line);overflow:hidden}
+.sp>summary{list-style:none;cursor:pointer;padding:13px 14px;font-size:14.5px;font-weight:600;
+display:flex;align-items:center;gap:9px}
+.sp>summary::-webkit-details-marker{display:none}
+.sp>summary::before{content:"+";width:20px;height:20px;flex:0 0 20px;border-radius:6px;background:var(--ink);
+color:var(--bg);font-size:14px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}
+.sp[open]>summary::before{content:"\2013"}
+.sp>summary .t{flex:1}
+.sp>summary .hint{font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.sp[open]>summary .hint{display:none}
+.sp .in{padding:0 14px 15px;border-top:1px solid var(--line);font-size:14.5px}
+.sp .in p:first-child{margin-top:12px}
+.sp.tip{border-left:3px solid var(--warn)}
+.thesis{font-size:15.5px;margin:0}
+.flow{margin:13px 0 0}
+.node{background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:10px 12px;font-size:14px}
+.node b{display:block;font-size:12.5px;margin-bottom:1px}
+.arrow{text-align:center;color:var(--mut);font-size:14px;padding:3px 0}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th,td{padding:9px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);font-weight:650}
+tr:last-child td{border-bottom:none}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:var(--soft);
+border:1px solid var(--line);padding:1px 5px;border-radius:5px}
+pre{background:var(--ink);color:var(--bg);padding:14px 15px;border-radius:11px;overflow-x:auto;
+font-size:12.5px;line-height:1.55}
+pre code{background:none;border:0;padding:0;color:inherit}
+ul,ol{padding-left:20px;margin:8px 0}
+li{margin:4px 0}
+.steps{counter-reset:s;margin:10px 0 0;padding:0;list-style:none}
+.steps li{counter-increment:s;position:relative;padding-left:34px;margin:9px 0;font-size:14.5px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:22px;height:22px;
+border-radius:7px;background:var(--soft);border:1px solid var(--line);color:var(--mut);
+font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.badge{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+padding:2px 7px;border-radius:5px;background:var(--soft);border:1px solid var(--line);color:var(--mut)}
+.badge.ok{color:var(--ok);border-color:var(--ok)}
+.badge.warn{color:var(--warn);border-color:var(--warn)}
+.footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mut)}
+@media(max-width:420px){body{font-size:15.5px}.hero h1{font-size:23px}th,td{padding:8px 7px;font-size:13px}}
+</style></head><body><div class="bar"><div class="chips"><a class="chip" href="#s1">Итого</a><a class="chip" href="#s2">Шаг 1</a><a class="chip" href="#s3">Шаг 2</a><a class="chip" href="#s4">Шаг 3</a><a class="chip" href="#s5">Шаг 4</a><a class="chip" href="#s6">Что увидите</a><a class="chip" href="#s7">Если что</a></div><div class="switches"><div class="seg" role="group"><button data-s="cards">Карточки</button><button data-s="compact">Компакт</button></div><button class="allbtn" id="allBtn">Раскрыть всё</button><div class="seg push" role="group"><button data-t="light">Свет</button><button data-t="dark">Тьма</button></div></div></div><div class="wrap"><div class="hero"><div class="k">ИИ-Консьерж · пошагово</div><h1>Вход в аккаунты консьержа</h1><p>Никита Потехин: GitHub, Cloudflare, Gmail. Что делать по шагам.</p></div><div class="sec" id="s1"><h2 data-n="1">Что происходит</h2>
+<p class="thesis"><b>Три сервисных аккаунта на имя Никиты Потехина готовы.</b>
+Дальше от вас нужен только вход — пароли в чат не идут, всё вводится на моём экране.</p>
+<table>
+<thead><tr><th>Сервис</th><th>Статус</th><th>Зачем</th></tr></thead>
+<tbody>
+<tr><td>GitHub</td><td><span class="badge ok">готов</span></td><td>Память, отчёты, коммиты</td></tr>
+<tr><td>Cloudflare</td><td><span class="badge ok">готов</span></td><td>Публикация ленты</td></tr>
+<tr><td>Gmail</td><td><span class="badge ok">готов</span></td><td>Коды подтверждения</td></tr>
+</tbody>
+</table>
+<p class="mut">Времени: 10–15 минут на вход, потом 20 минут моей работы без вас.</p>
+</div><div class="sec" id="s2"><h2 data-n="2">Открываю экран</h2>
+<p class="thesis">Присылаю вам ссылку на живой браузер моей машины. Открываете
+с планшета — экран большой, удобнее вводить.</p>
+<ol class="steps">
+<li>Нажимаете ссылку, которую я пришлю отдельным сообщением.</li>
+<li>Видите рабочий стол и браузер. Управление у вас.</li>
+<li>Я в это время не подглядываю — пароль мне не виден.</li>
+</ol>
+<details class="sp tip"><summary><span class="t">Что будет, если ссылка попадёт не туда</span><span class="hint">показать</span></summary><div class="in"><p>Ссылка на экран — это и есть доступ. Никому не пересылайте её и не публикуйте.</p>
+<p>Когда закончите, я закрываю экран, и по этой ссылке уже ничего не открыть.</p></div></details></div><div class="sec" id="s3"><h2 data-n="3">Вход в GitHub</h2>
+<p class="thesis">Открываете <code>github.com</code>, входите как Никита Потехин.</p>
+<ol class="steps">
+<li>Логин — тот, что вы задали при регистрации.</li>
+<li>Пароль — обычный ввод, на экране.</li>
+<li>Придёт код на ботовый Gmail — откроете почту в соседней вкладке <b>там же,
+на экране</b>, прочитаете и введёте.</li>
+<li>Если GitHub попросит настроить вход по ключу — нажмите «позже»,
+мне достаточно пароля.</li>
+</ol>
+<details class="sp"><summary><span class="t">Почему код вводится на экране, а не в чате</span><span class="hint">показать</span></summary><div class="in"><p>Код подтверждения — это одноразовый ключ. Если он пройдёт через переписку,
+он останется в истории и в логах. На экране он живёт секунды и никуда не попадает,
+кроме самой формы.</p></div></details></div><div class="sec" id="s4"><h2 data-n="4">Вход в Cloudflare</h2>
+<p class="thesis">На том же экране открываете <code>dash.cloudflare.com</code>,
+входите тем же аккаунтом Потехина.</p>
+<ol class="steps">
+<li>Не вашим личным — именно сервисным.</li>
+<li>Если предложит вход через GitHub — можно так, аккаунты теперь связаны по имени.</li>
+<li>После входа вам нужен только дашборд, ничего настраивать не надо.</li>
+</ol>
+<details class="sp"><summary><span class="t">Если Cloudflare потребует токен вместо входа</span><span class="hint">показать</span></summary><div class="in"><p>Можно и так: My Profile → API Tokens → Custom token, право одно —
+Account → Cloudflare Pages → Edit. Токен скопируете в репозиторий,
+в Secrets → Actions, как CLOUDFLARE_API_TOKEN.</p>
+<p>Но проще просто войти: сессия сохранится в браузере, токен не понадобится.</p></div></details></div><div class="sec" id="s5"><h2 data-n="5">Говорите «вошёл»</h2>
+<p class="thesis">После этого я забираю управление и работаю без вас.</p>
+<p>Что происходит дальше — по порядку:</p>
+<ul>
+<li>создаю приватный репозиторий <code>memory</code>;</li>
+<li>кладу структуру: стили, проекты, дашборд;</li>
+<li>переношу четыре сегодняшних отчёта в новый вид;</li>
+<li>собираю ленту <code>index.html</code> с историей файлов;</li>
+<li>пишу workflow: лента пересобирается при каждом пуше;</li>
+<li>подключаю Cloudflare Pages;</li>
+<li>приглашаю вашу основную почту с правом чтения;</li>
+<li>присылаю ссылку — открываете на планшете.</li>
+</ul>
+</div><div class="sec" id="s6"><h2 data-n="6">Результат</h2>
+<p class="thesis">Одна страница, куда вы ходите. Обновили — увидели новое.</p>
+<div class="flow">
+  <div class="node"><b>Лента на планшете</b>список файлов с датами и ссылками</div>
+  <div class="arrow">↓</div>
+  <div class="node"><b>Тапнули строку</b>открылся отчёт в вашем стиле</div>
+  <div class="arrow">↓</div>
+  <div class="node"><b>В GitHub</b>видно каждый коммит и что изменилось</div>
+</div>
+<details class="sp tip"><summary><span class="t">Доступность страницы</span><span class="hint">показать</span></summary><div class="in"><p>Cloudflare Pages сам по себе сайт не закрывает. Для документов по РКШ
+включаем Access: вход по вашей почте, бесплатно, одна настройка.</p>
+<p>Пока не включим — лента доступна по адресу всем, кто его знает.
+Скажете — включу сразу после публикации.</p></div></details></div><div class="sec" id="s7"><h2 data-n="7">Три вещи, которые могут застрять</h2>
+<p class="thesis">Не паникуйте — у каждой есть простое решение.</p>
+<ol class="steps">
+<li><b>Не приходит код.</b> Проверьте папку «Спам» в ботовом ящике.
+GitHub иногда отправляет письмо с задержкой до минуты.</li>
+<li><b>GitHub просит настроить 2FA.</b> Предложит приложение-аутентификатор —
+можно пропустить на этом этапе, вход по паролю сработает.</li>
+<li><b>Cloudflare не пускает по имени.</b> Значит вход через почту или через
+GitHub-кнопку; если совсем никак — скажите, разберём на месте.</li>
+</ol>
+<details class="sp tip"><summary><span class="t">Самое важное правило</span><span class="hint">показать</span></summary><div class="in"><p>Если что-то пошло не так — не вводите пароль повторно и не создавайте
+новый аккаунт. Напишите мне, я посмотрю, что на экране, и подскажу.</p></div></details></div><div class="footer">Версия 1 · 25.11.2026 · пароли — только на экране, не в чате</div></div><script>
+const root=document.documentElement;
+const sp=document.querySelectorAll('details.sp');
+const allBtn=document.getElementById('allBtn');
+function setStyle(s){root.dataset.style=s;
+ document.querySelectorAll('[data-s]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.s===s));}
+function setTheme(t){root.dataset.theme=t;
+ document.querySelectorAll('[data-t]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===t));}
+document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>setStyle(b.dataset.s));
+document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+let allOpen=false;
+if(allBtn){allBtn.onclick=()=>{allOpen=!allOpen;sp.forEach(d=>d.open=allOpen);
+ allBtn.textContent=allOpen?'Свернуть всё':'Раскрыть всё';};}
+const chips=[...document.querySelectorAll('.chip')];
+const secs=chips.map(c=>document.querySelector(c.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+ const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  chips.forEach(c=>c.classList.remove('on'));
+  const c=chips.find(x=>x.getAttribute('href')==='#'+e.target.id);if(c)c.classList.add('on');}})},
+  {rootMargin:'-70px 0px -70% 0px'});
+ secs.forEach(s=>io.observe(s));
+}
+setStyle('cards');setTheme('light');
+</script></body></html>
