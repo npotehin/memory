@@ -1,0 +1,25 @@
+{
+  "purpose": "Fill with actual project decisions; scene count and timings are not prescribed",
+  "brief": {
+    "message": null,
+    "audience": null,
+    "destination": null,
+    "width": null,
+    "height": null,
+    "fps": null,
+    "duration_seconds": null,
+    "engine": null,
+    "audio_intent": null
+  },
+  "scenes": [],
+  "scene_fields": ["id", "start_seconds", "duration_seconds", "viewer_question", "new_understanding", "evidence", "composition", "motion", "voice_text", "audio", "source_ranges", "transition"],
+  "media": [],
+  "media_fields": ["id", "local_path", "source_url", "author", "asset_kind", "rights_note", "sha256", "role"],
+  "delivery": {
+    "video": null,
+    "poster": null,
+    "editable_project": null,
+    "captions": null,
+    "render_command": null
+  }
+}
