@@ -1,0 +1,12 @@
+{
+  "page": {"size": "A4", "margin_cm": 2.2},
+  "font": {"preferred": "Arial", "requires": "Проверить установленный шрифт и кириллицу в рендере"},
+  "styles": {
+    "Normal": {"size_pt": 11, "line_spacing": 1.15, "space_after_pt": 6, "color": "243746"},
+    "Title": {"size_pt": 26, "bold": true, "space_after_pt": 16},
+    "Heading 1": {"size_pt": 16, "bold": true, "space_before_pt": 16, "space_after_pt": 8, "keep_with_next": true},
+    "Heading 2": {"size_pt": 13, "bold": true, "space_before_pt": 12, "space_after_pt": 6, "keep_with_next": true},
+    "Caption": {"size_pt": 9, "color": "5E6D76"}
+  },
+  "table": {"header_fill": "EEF3F6", "repeat_header": true, "avoid_vertical_grid": true}
+}
