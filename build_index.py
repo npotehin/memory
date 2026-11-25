@@ -92,6 +92,9 @@ def main():
         groups.setdefault(g, []).append((rel, title, d))
 
     html_parts = []
+    html_parts.append('<a class="row" href="skills.html"><div class="ic">SK</div>'
+                      '<div class="body"><b>Скиллы</b><span>что установлено, из чего состоит</span></div>'
+                      '<div class="date">каталог</div></a>')
     for g in ("Отчёты", "Стили", "Проекты"):
         if g not in groups:
             continue
