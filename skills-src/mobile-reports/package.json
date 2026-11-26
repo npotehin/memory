@@ -1,0 +1,13 @@
+{
+  "name": "mobile-reports-scripts",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Проверка и сборка одиночных HTML-страниц",
+  "license": "MIT",
+  "dependencies": {
+    "parse5": "^8.1.1",
+    "acorn": "^8.19.0",
+    "postcss": "^8.5.33",
+    "jszip": "^3.10.2"
+  }
+}

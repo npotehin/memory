@@ -50,3 +50,12 @@ build_skills.py не изменялись.
 - scripts/templates/react/ — 5 файлов (index.html, src/main.js, src/style.css, package.json, vite.config.js).
 - tests/test_websites.py — 3 теста, 1 839 байт.
 - vendor/parsers.cjs — НЕ выгружен: 640 730 символов, чтение обрезается. Сторонние парсеры HTML/JS/CSS/ZIP.
+
+## Замена закрытых парсеров (26.11)
+
+- scripts/parsers.cjs — новый файл, 320 строк. Связывает parse5, acorn, postcss, jszip.
+- package.json — зависимости с версиями.
+- site.cjs — одна строка: require("./parsers.cjs") вместо vendor.
+- vendor/parsers.cjs — больше не нужен, папка удалена.
+
+Проверено: check на рабочей карте — ok, на плохой странице — 5 ошибок, bundle убирает внешние ссылки, archive создаёт ZIP, тесты 3 passed.
