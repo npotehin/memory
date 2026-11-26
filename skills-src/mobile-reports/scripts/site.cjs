@@ -4,7 +4,7 @@ const http = require("node:http")
 const { randomUUID } = require("node:crypto")
 const { pipeline } = require("node:stream/promises")
 const { Readable } = require("node:stream")
-const { parseHTML, parseJS, walkJS, postcss, valueParser, JSZip } = require("./parsers.cjs")
+const { parseHTML, parseJS, walkJS, postcss, valueParser, JSZip } = require("./vendor/parsers.cjs")
 
 const MIME = {
   ".html": "text/html; charset=utf-8",

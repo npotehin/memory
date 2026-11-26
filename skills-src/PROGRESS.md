@@ -59,3 +59,14 @@ build_skills.py не изменялись.
 - vendor/parsers.cjs — больше не нужен, папка удалена.
 
 Проверено: check на рабочей карте — ok, на плохой странице — 5 ошибок, bundle убирает внешние ссылки, archive создаёт ZIP, тесты 3 passed.
+
+## Откат парсеров (26.11, 05:00)
+
+Решено вернуть рабочую конфигурацию, аналог — в архив:
+- scripts/site.cjs — снова require("./vendor/parsers.cjs"), как было изначально.
+- scripts/archive/parsers-open-source.cjs — обёртка на parse5/acorn/postcss/jszip. Не подключена.
+- scripts/archive/package.json — зависимости для неё.
+- scripts/archive/README.md — как включить обратно, что проверено, ограничения.
+
+Почему: рабочая версия должна быть та, что стояла. Аналог не удалён, а отложен —
+путь возврата описан в README.
