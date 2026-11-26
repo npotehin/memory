@@ -15,22 +15,19 @@
 :root{
   --bg:#f4f2ee; --card:#fff; --ink:#1d1d1f; --mut:#6b665f; --line:#e2ded7; --soft:#faf8f5;
   --good:#2b7a4b; --good-soft:#e8f1ea; --bad:#a4402f; --bad-soft:#f7e9e5;
-  --mid:#8a6d2f; --mid-soft:#f6efe0; --acc:#2b7a4b;
+  --mid:#8a6d2f; --mid-soft:#f6efe0; --acc:#2b7a4b; --info:#2c5f86; --info-soft:#e7eff5;
 }
 [data-theme="dark"]{
   --bg:#0f0f10; --card:#1c1c1e; --ink:#f2f2f7; --mut:#98989f; --line:#333; --soft:#242426;
   --good:#4aa06a; --good-soft:#1b2a20; --bad:#d4796a; --bad-soft:#2c1d1a;
-  --mid:#d8b263; --mid-soft:#2a2418; --acc:#4aa06a;
+  --mid:#d8b263; --mid-soft:#2a2418; --acc:#4aa06a; --info:#7fb0d6; --info-soft:#182430;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Arial,sans-serif;
-  color:var(--ink);background:var(--bg);font-size:16px;line-height:1.62;
-  -webkit-text-size-adjust:100%;
-}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Arial,sans-serif;
+  color:var(--ink);background:var(--bg);font-size:16px;line-height:1.62;-webkit-text-size-adjust:100%}
 .wrap{max-width:820px;margin:0 auto;padding:0 14px 90px}
-/* ─── верх ─── */
+/* верх */
 .top{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line);
   display:flex;align-items:center;gap:8px;padding:0 12px}
 .chips{display:flex;gap:7px;overflow-x:auto;padding:9px 0;scrollbar-width:none;flex:1;min-width:0}
@@ -38,19 +35,19 @@ body{
 .chip{flex:0 0 auto;padding:6px 12px;border-radius:999px;background:var(--soft);border:1px solid var(--line);
   color:var(--mut);font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap}
 .chip:active{transform:scale(.97)}
-.theme{flex:0 0 auto;border:1px solid var(--line);background:var(--card);
-  color:var(--mut);font:600 12px/1 inherit;padding:8px 11px;border-radius:9px}
-/* ─── герой ─── */
+.theme{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--mut);
+  font:600 12px/1 inherit;padding:8px 11px;border-radius:9px}
+/* герой */
 .hero{padding:30px 2px 6px}
 .kick{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--mut);font-weight:700}
 h1{font-size:clamp(28px,7vw,38px);line-height:1.12;letter-spacing:-.03em;margin:10px 0 0}
-.lead{color:var(--mut);font-size:15px;margin:12px 0 0;max-width:60ch}
+.lead{color:var(--mut);font-size:15px;margin:12px 0 0;max-width:62ch}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:22px 0 0}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 12px 11px}
 .stat b{display:block;font-size:clamp(17px,4.4vw,22px);letter-spacing:-.02em;line-height:1.1}
 .stat span{display:block;color:var(--mut);font-size:11px;margin-top:5px;line-height:1.35}
 @media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}}
-/* ─── секции ─── */
+/* секции */
 .sect{margin:34px 0 0;scroll-margin-top:64px}
 .sect>h2{font-size:20px;letter-spacing:-.02em;margin:0 0 4px;display:flex;gap:9px;align-items:baseline}
 .sect>h2 i{font-style:normal;font-size:11px;font-weight:700;color:var(--mut);letter-spacing:.1em}
@@ -58,10 +55,10 @@ h1{font-size:clamp(28px,7vw,38px);line-height:1.12;letter-spacing:-.03em;margin:
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 17px;margin:11px 0;
   box-shadow:0 1px 2px rgba(0,0,0,.04)}
 [data-theme="dark"] .card{box-shadow:none}
-/* ─── вердикты ─── */
+/* вердикты */
 .verdict{display:flex;gap:12px;align-items:flex-start}
 .dot{flex:0 0 10px;height:10px;border-radius:50%;margin-top:8px}
-.d-good{background:var(--good)} .d-mid{background:var(--mid)} .d-bad{background:var(--bad)}
+.d-good{background:var(--good)} .d-mid{background:var(--mid)} .d-bad{background:var(--bad)} .d-info{background:var(--info)}
 .v-body{flex:1;min-width:0}
 .v-body h3{margin:0;font-size:16.5px;letter-spacing:-.01em;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .v-body p{margin:6px 0 0;font-size:13.5px;color:var(--mut)}
@@ -70,13 +67,13 @@ h1{font-size:clamp(28px,7vw,38px);line-height:1.12;letter-spacing:-.03em;margin:
 .b-good{background:var(--good-soft);color:var(--good);border-color:color-mix(in srgb,var(--good) 30%,transparent)}
 .b-mid{background:var(--mid-soft);color:var(--mid);border-color:color-mix(in srgb,var(--mid) 30%,transparent)}
 .b-bad{background:var(--bad-soft);color:var(--bad);border-color:color-mix(in srgb,var(--bad) 30%,transparent)}
-/* ─── схема ─── */
+.b-info{background:var(--info-soft);color:var(--info);border-color:color-mix(in srgb,var(--info) 30%,transparent)}
+/* схемы */
 .figure{margin:6px 0 0;padding:4px 0 0}
-.figscroll{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
-  margin:0 -2px;padding:0 2px 2px}
+.figscroll{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;margin:0 -2px;padding:0 2px 2px}
 .figure svg{width:100%;min-width:660px;height:auto;display:block}
 .figcap{color:var(--mut);font-size:12px;margin:8px 2px 0}
-/* ─── полосы ─── */
+/* полосы */
 .bars{margin:14px 0 0}
 .bar-row{margin:0 0 12px}
 .bar-head{display:flex;justify-content:space-between;font-size:12.5px;margin:0 0 5px;gap:10px}
@@ -89,16 +86,23 @@ h1{font-size:clamp(28px,7vw,38px);line-height:1.12;letter-spacing:-.03em;margin:
 .legend s{text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .legend s::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--bad);opacity:.85}
 .legend s.own::before{background:var(--good);opacity:.32}
-/* ─── таблицы ─── */
+/* таблицы */
 .tbl-wrap{overflow-x:auto;margin:10px 0 0;-webkit-overflow-scrolling:touch}
-table{border-collapse:collapse;width:100%;min-width:520px;font-size:13px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:13px}
 th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
 th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);font-weight:700}
 tr:last-child td{border-bottom:0}
 td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
   background:var(--soft);border:1px solid var(--line);border-radius:5px;padding:1px 5px;word-break:break-word}
-/* ─── спойлеры ─── */
+/* чипы вердиктов в таблице */
+.vchip{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  padding:2px 7px;border-radius:6px;white-space:nowrap}
+.c-copy{background:var(--bad-soft);color:var(--bad)}
+.c-adapt{background:var(--info-soft);color:var(--info)}
+.c-oss{background:var(--mid-soft);color:var(--mid)}
+.c-own{background:var(--good-soft);color:var(--good)}
+/* спойлеры */
 details.sp{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:9px 0;overflow:hidden}
 details.sp>summary{list-style:none;cursor:pointer;padding:13px 15px;font-size:14.5px;font-weight:600;
   display:flex;align-items:center;gap:9px}
@@ -109,7 +113,7 @@ details.sp>summary::before{content:"+";flex:0 0 20px;width:20px;height:20px;bord
 details.sp[open]>summary::before{content:"–"}
 details.sp .in{padding:0 15px 14px}
 details.sp .in p{margin:0 0 8px;font-size:13.5px}
-/* ─── чек-лист ─── */
+/* чек-лист */
 .check{list-style:none;margin:10px 0 0;padding:0}
 .check li{display:flex;gap:11px;padding:11px 0;border-top:1px solid var(--line);font-size:13.5px}
 .check li:first-child{border-top:0}
@@ -119,8 +123,8 @@ details.sp .in p{margin:0 0 8px;font-size:13.5px}
 .m-yes{background:var(--good-soft);color:var(--good)}
 .check b{font-weight:650}
 .check p{margin:3px 0 0;color:var(--mut);font-size:12.5px}
-/* ─── итог и футер ─── */
-.quote{border-left:3px solid var(--acc);padding:2px 0 2px 14px;margin:14px 0 0;color:var(--ink);font-size:15px}
+/* итог */
+.quote{border-left:3px solid var(--acc);padding:2px 0 2px 14px;margin:14px 0 0;font-size:15px}
 .foot{margin-top:38px;padding-top:16px;border-top:1px solid var(--line);color:var(--mut);font-size:12.5px;
   display:flex;flex-wrap:wrap;gap:8px 16px}
 .foot a{color:inherit}
@@ -133,11 +137,11 @@ details.sp .in p{margin:0 0 8px;font-size:13.5px}
 <div class="top">
   <div class="chips">
     <a class="chip" href="#summary">Сводка</a>
-    <a class="chip" href="#scale">Схема</a>
-    <a class="chip" href="#chain">Цепочка ffmpeg</a>
-    <a class="chip" href="#skills">Три навыка</a>
-    <a class="chip" href="#catalog">Каталог</a>
+    <a class="chip" href="#matrix">Матрица</a>
+    <a class="chip" href="#scale">Состав</a>
+    <a class="chip" href="#chain">Цепочка</a>
     <a class="chip" href="#lic">Лицензии</a>
+    <a class="chip" href="#gaps">Пробелы</a>
   </div>
   <button class="theme" id="themeBtn" type="button">Тьма</button>
 </div>
@@ -146,12 +150,13 @@ details.sp .in p{margin:0 0 8px;font-size:13.5px}
   <header class="hero">
     <div class="kick">Аудит · 26.11.2026</div>
     <h1>Чьи это скиллы</h1>
-    <p class="lead">Проверка 20 навыков из <code>skills-src/</code>: что написано разработчиком сервиса, что взято
-      из открытых проектов и что лежит там дословно. Сверка — с публичными репозиториями на закреплённых ревизиях.</p>
+    <p class="lead">Проверены все 20 навыков из <code>skills-src/</code>: что написано разработчиком сервиса,
+      что держится на открытых библиотеках и что лежит там дословно. Сверка — с публичными репозиториями
+      на закреплённых ревизиях.</p>
     <div class="stats">
-      <div class="stat"><b>20</b><span>навыков, 166 файлов, 1,34 МБ</span></div>
-      <div class="stat"><b>3</b><span>проверено вручную, случайная выборка</span></div>
-      <div class="stat"><b>154 КБ</b><span>дословно чужого текста, дважды</span></div>
+      <div class="stat"><b>20/20</b><span>проверено, 166 файлов, 1,34 МБ</span></div>
+      <div class="stat"><b>2</b><span>навыка с дословной копией MIT-блока</span></div>
+      <div class="stat"><b>1</b><span>адаптация, подписанная честно</span></div>
       <div class="stat"><b>0</b><span>файлов лицензии в репозитории</span></div>
     </div>
     <div class="links">
@@ -163,127 +168,172 @@ details.sp .in p{margin:0 0 8px;font-size:13.5px}
   <!-- ─────────── СВОДКА ─────────── -->
   <section class="sect" id="summary">
     <h2><i>01</i> Сводка</h2>
-    <p class="sub">Три навыка, выбранные случайно, дали три разных ответа.</p>
+    <p class="sub">Четыре группы навыков проверялись по одному протоколу, ключевые числа пересчитаны вручную.</p>
 
     <div class="card verdict">
       <span class="dot d-bad"></span>
       <div class="v-body">
-        <h3>video-audio <span class="badge b-bad">на 66% чужая копия</span></h3>
-        <p>Четыре справочника — дословный текст <code>kajisho5/ffmpeg-skill</code> (MIT, ★11 184) с ревизии
-          <code>008333a…</code>. Своё — только русская обвязка и маршрутизация.</p>
+        <h3>Дословная копия — 2 навыка <span class="badge b-bad">MIT, 307 640 б</span></h3>
+        <p><code>video-audio</code> (66,2% объёма) и <code>media-processing</code> (86,7%) содержат один и тот же
+          блок из <code>kajisho5/ffmpeg-skill</code>, ревизия <code>008333a…</code>. Уникального чужого текста —
+          153 820 б, он положен дважды.</p>
+      </div>
+    </div>
+
+    <div class="card verdict">
+      <span class="dot d-info"></span>
+      <div class="v-body">
+        <h3>Адаптация — 1 файл <span class="badge b-info">Apache-2.0</span></h3>
+        <p><code>mobile-reports/references/design.md</code> переписан по Anthropic <code>frontend-design</code>:
+          ни одно из 25 предложений не близко к оригиналу выше 0,8. Источник указан — это правильная практика.</p>
       </div>
     </div>
 
     <div class="card verdict">
       <span class="dot d-mid"></span>
       <div class="v-body">
-        <h3>change-monitoring <span class="badge b-mid">своё, но на чужой логике</span></h3>
-        <p>Текст переписан своими словами, дословных совпадений нет. Опора — changedetection.io (Apache-2.0),
-          Scrapling (BSD-3), browser-use (MIT).</p>
+        <h3>Своё на чужих инструментах — 15 навыков <span class="badge b-mid">OSS-зависимости</span></h3>
+        <p>Текст свой, снаружи библиотеки, API и MCP-серверы: markitdown, Natasha, Scrapling, browser-use,
+          changedetection.io, recipe-scrapers, actual, HyperFrames, feedparser, mobile-mcp.</p>
       </div>
     </div>
 
     <div class="card verdict">
       <span class="dot d-good"></span>
       <div class="v-body">
-        <h3>source-research <span class="badge b-good">своё</span></h3>
-        <p>Свой рабочий процесс и свой helper. Снаружи только библиотеки: MarkItDown, Natasha, snowballstemmer —
-          версии и лицензии указаны в тексте.</p>
+        <h3>Своё без зависимостей — 4 навыка <span class="badge b-good">чистый текст</span></h3>
+        <p><code>learning-support</code> не имеет внешних ссылок вовсе; <code>health-navigator</code>,
+          <code>news-briefing</code>, <code>presentations</code> ссылаются на источники, но текст не копируют.</p>
       </div>
     </div>
 
-    <p class="quote">Гипотеза «взяли популярное open-source и положили к себе» верна частично: чужое
-      присутствует как инструменты почти везде, а как скопированный текст — только в двух навыках.</p>
+    <p class="quote">Гипотеза «взяли популярное open-source и положили к себе» верна частично: как скопированный
+      текст — только два навыка, как инструменты — почти весь каталог.</p>
   </section>
 
-  <!-- ─────────── СХЕМА ─────────── -->
-  <section class="sect" id="scale">
-    <h2><i>02</i> Три степени чужого</h2>
-    <p class="sub">Слева — полностью своё, справа — дословная копия. Между ними — самая частая середина.</p>
+  <!-- ─────────── МАТРИЦА ─────────── -->
+  <section class="sect" id="matrix">
+    <h2><i>02</i> Матрица: 20 из 20</h2>
+    <p class="sub">Сортировка по объёму. Чип — вердикт, справа — на чём он основан.</p>
 
-    <div class="figure"><div class="figscroll">
-      <svg viewBox="0 0 760 300" role="img" aria-label="Шкала: своё, своё на открытом коде, дословная копия">
+    <div class="card">
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Навык</th><th>Объём</th><th>Вердикт</th><th>Основание</th></tr></thead>
+          <tbody>
+            <tr><td><code>video-audio</code></td><td class="num">232 401 б</td><td><span class="vchip c-copy">копия 66,2%</span></td><td>kajisho5/ffmpeg-skill, MIT, <code>008333a…</code></td></tr>
+            <tr><td><code>media-processing</code></td><td class="num">177 342 б</td><td><span class="vchip c-copy">копия 86,7%</span></td><td>тот же блок; в справочниках 89,0%</td></tr>
+            <tr><td><code>mobile-reports</code></td><td class="num">157 466 б</td><td><span class="vchip c-adapt">адаптация</span></td><td>Anthropic frontend-design, Apache-2.0; 0/25 предложений</td></tr>
+            <tr><td><code>career-assistant</code></td><td class="num">97 985 б</td><td><span class="vchip c-oss">своё + OSS</span></td><td>только документация HH API</td></tr>
+            <tr><td><code>personal-finance</code></td><td class="num">83 312 б</td><td><span class="vchip c-oss">своё + OSS</span></td><td>actual (MIT), firefly-iii docs (AGPL-3.0)</td></tr>
+            <tr><td><code>health-navigator</code></td><td class="num">68 431 б</td><td><span class="vchip c-own">своё</span></td><td>NHS, МЧС, Минздрав — опоры, не копии</td></tr>
+            <tr><td><code>video-production</code></td><td class="num">65 240 б</td><td><span class="vchip c-oss">своё + OSS</span></td><td>HyperFrames (Apache-2.0) как инструмент</td></tr>
+            <tr><td><code>fitness-progress</code></td><td class="num">60 419 б</td><td><span class="vchip c-oss">своё + OSS</span></td><td>wger (AGPL-3.0) через API; 0 совпавших строк</td></tr>
+            <tr><td><code>tech-support</code></td><td class="num">58 840 б</td><td><span class="vchip c-oss">своё + OSS</span></td><td>mobile-mcp (Apache-2.0), ifixit-mcp (0BSD)</td></tr>
+            <tr><td><code>travel-leisure</code></td><td class="num">52 307 б</td><td><span class="vchip c-oss">своё + OSS</span></td><td>документация 2GIS, Google, Yandex</td></tr>
+            <tr><td><code>source-research</code></td><td class="num">51 862 б</td><td><span class="vchip c-oss">своё + OSS</span></td><td>markitdown (MIT), Natasha (MIT), snowball (BSD-3)</td></tr>
+            <tr><td><code>food-planning</code></td><td class="num">41 866 б</td><td><span class="vchip c-oss">своё + OSS</span></td><td>recipe-scrapers (MIT), pinned <code>e7892149</code></td></tr>
+            <tr><td><code>news-briefing</code></td><td class="num">40 586 б</td><td><span class="vchip c-own">своё</span></td><td>feedparser как зависимость; <code>krche</code> — внутреннее имя</td></tr>
+            <tr><td><code>presentations</code></td><td class="num">37 074 б</td><td><span class="vchip c-own">своё</span></td><td>свой OpenSlide-сценарий, MDN как справка</td></tr>
+            <tr><td><code>change-monitoring</code></td><td class="num">36 427 б</td><td><span class="vchip c-oss">своё + OSS</span></td><td>changedetection.io, Scrapling, browser-use</td></tr>
+            <tr><td><code>documents</code></td><td class="num">32 995 б</td><td><span class="vchip c-oss">своё + OSS</span></td><td>markitdown 0.1.8, pypdf, PyMuPDF, python-docx</td></tr>
+            <tr><td><code>learning-support</code></td><td class="num">27 884 б</td><td><span class="vchip c-own">своё</span></td><td>внешних ссылок ноль</td></tr>
+            <tr><td><code>shopping-research</code></td><td class="num">24 946 б</td><td><span class="vchip c-oss">своё + OSS</span></td><td>документация Shopify; сторонний MCP отклонён</td></tr>
+            <tr><td><code>spreadsheets</code></td><td class="num">6 554 б</td><td><span class="vchip c-own">своё, неполное</span></td><td>один файл, три ссылки в никуда</td></tr>
+            <tr><td><code>data-analysis</code></td><td class="num">4 880 б</td><td><span class="vchip c-own">своё, неполное</span></td><td>один файл, семь ссылок в никуда</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── СОСТАВ ─────────── -->
+  <section class="sect" id="scale">
+    <h2><i>03</i> Состав каталога</h2>
+    <p class="sub">Слева — сколько навыков, справа — сколько места занимает чужой текст.</p>
+
+    <div class="figure">
+      <svg viewBox="0 0 760 250" role="img" aria-label="Распределение 20 навыков по степени заимствования">
         <defs>
           <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
             <path d="M0,0 L10,5 L0,10 z" fill="var(--mut)"/>
           </marker>
         </defs>
 
-        <!-- три колонки -->
-        <g>
-          <rect x="0" y="18" width="238" height="188" rx="14" fill="var(--card)" stroke="var(--line)"/>
-          <rect x="0" y="18" width="238" height="4" rx="2" fill="var(--good)"/>
-          <text x="16" y="48" font-size="13" font-weight="700" fill="var(--ink)">Своё</text>
-          <text x="16" y="66" font-size="11" fill="var(--mut)">свой текст и свой код</text>
-          <g font-size="11.5" fill="var(--ink)">
-            <text x="16" y="92">source-research</text>
-            <text x="16" y="112">news-briefing</text>
-            <text x="16" y="132">travel-leisure</text>
-            <text x="16" y="152">personal-finance</text>
-            <text x="16" y="172">+ 11 навыков</text>
-          </g>
+        <rect x="0" y="16" width="238" height="164" rx="14" fill="var(--card)" stroke="var(--line)"/>
+        <rect x="0" y="16" width="238" height="4" rx="2" fill="var(--good)"/>
+        <text x="16" y="46" font-size="13" font-weight="700" fill="var(--ink)">Своё</text>
+        <text x="16" y="64" font-size="11" fill="var(--mut)">17 навыков без чужого текста</text>
+        <g font-size="11.5" fill="var(--ink)">
+          <text x="16" y="90">learning-support · health-navigator</text>
+          <text x="16" y="110">news-briefing · presentations</text>
+          <text x="16" y="130">career-assistant · documents</text>
+          <text x="16" y="150">spreadsheets · data-analysis</text>
+          <text x="16" y="170" fill="var(--mut)">+ 9 навыков на OSS-инструментах</text>
         </g>
 
-        <g>
-          <rect x="261" y="18" width="238" height="188" rx="14" fill="var(--card)" stroke="var(--line)"/>
-          <rect x="261" y="18" width="238" height="4" rx="2" fill="var(--mid)"/>
-          <text x="277" y="48" font-size="13" font-weight="700" fill="var(--ink)">Своё на открытом коде</text>
-          <text x="277" y="66" font-size="11" fill="var(--mut)">переписано, библиотеки снаружи</text>
-          <g font-size="11.5" fill="var(--ink)">
-            <text x="277" y="92">change-monitoring</text>
-            <text x="277" y="112">shopping-research</text>
-            <text x="277" y="132">tech-support</text>
-            <text x="277" y="152">video-production</text>
-            <text x="277" y="172">+ прочие</text>
-          </g>
+        <rect x="261" y="16" width="238" height="164" rx="14" fill="var(--card)" stroke="var(--line)"/>
+        <rect x="261" y="16" width="238" height="4" rx="2" fill="var(--info)"/>
+        <text x="277" y="46" font-size="13" font-weight="700" fill="var(--ink)">Адаптация</text>
+        <text x="277" y="64" font-size="11" fill="var(--mut)">переработка с атрибуцией</text>
+        <g font-size="11.5" fill="var(--ink)">
+          <text x="277" y="90">mobile-reports/design.md</text>
+        </g>
+        <g font-size="11" fill="var(--mut)">
+          <text x="277" y="112">Anthropic frontend-design</text>
+          <text x="277" y="130">Apache-2.0 · 3 093 б</text>
+          <text x="277" y="148">0 из 25 предложений близки</text>
+          <text x="277" y="166">более чем на 0,8</text>
         </g>
 
-        <g>
-          <rect x="522" y="18" width="238" height="188" rx="14" fill="var(--card)" stroke="var(--line)"/>
-          <rect x="522" y="18" width="238" height="4" rx="2" fill="var(--bad)"/>
-          <text x="538" y="48" font-size="13" font-weight="700" fill="var(--ink)">Дословная копия</text>
-          <text x="538" y="66" font-size="11" fill="var(--mut)">чужой файл целиком, MIT</text>
-          <g font-size="11.5" fill="var(--ink)">
-            <text x="538" y="92">video-audio</text>
-            <text x="538" y="112">media-processing</text>
-          </g>
-          <g font-size="11" fill="var(--mut)">
-            <text x="538" y="140">154 КБ · 4 файла · 1 коммит</text>
-            <text x="538" y="158">один и тот же блок в двух</text>
-            <text x="538" y="176">навыках</text>
-          </g>
+        <rect x="522" y="16" width="238" height="164" rx="14" fill="var(--card)" stroke="var(--line)"/>
+        <rect x="522" y="16" width="238" height="4" rx="2" fill="var(--bad)"/>
+        <text x="538" y="46" font-size="13" font-weight="700" fill="var(--ink)">Дословная копия</text>
+        <text x="538" y="64" font-size="11" fill="var(--mut)">один блок, два навыка</text>
+        <g font-size="11.5" fill="var(--ink)">
+          <text x="538" y="90">video-audio — 66,2%</text>
+          <text x="538" y="110">media-processing — 86,7%</text>
+        </g>
+        <g font-size="11" fill="var(--mut)">
+          <text x="538" y="134">153 820 б уникального текста</text>
+          <text x="538" y="152">положены дважды: 307 640 б</text>
+          <text x="538" y="170">MIT · ревизия 008333a…</text>
         </g>
 
-        <!-- ось -->
-        <line x1="0" y1="238" x2="740" y2="238" stroke="var(--mut)" stroke-width="1" marker-end="url(#ar)"/>
-        <text x="0" y="262" font-size="11" fill="var(--mut)">авторское</text>
-        <text x="330" y="262" font-size="11" fill="var(--mut)" text-anchor="middle">заимствована идея и инструмент</text>
-        <text x="740" y="262" font-size="11" fill="var(--mut)" text-anchor="end">заимствован текст</text>
-      </svg></div>
-      <p class="figcap">Степень заимствования растёт слева направо. Верхняя полоска — цвет риска.</p>
+        <line x1="0" y1="208" x2="740" y2="208" stroke="var(--mut)" stroke-width="1" marker-end="url(#ar)"/>
+        <text x="0" y="232" font-size="11" fill="var(--mut)">своё</text>
+        <text x="330" y="232" font-size="11" fill="var(--mut)" text-anchor="middle">своё на чужих инструментах</text>
+        <text x="740" y="232" font-size="11" fill="var(--mut)" text-anchor="end">чужой текст</text>
+      </svg>
+      <p class="figcap">По числу навыков: 17 своих, 1 адаптация, 2 копии. По объёму чужой текст — 22,5% каталога.</p>
     </div>
 
     <div class="card">
       <div class="bars">
         <div class="bar-row">
-          <div class="bar-head"><b>video-audio</b><span>154 КБ из 232 КБ · 66,2%</span></div>
+          <div class="bar-head"><b>Доля чужого текста в каталоге</b><span>307 640 б из 1 365 101 б · 22,5%</span></div>
+          <div class="bar"><i style="width:22.5%"></i><u style="width:77.5%"></u></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-head"><b>video-audio</b><span>153 820 б из 232 401 б · 66,2%</span></div>
           <div class="bar"><i style="width:66.2%"></i><u style="width:33.8%"></u></div>
         </div>
         <div class="bar-row">
-          <div class="bar-head"><b>media-processing</b><span>154 КБ из 177 КБ · 86,7%</span></div>
+          <div class="bar-head"><b>media-processing</b><span>153 820 б из 177 342 б · 86,7%</span></div>
           <div class="bar"><i style="width:86.7%"></i><u style="width:13.3%"></u></div>
         </div>
-        <div class="legend"><s>чужой MIT-блок</s><s class="own">свой текст</s></div>
+        <div class="legend"><s>чужой текст</s><s class="own">свой текст</s></div>
       </div>
     </div>
   </section>
 
   <!-- ─────────── ЦЕПОЧКА ─────────── -->
   <section class="sect" id="chain">
-    <h2><i>03</i> Как ffmpeg-блок попал в навык</h2>
+    <h2><i>04</i> Как ffmpeg-блок попал в навык</h2>
     <p class="sub">Один коммит, четыре файла, две копии в каталоге.</p>
 
-    <div class="figure"><div class="figscroll">
+    <div class="figure">
+      <div class="figscroll">
       <svg viewBox="0 0 760 250" role="img" aria-label="Цепочка от репозитория kajisho5 до навыков video-audio и media-processing">
         <defs>
           <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
@@ -293,7 +343,7 @@ details.sp .in p{margin:0 0 8px;font-size:13.5px}
 
         <rect x="0" y="34" width="230" height="88" rx="12" fill="var(--card)" stroke="var(--line)"/>
         <text x="15" y="59" font-size="12.5" font-weight="700" fill="var(--ink)">kajisho5/ffmpeg-skill</text>
-        <text x="15" y="78" font-size="11" fill="var(--mut)">MIT · ★11 184 · v2.5.1</text>
+        <text x="15" y="78" font-size="11" fill="var(--mut)">MIT · ★11 188 · v2.5.1</text>
         <text x="15" y="96" font-size="11" fill="var(--mut)">42 скрипта для FFmpeg</text>
         <text x="15" y="114" font-size="10.5" fill="var(--mut)">создан 03.09.2026</text>
 
@@ -314,7 +364,6 @@ details.sp .in p{margin:0 0 8px;font-size:13.5px}
         <text x="585" y="91" font-size="10.5" fill="var(--mut)">gotchas.md · devices.md</text>
         <text x="585" y="109" font-size="10.5" fill="var(--mut)">снят H1, добавлена шапка</text>
 
-        <!-- ветвление -->
         <path d="M665,122 L665,150 L520,150 L520,172" fill="none" stroke="var(--mut)" stroke-width="1.2" marker-end="url(#ar2)"/>
         <path d="M665,122 L665,150 L310,150 L310,172" fill="none" stroke="var(--mut)" stroke-width="1.2" marker-end="url(#ar2)"/>
 
@@ -325,7 +374,8 @@ details.sp .in p{margin:0 0 8px;font-size:13.5px}
         <rect x="440" y="176" width="230" height="58" rx="12" fill="var(--bad-soft)" stroke="var(--bad)"/>
         <text x="455" y="199" font-size="12" font-weight="700" fill="var(--ink)">media-processing</text>
         <text x="455" y="219" font-size="10.5" fill="var(--mut)">86,7% навыка · та же копия</text>
-      </svg></div>
+      </svg>
+      </div>
       <p class="figcap">Плюс семь справочников у этих двух навыков совпадают побайтово.</p>
     </div>
 
@@ -336,7 +386,7 @@ details.sp .in p{margin:0 0 8px;font-size:13.5px}
           <table>
             <thead><tr><th>Файл в навыке</th><th>Upstream</th><th>В навыке</th><th>Отличие</th></tr></thead>
             <tbody>
-              <tr><td><code>ffmpeg/upstream-skill.md</code></td><td class="num">29 995 б</td><td class="num">30 219 б</td><td>снята первая <code>---</code>, шапка +224 б</td></tr>
+              <tr><td><code>ffmpeg/upstream-skill.md</code></td><td class="num">29 995 б</td><td class="num">30 219 б</td><td>снята первая <code>---</code>, шапка</td></tr>
               <tr><td><code>ffmpeg/scripts.md</code></td><td class="num">100 528 б</td><td class="num">100 508 б</td><td>снят заголовок H1</td></tr>
               <tr><td><code>ffmpeg/gotchas.md</code></td><td class="num">19 445 б</td><td class="num">19 394 б</td><td>снят заголовок H1</td></tr>
               <tr><td><code>ffmpeg/devices.md</code></td><td class="num">2 957 б</td><td class="num">2 901 б</td><td>снят заголовок H1</td></tr>
@@ -347,90 +397,39 @@ details.sp .in p{margin:0 0 8px;font-size:13.5px}
     </details>
   </section>
 
-  <!-- ─────────── ТРИ НАВЫКА ─────────── -->
-  <section class="sect" id="skills">
-    <h2><i>04</i> Разбор по навыкам</h2>
-    <p class="sub">Что своё, что чужое и по какой лицензии.</p>
-
-    <details class="sp" open>
-      <summary>video-audio — чужая основа, своя обвязка</summary>
-      <div class="in">
-        <p>Основа — <code>kajisho5/ffmpeg-skill</code>, MIT. Ревизия закреплена в тексте: <code>008333aaf6722083392eb6bd8bd67b59884a2a26</code>, версия 2.5.1. Репозиторий создан 03.09.2026, последний пуш 25.11.2026, 11 184 звезды.</p>
-        <p>Своё: <code>acquisition.md</code>, <code>downloads.md</code>, <code>production.md</code>, <code>story-motion.md</code>, <code>quality-delivery.md</code>, <code>media-editing.md</code>, <code>audio-captions.md</code>, <code>workflows.md</code> и сам <code>SKILL.md</code>.</p>
-        <p>HyperFrames: <code>heygen-com/hyperframes</code>, Apache-2.0, ★90 265 — только ссылки на документацию и версия CLI 0.8.143. Текста upstream нет.</p>
-      </div>
-    </details>
-
-    <details class="sp">
-      <summary>change-monitoring — свой текст, чужие инструменты</summary>
-      <div class="in">
-        <div class="tbl-wrap">
-          <table>
-            <thead><tr><th>Проект</th><th>Лицензия</th><th>Звёзды</th><th>Роль</th></tr></thead>
-            <tbody>
-              <tr><td><code>dgtlmoon/changedetection.io</code></td><td>Apache-2.0</td><td class="num">36 045</td><td>образец сравнения и условий (diff, conditions)</td></tr>
-              <tr><td><code>D4Vinci/Scrapling</code></td><td>BSD-3-Clause</td><td class="num">105 825</td><td>повторяемое извлечение, 0.4.15</td></tr>
-              <tr><td><code>browser-use/browser-use</code></td><td>MIT</td><td class="num">122 093</td><td>настройка адаптера</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p>Дословных совпадений не найдено. Своё — контракт наблюдения, baseline, состояния и события. Helper <code>scripts/watch.py</code> в репозиторий не переносился, его код не проверить.</p>
-      </div>
-    </details>
-
-    <details class="sp">
-      <summary>source-research — своё на библиотеках</summary>
-      <div class="in">
-        <div class="tbl-wrap">
-          <table>
-            <thead><tr><th>Библиотека</th><th>Версия</th><th>Лицензия</th><th>Роль</th></tr></thead>
-            <tbody>
-              <tr><td><code>microsoft/markitdown</code></td><td>0.1.8</td><td>MIT</td><td>документы → Markdown</td></tr>
-              <tr><td><code>natasha/natasha</code></td><td>1.6.0</td><td>MIT</td><td>русская морфология</td></tr>
-              <tr><td><code>no-plagiarism/pymorphy3</code></td><td>—</td><td>MIT</td><td>морфология для Natasha</td></tr>
-              <tr><td><code>snowballstem/snowball</code></td><td>3.1.1</td><td>BSD-3-Clause</td><td>стеммер</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p>Своё: дисковый корпус, SQLite-поиск, цитаты с locators, дедупликация версий по хешу, экспорт HTML-блокнота.</p>
-      </div>
-    </details>
-
-    <details class="sp">
-      <summary>Бонус: честная адаптация, которая сделана правильно</summary>
-      <div class="in">
-        <p><code>mobile-reports/references/design.md</code> сам сообщает: «Adapted from Anthropic's Apache-2.0 frontend-design skill». Сверка с <code>anthropics/skills</code>: совпадает 9 строк из 71 — это переработка, а не копия, с корректной атрибуцией.</p>
-      </div>
-    </details>
-  </section>
-
-  <!-- ─────────── КАТАЛОГ ─────────── -->
-  <section class="sect" id="catalog">
-    <h2><i>05</i> Каталог собран по шаблону</h2>
-    <p class="sub">Одинаковые файлы в разных навыках — след единого каркаса, а не ручной работы над каждым.</p>
+  <!-- ─────────── ЛИЦЕНЗИИ ─────────── -->
+  <section class="sect" id="lic">
+    <h2><i>05</i> Чужие инструменты и лицензии</h2>
+    <p class="sub">Что именно используется и на каких условиях. Звёзды и лицензии проверены через GitHub API 26.11.2026.</p>
 
     <div class="card">
       <div class="tbl-wrap">
         <table>
-          <thead><tr><th>Что повторяется</th><th>Сколько навыков</th><th>Детали</th></tr></thead>
+          <thead><tr><th>Проект</th><th>Лицензия</th><th>★</th><th>Роль</th></tr></thead>
           <tbody>
-            <tr><td><code>runtime-and-delivery.md</code></td><td class="num">17 из 20</td><td>6 043 б, md5 <code>fb0e9ab0…</code> — побайтово</td></tr>
-            <tr><td><code>official-api.md</code></td><td class="num">6</td><td>PubMed, wger, HH, ЦБ, MOEX, Mealie, Firefly, NHTSA — один файл</td></tr>
-            <tr><td>ffmpeg-блок</td><td class="num">2</td><td>154 КБ в <code>video-audio</code> и <code>media-processing</code></td></tr>
-            <tr><td>прочие пары</td><td class="num">7 файлов</td><td>совпадают у двух видео-навыков</td></tr>
+            <tr><td><code>kajisho5/ffmpeg-skill</code></td><td>MIT</td><td class="num">11 188</td><td><span class="vchip c-copy">копия текста</span></td></tr>
+            <tr><td><code>anthropics/skills</code> · frontend-design</td><td>Apache-2.0</td><td class="num">200 620</td><td><span class="vchip c-adapt">адаптация</span></td></tr>
+            <tr><td><code>heygen-com/hyperframes</code></td><td>Apache-2.0</td><td class="num">90 265</td><td>инструмент</td></tr>
+            <tr><td><code>browser-use/browser-use</code></td><td>MIT</td><td class="num">122 093</td><td>инструмент</td></tr>
+            <tr><td><code>D4Vinci/Scrapling</code></td><td>BSD-3-Clause</td><td class="num">105 825</td><td>библиотека</td></tr>
+            <tr><td><code>microsoft/markitdown</code></td><td>MIT</td><td class="num">198 505</td><td>библиотека 0.1.8</td></tr>
+            <tr><td><code>yt-dlp/yt-dlp</code></td><td>Unlicense</td><td class="num">210 781</td><td>утилита</td></tr>
+            <tr><td><code>dgtlmoon/changedetection.io</code></td><td>Apache-2.0</td><td class="num">36 045</td><td>образец логики</td></tr>
+            <tr><td><code>actualbudget/actual</code></td><td>MIT</td><td class="num">30 462</td><td>идеи/API</td></tr>
+            <tr><td><code>wger-project/wger</code></td><td>AGPL-3.0</td><td class="num">7 326</td><td>API</td></tr>
+            <tr><td><code>mobile-next/mobile-mcp</code></td><td>Apache-2.0</td><td class="num">10 891</td><td>инструмент</td></tr>
+            <tr><td><code>hhursev/recipe-scrapers</code></td><td>MIT</td><td class="num">2 267</td><td>библиотека, pinned</td></tr>
+            <tr><td><code>natasha/natasha</code></td><td>MIT</td><td class="num">1 364</td><td>библиотека</td></tr>
+            <tr><td><code>snowballstem/snowball</code></td><td>BSD-3-Clause</td><td class="num">897</td><td>стеммер</td></tr>
+            <tr><td><code>no-plagiarism/pymorphy3</code></td><td>MIT</td><td class="num">152</td><td>морфология</td></tr>
+            <tr><td><code>Dthen/ifixit-mcp</code></td><td>0BSD</td><td class="num">1</td><td>инструмент</td></tr>
+            <tr><td><code>firefly-iii/api-docs</code></td><td>AGPL-3.0</td><td class="num">9</td><td>документация API</td></tr>
           </tbody>
         </table>
       </div>
+      <p class="figcap" style="margin-top:10px">Отдельно: Open Food Facts — данные ODbL; parse5, acorn, postcss, jszip — MIT.
+        AGPL у wger и Firefly касается кода, а не обращений к API, но об этом стоит помнить при поставке.</p>
     </div>
-
-    <p class="quote">Публичного «пакета скиллов», откуда взят русский текст, найти не удалось: поиск по коду GitHub
-      не даёт совпадений ни на русском, ни на английском. Похоже на внутреннюю генерацию по одному шаблону.</p>
-  </section>
-
-  <!-- ─────────── ЛИЦЕНЗИИ ─────────── -->
-  <section class="sect" id="lic">
-    <h2><i>06</i> Лицензии</h2>
-    <p class="sub">MIT, Apache-2.0 и BSD-3 разрешают коммерческое использование. Вопрос — в оформлении.</p>
 
     <div class="card">
       <ul class="check">
@@ -442,12 +441,12 @@ details.sp .in p{margin:0 0 8px;font-size:13.5px}
         <li>
           <span class="mark m-no">✗</span>
           <div><b>Файла лицензии нет</b>
-            <p><code>LICENSE.upstream</code> упомянут в двух местах, но в репозитории отсутствует. <code>PROGRESS.md</code>: «лицензии в репозиторий не переносятся». MIT требует включать текст лицензии и копирайт.</p></div>
+            <p><code>LICENSE.upstream</code> упомянут, но в репозитории отсутствует; <code>PROGRESS.md</code> прямо говорит, что лицензии не переносятся. MIT требует включать текст лицензии и копирайт.</p></div>
         </li>
         <li>
           <span class="mark m-no">✗</span>
-          <div><b>Шапка происхождения врёт</b>
-            <p>На <code>ffmpeg/upstream-skill.md</code> стоит «ОРИГИНАЛ РАЗРАБОТЧИКА, НЕ ИЗМЕНЁН», хотя это текст kajisho5. Та же шапка — на адаптации Anthropic.</p></div>
+          <div><b>Шапка происхождения врёт на 5 файлах</b>
+            <p>Четыре файла ffmpeg-блока (текст kajisho5) и <code>mobile-reports/references/design.md</code>, который сам признаёт адаптацию Anthropic.</p></div>
         </li>
         <li>
           <span class="mark m-no">✗</span>
@@ -456,16 +455,34 @@ details.sp .in p{margin:0 0 8px;font-size:13.5px}
         </li>
       </ul>
     </div>
+  </section>
+
+  <!-- ─────────── ПРОБЕЛЫ ─────────── -->
+  <section class="sect" id="gaps">
+    <h2><i>06</i> Пробелы выгрузки</h2>
+    <p class="sub">Часть навыков выгружена без файлов, на которые ссылается их же SKILL.md.</p>
 
     <div class="card">
-      <h3 style="margin:0 0 6px;font-size:15px">Что поправить</h3>
-      <ol style="margin:6px 0 0;padding-left:20px;font-size:13.5px;color:var(--ink)">
-        <li>Положить <code>LICENSE.upstream</code> (MIT + copyright kajisho5) рядом с ffmpeg-справочниками — или убрать утверждение, что лицензия сохранена.</li>
-        <li>Исправить шапки: «оригинал kajisho5/ffmpeg-skill, MIT, ревизия 008333a…» и «адаптация Anthropic frontend-design, Apache-2.0».</li>
-        <li>Держать ffmpeg-блок в одном месте и ссылаться на него из второго навыка.</li>
-        <li>Убрать из <code>PROGRESS.md</code> правило «лицензии не переносятся» — оно противоречит MIT и тексту самого навыка.</li>
-      </ol>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Навык</th><th>Чего нет</th></tr></thead>
+          <tbody>
+            <tr><td><code>spreadsheets</code></td><td>все три справочника + <code>assets/workbook-spec.json</code></td></tr>
+            <tr><td><code>data-analysis</code></td><td>7 справочников + <code>assets/dashboard-spec.json</code></td></tr>
+            <tr><td><code>career-assistant</code></td><td><code>assets/resume.html</code>, схема записи карьеры</td></tr>
+            <tr><td><code>health-navigator</code></td><td><code>scripts/health_records.py</code></td></tr>
+            <tr><td><code>personal-finance</code></td><td><code>scripts/receipts.py</code></td></tr>
+            <tr><td>6 навыков</td><td><code>scripts/official_sources.py</code> и тесты к нему</td></tr>
+            <tr><td><code>mobile-reports</code></td><td><code>vendor/parsers.cjs</code> (640 КБ) — без него <code>site.cjs</code> не работает</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="figcap" style="margin-top:10px">В <code>origin/site.cjs</code> пометка «есть наши правки», но вне шапок файл расходится с
+        <code>scripts/site.cjs</code> на 0 строк — правок нет.</p>
     </div>
+
+    <p class="quote">Каталог собран по шаблону: <code>runtime-and-delivery.md</code> побайтово одинаков в 17 навыках,
+      <code>official-api.md</code> — в 6. Публичного пакета, откуда взят русский текст, найти не удалось.</p>
   </section>
 
   <div class="foot">
