@@ -1,0 +1,546 @@
+<!DOCTYPE html><html lang="ru" data-style="cards" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f4f2ee"><title>Карта ассистента</title><style>:root{--bg:#f4f2ee;--card:#ffffff;--ink:#1d1d1f;--mut:#6b665f;--line:#e2ded7;--soft:#faf8f5;--warn:#d9a41a;--ok:#2b7a4b}
+[data-theme="dark"]{--bg:#0f0f10;--card:#1c1c1e;--ink:#f2f2f7;--mut:#98989f;--line:#333333;--soft:#242426;--warn:#e0b446;--ok:#4aa06a}
+:root {
+  --bg:#f4f2ee;
+  --card:#fff;
+  --ink:#1d1d1f;
+  --mut:#6b665f;
+  --line:#e2ded7;
+  --soft:#faf8f5;
+  --warn:#d9a41a;
+  --ok:#2b7a4b
+}
+[data-theme="dark"] {
+  --bg:#0f0f10;
+  --card:#1c1c1e;
+  --ink:#f2f2f7;
+  --mut:#98989f;
+  --line:#333;
+  --soft:#242426;
+  --warn:#e0b446;
+  --ok:#4aa06a
+}
+* {
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent
+}
+html,body {
+  margin:0;
+  padding:0
+}
+body {
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Arial,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  font-size:16px;
+  line-height:1.62;
+  -webkit-text-size-adjust:100%
+}
+.wrap {
+  max-width:820px;
+  margin:0 auto;
+  padding:0 12px 90px
+}
+.bar {
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:var(--bg);
+  border-bottom:1px solid var(--line)
+}
+.chips {
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding:9px 12px 8px;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth
+}
+.chips::-webkit-scrollbar {
+  display:none
+}
+.chip {
+  flex:0 0 auto;
+  padding:7px 13px;
+  border-radius:999px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  color:var(--mut);
+  font-size:13px;
+  font-weight:550;
+  text-decoration:none;
+  white-space:nowrap
+}
+.chip:active {
+  transform:scale(.96)
+}
+.chip.on {
+  background:var(--ink);
+  color:var(--bg);
+  border-color:var(--ink)
+}
+.switches {
+  display:flex;
+  gap:8px;
+  padding:0 12px 9px;
+  align-items:center
+}
+.seg {
+  display:flex;
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:3px;
+  gap:2px
+}
+.seg button {
+  border:0;
+  background:transparent;
+  color:var(--mut);
+  font-size:12px;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:7px;
+  font-family:inherit
+}
+.seg button[aria-pressed="true"] {
+  background:var(--card);
+  color:var(--ink);
+  box-shadow:0 1px 2px rgba(0,0,0,.12)
+}
+.seg.push {
+  margin-left:auto
+}
+.allbtn {
+  border:1px solid var(--line);
+  background:var(--soft);
+  color:var(--mut);
+  font-size:12px;
+  font-weight:600;
+  padding:6px 11px;
+  border-radius:9px;
+  font-family:inherit
+}
+.hero {
+  padding:22px 4px 4px
+}
+.hero .k {
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--mut);
+  font-weight:600
+}
+.hero h1 {
+  font-size:26px;
+  line-height:1.18;
+  margin:8px 0 0;
+  letter-spacing:-.02em
+}
+.hero p {
+  color:var(--mut);
+  font-size:14px;
+  margin:8px 0 0
+}
+[data-style="cards"] .sec {
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:18px;
+  margin:13px 0;
+  box-shadow:0 1px 2px rgba(0,0,0,.05)
+}
+[data-theme="dark"][data-style="cards"] .sec {
+  box-shadow:none
+}
+[data-style="cards"] h2 {
+  font-size:19px;
+  margin:0;
+  display:flex;
+  gap:10px;
+  align-items:center
+}
+[data-style="cards"] h2::before {
+  content:attr(data-n);
+  font-size:12px;
+  font-weight:700;
+  background:var(--ink);
+  color:var(--bg);
+  width:24px;
+  height:24px;
+  border-radius:7px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 24px
+}
+[data-style="compact"] .sec {
+  padding:13px 0 13px 15px;
+  border-left:3px solid var(--line);
+  margin:0 0 2px
+}
+[data-style="compact"] h2 {
+  font-size:16px;
+  margin:0
+}
+[data-style="compact"] p,[data-style="compact"] li {
+  font-size:14.5px;
+  line-height:1.5
+}
+h2 {
+  letter-spacing:-.01em
+}
+p {
+  margin:9px 0
+}
+.mut {
+  color:var(--mut);
+  font-size:13.5px
+}
+.sp {
+  margin:11px 0 0;
+  border-radius:12px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  overflow:hidden
+}
+.sp>summary {
+  list-style:none;
+  cursor:pointer;
+  padding:13px 14px;
+  font-size:14.5px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:9px
+}
+.sp>summary::-webkit-details-marker {
+  display:none
+}
+.sp>summary::before {
+  content:"+";
+  width:20px;
+  height:20px;
+  flex:0 0 20px;
+  border-radius:6px;
+  background:var(--ink);
+  color:var(--bg);
+  font-size:14px;
+  font-weight:700;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center
+}
+.sp[open]>summary::before {
+  content:"3"
+}
+.sp>summary .t {
+  flex:1
+}
+.sp>summary .hint {
+  font-size:10px;
+  font-weight:700;
+  color:var(--mut);
+  text-transform:uppercase;
+  letter-spacing:.06em
+}
+.sp[open]>summary .hint {
+  display:none
+}
+.sp .in {
+  padding:0 14px 15px;
+  border-top:1px solid var(--line);
+  font-size:14.5px
+}
+.sp .in p:first-child {
+  margin-top:12px
+}
+.sp.tip {
+  border-left:3px solid var(--warn)
+}
+.thesis {
+  font-size:15.5px;
+  margin:0
+}
+.flow {
+  margin:13px 0 0
+}
+.node {
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:10px 12px;
+  font-size:14px
+}
+.node b {
+  display:block;
+  font-size:12.5px;
+  margin-bottom:1px
+}
+.arrow {
+  text-align:center;
+  color:var(--mut);
+  font-size:14px;
+  padding:3px 0
+}
+table {
+  width:100%;
+  border-collapse:collapse;
+  margin:10px 0;
+  font-size:14px
+}
+th,td {
+  padding:9px;
+  text-align:left;
+  border-bottom:1px solid var(--line);
+  vertical-align:top
+}
+th {
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:var(--mut);
+  font-weight:650
+}
+tr:last-child td {
+  border-bottom:none
+}
+code {
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:.88em;
+  background:var(--soft);
+  border:1px solid var(--line);
+  padding:1px 5px;
+  border-radius:5px
+}
+pre {
+  background:var(--ink);
+  color:var(--bg);
+  padding:14px 15px;
+  border-radius:11px;
+  overflow-x:auto;
+  font-size:12.5px;
+  line-height:1.55
+}
+pre code {
+  background:none;
+  border:0;
+  padding:0;
+  color:inherit
+}
+ul,ol {
+  padding-left:20px;
+  margin:8px 0
+}
+li {
+  margin:4px 0
+}
+.steps {
+  counter-reset:s;
+  margin:10px 0 0;
+  padding:0;
+  list-style:none
+}
+.steps li {
+  counter-increment:s;
+  position:relative;
+  padding-left:34px;
+  margin:9px 0;
+  font-size:14.5px
+}
+.steps li::before {
+  content:counter(s);
+  position:absolute;
+  left:0;
+  top:1px;
+  width:22px;
+  height:22px;
+  border-radius:7px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  color:var(--mut);
+  font-size:12px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+.badge {
+  display:inline-block;
+  font-size:10.5px;
+  font-weight:700;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  padding:2px 7px;
+  border-radius:5px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  color:var(--mut)
+}
+.badge.ok {
+  color:var(--ok);
+  border-color:var(--ok)
+}
+.badge.warn {
+  color:var(--warn);
+  border-color:var(--warn)
+}
+.footer {
+  margin-top:26px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+  font-size:12.5px;
+  color:var(--mut)
+}
+@media(max-width:420px) {
+body {
+  font-size:15.5px
+}
+.hero h1 {
+  font-size:23px
+}
+th,td {
+  padding:8px 7px;
+  font-size:13px
+}
+}
+</style></head><body><div class="bar"><div class="chips"><a class="chip" href="#layers">Слои</a><a class="chip" href="#identity">Личность</a><a class="chip" href="#skills">Скиллы</a><a class="chip" href="#tools">Инструменты</a><a class="chip" href="#show">Что можно</a><a class="chip" href="#looks">Как со мной</a></div><div class="switches"><div class="seg" role="group"><button data-s="cards">Карточки</button><button data-s="compact">Компакт</button></div><button class="allbtn" id="allBtn">Раскрыть всё</button><div class="seg push" role="group"><button data-t="light">Свет</button><button data-t="dark">Тьма</button></div></div></div><div class="wrap"><div class="hero"><div class="k">ИИ-Консьерж · устройство</div><h1>Карта ассистента</h1><p>Четыре слоя, 21 скилл, 14 групп инструментов. Что можно показать, а что нет.</p></div><div class="sec" id="layers"><h2 data-n="1">Из чего состою</h2>
+<p class="thesis"><b>Четыре слоя.</b> Сверху — то, что видно каждый день.
+Внизу — то, на чём всё держится и чего вы не видите.</p>
+<div class="flow">
+<div class="node"><b>1 · Личность</b>как говорю, к кому обращаюсь, чего не делаю</div>
+<div class="arrow">↓</div>
+<div class="node"><b>2 · Скиллы</b>21 процедура: в каком порядке работать</div>
+<div class="arrow">↓</div>
+<div class="node"><b>3 · Инструменты</b>поиск, браузер, файлы, календарь, звонки, память</div>
+<div class="arrow">↓</div>
+<div class="node"><b>4 · Модель</b>GigaChat через AI Disrupt</div>
+</div>
+<p>Инструкции задают, <i>как</i> думать. Скиллы — <i>в каком порядке</i> действовать.
+Инструменты — <i>чем</i> делать. Модель — <i>чем думать</i>.</p>
+<details class="sp"><summary><span class="t">Почему четыре слоя, а не один промт</span><span class="hint">показать</span></summary><div class="in"><p>Если сложить всё в один текст, он станет неуправляемым: правка в одном
+месте ломает другое. Поэтому слой скилла подгружается только тогда, когда задача
+его касается — иначе он просто лежит в каталоге и весит ноль.</p>
+<p>Слой инструментов отдельный, потому что их не нужно пересказывать: у каждого
+свой строгий текст правил, и он включается только при вызове.</p></div></details></div><div class="sec" id="identity"><h2 data-n="2">Слой 1 — что написано всегда</h2>
+<p class="thesis"><b>Этот текст я не покажу.</b> Не из секретности ради секретности:</p>
+<ul>
+<li>как обращаться к вам и в каком тоне говорить;</li>
+<li>что нельзя делать ни при каких формулировках;</li>
+<li>как оформлять ответ: коротко, без эмодзи, с результатом в первой строке;</li>
+<li>правила о памяти, напоминаниях, звонках и календаре.</li>
+</ul>
+<p class="mut">Это не настройки, которые можно переписать, а конструкция.</p>
+<details class="sp"><summary><span class="t">Почему его нельзя выложить, если честно</span><span class="hint">показать</span></summary><div class="in"><p>В нём прописано, чего я не делаю: где отвечать «нет» без объяснений, где
+помогать немедленно, а где не помогать вообще. Выложенный целиком, он превращается
+в инструкцию, как обойти эти границы — это чтение системы не для понимания, а для
+взлома её же логики.</p>
+<p>Плюс он постоянно меняется. Выложенная копия через неделю будет врать.</p>
+<p><b>Что можно показать вместо него:</b> перечень тем и правил без формулировок —
+что покрывается и какого рода. Скажете — соберу.</p></div></details></div><div class="sec" id="skills"><h2 data-n="3">Слой 2 — 21 процедура</h2>
+<p class="thesis"><b>Двадцать системных, один наш.</b> Каждый — не описание,
+а порядок действий с проверками.</p>
+<table>
+<thead><tr><th>Область</th><th>Что дают</th></tr></thead>
+<tbody>
+<tr><td>Работа с текстом</td><td>документы, презентации, таблицы, сбор источников</td></tr>
+<tr><td>Поиск и покупки</td><td>сравнение товаров, подбор мест, проверка свежести</td></tr>
+<tr><td>Личное</td><td>финансы, здоровье, тренировки, меню, обучение, карьера</td></tr>
+<tr><td>Техника</td><td>поддержка устройств, слежение за страницами, новости</td></tr>
+<tr><td>Медиа и код</td><td>видео и звук, приложения, наши отчёты</td></tr>
+</tbody></table>
+<p><b><code>mobile-reports</code></b> — единственный наш. Собран из выгруженного
+скилла разработчика, с заменой парсеров в архиве.</p>
+<details class="sp"><summary><span class="t">Как скилл попадает в работу</span><span class="hint">показать</span></summary><div class="in"><p>Я не держу все двадцать в голове. Перед задачей смотрю каталог, выбираю
+тот, что отвечает за результат, и читаю его основной файл. Дальше по мере надобности —
+вложенные справочники, но только те, что нужны на этом этапе.</p>
+<p>Пример: просьба «сравни три ресторана» поднимает один скилл, а в нём три
+справочника — про поиск, про проверку свежести и про формат карточки.</p>
+<p>У скилла есть ревизия. Её видно во всех инструментах работы с ним: если
+процедуру правили, ревизия меняется, и старое не путается с новым.</p></div></details></div><div class="sec" id="tools"><h2 data-n="4">Слой 3 — чем делаю</h2>
+<p class="thesis"><b>Четырнадцать групп инструментов.</b> Каждая — свой короткий
+свод правил.</p>
+<table>
+<thead><tr><th>Инструмент</th><th>Что делает</th></tr></thead>
+<tbody>
+<tr><td>Поиск в интернете</td><td>нахожу, читаю страницы, проверяю актуальность</td></tr>
+<tr><td>Браузер</td><td>кликаю по интерфейсу на удалённом экране</td></tr>
+<tr><td>Компьютер</td><td>файлы, команды, сборка документов</td></tr>
+<tr><td>Кодинг-агент</td><td>большие проекты и программы</td></tr>
+<tr><td>Обмен файлами</td><td>отдаю вам результат</td></tr>
+<tr><td>Календарь на телефоне</td><td>читаю и создаю встречи</td></tr>
+<tr><td>Почта</td><td>входящие, письма, приглашения</td></tr>
+<tr><td>Телефонные звонки</td><td>брони, уточнения по ресторанам</td></tr>
+<tr><td>Память</td><td>записываю факты о вас и о проектах</td></tr>
+<tr><td>Расписание</td><td>напоминания и регулярные задачи</td></tr>
+<tr><td>Новости</td><td>ваша подборка</td></tr>
+<tr><td>Приложения</td><td>ваши небольшие программы</td></tr>
+<tr><td>Скиллы</td><td>каталог процедур</td></tr>
+<tr><td>Вопросы вам</td><td>уточнение, когда без него не решить</td></tr>
+</tbody></table>
+<details class="sp"><summary><span class="t">Три инструмента, которые стоит понять лучше всего</span><span class="hint">показать</span></summary><div class="in"><p><b>Браузер.</b> Не читает ваши вкладки и не входит в ваши сессии. Работает
+на удалённом экране. Всё до финальной кнопки — сам, на кнопку жму только с вашего
+слова: оплата, отправка, бронь.</p>
+<p><b>Память.</b> Три вида: индекс (всегда в контексте), файл проекта (по триггеру),
+личное (в вики, не в GitHub). Это разделение и держит приватность.</p>
+<p><b>Звонки.</b> Голосовой агент говорит с оператором сам, без меня. Ему нельзя
+переспросить вашего ответа по ходу — поэтому развилки я закладываю заранее: что
+делать, если время занято, если просят депозит, если отказывают.</p></div></details></div><div class="sec" id="show"><h2 data-n="5">Что можно выложить</h2>
+<p class="thesis"><b>Четыре из шести — да.</b> Честно по каждому.</p>
+<table>
+<thead><tr><th>Что</th><th>Можно?</th></tr></thead>
+<tbody>
+<tr><td>Карта устройства</td><td><span class="badge ok">эта страница</span></td></tr>
+<tr><td>Каталог скиллов</td><td><span class="badge ok">уже есть</span></td></tr>
+<tr><td>Перечень правил без формулировок</td><td><span class="badge ok">сделаю</span></td></tr>
+<tr><td>Промты для браузера и кодинг-агента</td><td><span class="badge ok">покажу</span></td></tr>
+<tr><td>Сам системный текст</td><td><span class="badge warn">нет</span></td></tr>
+<tr><td>Код инструментов</td><td><span class="badge warn">нет доступа</span></td></tr>
+</tbody></table>
+<details class="sp"><summary><span class="t">Почему про промты — да, а про текст — нет</span><span class="hint">показать</span></summary><div class="in"><p>Промт для браузера — это обычная задача: цель, данные, развилки. Опубликовать
+его безопасно и полезно: вы увидите, как я формулирую, чтобы исполнитель не
+додумывал за вас.</p>
+<p>Системный текст — другое: в нём границы. Разница ровно та же, что между
+постановкой задачи сотруднику и его должностной инструкцией с внутренними
+ограничениями.</p></div></details></div><div class="sec" id="looks"><h2 data-n="6">Как со мной лучше работать</h2>
+<p class="thesis"><b>Пять правил, которые экономят вам время.</b></p>
+<ul>
+<li><b>Дайте цель, не инструкцию.</b> «Нужен столик на четверых в субботу» лучше,
+чем «зайди на сайт, нажми, выбери».</li>
+<li><b>Скажите, что уже известно.</b> Адрес, ссылка, номер — избавляют от уточнений.</li>
+<li><b>Для сложного просите HTML.</b> В чате длинный разбор читать тяжело.</li>
+<li><b>Просите сохранить.</b> «Запомни, что…» — и я запишу, а не буду полагаться на
+переписку.</li>
+<li><b>Отменяйте словами.</b> «Не надо», «не звони» — слышу и останавливаюсь.</li>
+</ul>
+<details class="sp"><summary><span class="t">Чего не просите — не потому что откажу, а потому что не смогу</span><span class="hint">показать</span></summary><div class="in"><p><b>Доступ к вашему телефону и компьютеру.</b> Их нет. Есть только удалённый
+экран в облаке.</p>
+<p><b>Пароли и коды в чате.</b> Не приму. Вход — только на экране, гдеты вводите
+сами, я стою в стороне.</p>
+<p><b>Увидеть ваши вкладки.</b> Сессии у меня свои, ваши — нет.</p>
+<p><b>Точно помнить всё.</b> Память работает по записям, а не по всей истории:
+сказал «запомни» — записал.</p></div></details></div><div class="footer"><a href="ORIGIN.md" style="color:inherit">Чьё это</a> · <a href="skills.html" style="color:inherit">Скиллы</a> · <a href="index.html" style="color:inherit">Всё</a> · 26.11.2026</div></div><script>
+const root=document.documentElement;
+const sp=document.querySelectorAll('details.sp');
+const allBtn=document.getElementById('allBtn');
+function setStyle(s){root.dataset.style=s;
+ document.querySelectorAll('[data-s]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.s===s));}
+function setTheme(t){root.dataset.theme=t;
+ document.querySelectorAll('[data-t]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===t));}
+document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>setStyle(b.dataset.s));
+document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+let allOpen=false;
+if(allBtn){allBtn.onclick=()=>{allOpen=!allOpen;sp.forEach(d=>d.open=allOpen);
+ allBtn.textContent=allOpen?'Свернуть всё':'Раскрыть всё';};}
+const chips=[...document.querySelectorAll('.chip')];
+const secs=chips.map(c=>document.querySelector(c.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+ const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  chips.forEach(c=>c.classList.remove('on'));
+  const c=chips.find(x=>x.getAttribute('href')==='#'+e.target.id);if(c)c.classList.add('on');}})},
+  {rootMargin:'-70px 0px -70% 0px'});
+ secs.forEach(s=>io.observe(s));
+}
+setStyle('cards');setTheme('light');
+</script></body></html>
