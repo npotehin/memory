@@ -57,7 +57,9 @@ GROUPS = [
     ("assistant", "Ассистент", "AI", lambda r: r in (
         "assistant-map.html", "assistant-bounds.html", "ORIGIN.md"),
      "устройство, границы, авторство"),
-    ("catalog", "Каталог", "SK", lambda r: r in ("skills.html", "skills-export-report.html"),
+    ("catalog", "Каталог", "SK", lambda r: r in (
+        "skills.html", "skills-export-report.html",
+        "skills-origin-audit.html", "skills-origin-audit.md"),
      "скиллы и что установлено"),
     ("skill-cards", "Карточки скиллов", "SC", lambda r: r.startswith("skills/") and r != "skills/index.html",
      "разбор одного скилла"),
@@ -81,6 +83,8 @@ TITLES = {
     "ORIGIN.md": ("Чьё это", "OR"),
     "skills.html": ("Скиллы", "SK"),
     "skills-export-report.html": ("Выгрузка скиллов", "SK"),
+    "skills-origin-audit.html": ("Аудит: чьи это скиллы", "SK"),
+    "skills-origin-audit.md": ("Аудит скиллов — отчёт (MD)", "SK"),
     "my-code.html": ("Мой код", "RE"),
     "github-cloudflare-guide.html": ("GitHub → Cloudflare", "IN"),
     "setup-guide.html": ("Настройка связки", "IN"),
@@ -139,6 +143,10 @@ def collect():
         if not p.is_file():
             continue
         files.append(p)
+    for rel in TITLES:
+        p = ROOT / rel
+        if p.is_file() and p.suffix == ".md":
+            files.append(p)
     return files
 
 
