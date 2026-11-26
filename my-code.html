@@ -1,0 +1,346 @@
+<!DOCTYPE html><html lang="ru" data-style="cards" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f4f2ee"><title>Мой код</title><style>
+:root{--bg:#f4f2ee;--card:#fff;--ink:#1d1d1f;--mut:#6b665f;--line:#e2ded7;--soft:#faf8f5;--warn:#d9a41a;--ok:#2b7a4b}
+[data-theme="dark"]{--bg:#0f0f10;--card:#1c1c1e;--ink:#f2f2f7;--mut:#98989f;--line:#333;--soft:#242426;--warn:#e0b446;--ok:#4aa06a}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Arial,sans-serif;
+color:var(--ink);background:var(--bg);font-size:16px;line-height:1.62;-webkit-text-size-adjust:100%}
+.wrap{max-width:820px;margin:0 auto;padding:0 12px 90px}
+.bar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:7px;overflow-x:auto;padding:9px 12px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:7px 13px;border-radius:999px;background:var(--soft);border:1px solid var(--line);
+color:var(--mut);font-size:13px;font-weight:550;text-decoration:none;white-space:nowrap}
+.chip:active{transform:scale(.96)}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.switches{display:flex;gap:8px;padding:0 12px 9px;align-items:center}
+.seg{display:flex;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--mut);font-size:12px;font-weight:600;
+padding:6px 10px;border-radius:7px;font-family:inherit}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.seg.push{margin-left:auto}
+.allbtn{border:1px solid var(--line);background:var(--soft);color:var(--mut);font-size:12px;
+font-weight:600;padding:6px 11px;border-radius:9px;font-family:inherit}
+.hero{padding:22px 4px 4px}
+.hero .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.hero h1{font-size:26px;line-height:1.18;margin:8px 0 0;letter-spacing:-.02em}
+.hero p{color:var(--mut);font-size:14px;margin:8px 0 0}
+[data-style="cards"] .sec{background:var(--card);border:1px solid var(--line);border-radius:16px;
+padding:18px;margin:13px 0;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+[data-theme="dark"][data-style="cards"] .sec{box-shadow:none}
+[data-style="cards"] h2{font-size:19px;margin:0;display:flex;gap:10px;align-items:center}
+[data-style="cards"] h2::before{content:attr(data-n);font-size:12px;font-weight:700;background:var(--ink);
+color:var(--bg);width:24px;height:24px;border-radius:7px;display:inline-flex;align-items:center;
+justify-content:center;flex:0 0 24px}
+[data-style="compact"] .sec{padding:13px 0 13px 15px;border-left:3px solid var(--line);margin:0 0 2px}
+[data-style="compact"] h2{font-size:16px;margin:0}
+[data-style="compact"] p,[data-style="compact"] li{font-size:14.5px;line-height:1.5}
+h2{letter-spacing:-.01em}
+p{margin:9px 0}
+.mut{color:var(--mut);font-size:13.5px}
+.sp{margin:11px 0 0;border-radius:12px;background:var(--soft);border:1px solid var(--line);overflow:hidden}
+.sp>summary{list-style:none;cursor:pointer;padding:13px 14px;font-size:14.5px;font-weight:600;
+display:flex;align-items:center;gap:9px}
+.sp>summary::-webkit-details-marker{display:none}
+.sp>summary::before{content:"+";width:20px;height:20px;flex:0 0 20px;border-radius:6px;background:var(--ink);
+color:var(--bg);font-size:14px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}
+.sp[open]>summary::before{content:"\2013"}
+.sp>summary .t{flex:1}
+.sp>summary .hint{font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.sp[open]>summary .hint{display:none}
+.sp .in{padding:0 14px 15px;border-top:1px solid var(--line);font-size:14.5px}
+.sp .in p:first-child{margin-top:12px}
+.sp.tip{border-left:3px solid var(--warn)}
+.thesis{font-size:15.5px;margin:0}
+.flow{margin:13px 0 0}
+.node{background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:10px 12px;font-size:14px}
+.node b{display:block;font-size:12.5px;margin-bottom:1px}
+.arrow{text-align:center;color:var(--mut);font-size:14px;padding:3px 0}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th,td{padding:9px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);font-weight:650}
+tr:last-child td{border-bottom:none}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:var(--soft);
+border:1px solid var(--line);padding:1px 5px;border-radius:5px}
+pre{background:var(--ink);color:var(--bg);padding:14px 15px;border-radius:11px;overflow-x:auto;
+font-size:12.5px;line-height:1.55}
+pre code{background:none;border:0;padding:0;color:inherit}
+ul,ol{padding-left:20px;margin:8px 0}
+li{margin:4px 0}
+.steps{counter-reset:s;margin:10px 0 0;padding:0;list-style:none}
+.steps li{counter-increment:s;position:relative;padding-left:34px;margin:9px 0;font-size:14.5px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:22px;height:22px;
+border-radius:7px;background:var(--soft);border:1px solid var(--line);color:var(--mut);
+font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.badge{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+padding:2px 7px;border-radius:5px;background:var(--soft);border:1px solid var(--line);color:var(--mut)}
+.badge.ok{color:var(--ok);border-color:var(--ok)}
+.badge.warn{color:var(--warn);border-color:var(--warn)}
+.footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mut)}
+@media(max-width:420px){body{font-size:15.5px}.hero h1{font-size:23px}th,td{padding:8px 7px;font-size:13px}}
+</style></head><body><div class="bar"><div class="chips"><a class="chip" href="#what">Что это</a><a class="chip" href="#tree">Устройство</a><a class="chip" href="#tokens">Цвета</a><a class="chip" href="#css">Стили</a><a class="chip" href="#js">Скрипт</a><a class="chip" href="#page">Функции</a><a class="chip" href="#limits">Слабости</a><a class="chip" href="#code">Код</a></div><div class="switches"><div class="seg" role="group"><button data-s="cards">Карточки</button><button data-s="compact">Компакт</button></div><button class="allbtn" id="allBtn">Раскрыть всё</button><div class="seg push" role="group"><button data-t="light">Свет</button><button data-t="dark">Тьма</button></div></div></div><div class="wrap"><div class="hero"><div class="k">ИИ-Консьерж · устройство</div><h1>Мой код</h1><p>Сборщик страниц целиком: палитра, вёрстка, скрипт, обе функции.</p></div><div class="sec" id="what"><h2 data-n="1">Сборщик страниц</h2>
+<p class="thesis"><b>htmlkit.py — 144 строки, и это весь мой код вёрстки.</b>
+Каждый отчёт, который вы открывали, собран этим файлом.</p>
+<div class="flow">
+<div class="node"><b>Файл</b>htmlkit.py, 9272 байта</div>
+<div class="arrow">↓</div>
+<div class="node"><b>Три части</b>CSS, JS, две функции</div>
+<div class="arrow">↓</div>
+<div class="node"><b>Вызов</b>page(title, kicker, subtitle, sections, footer)</div>
+</div>
+<p class="mut">Сейчас в репозитории лежит в двух местах: в корне и в
+<code>code/htmlkit.py</code>. Второе — для чтения.</p>
+<details class="sp"><summary><span class="t">Почему код короткий</span><span class="hint">показать</span></summary><div class="in"><p>Соблазн написать тысячи строк есть, но пользы нет. Всё, что нужно
+странице, — это набор правил CSS и две функции сборки. Держать больше значит
+поддерживать больше.</p>
+<p>Обратная сторона: если понадобится сложная вёрстка —graphики, фильтры,
+таблицы с сортировкой, — придётся дописывать. Сейчас этого нет.</p></div></details></div><div class="sec" id="tree"><h2 data-n="2">Из чего состоит</h2>
+<table>
+<thead><tr><th>Часть</th><th>Строки</th><th>Зачем</th></tr></thead>
+<tbody>
+<tr><td><code>CSS</code></td><td>5–86</td><td>Вся визуальная система</td></tr>
+<tr><td><code>JS</code></td><td>88–110</td><td>Переключатели и чипы</td></tr>
+<tr><td><code>spoiler()</code></td><td>113–118</td><td>Сборка раскрывашки</td></tr>
+<tr><td><code>page()</code></td><td>121–152</td><td>Сборка страницы целиком</td></tr>
+</tbody></table>
+<p class="mut">Больше ничего нет — ни зависимостей, ни импортов.</p>
+<details class="sp"><summary><span class="t">Почему одна строка CSS на правило</span><span class="hint">показать</span></summary><div class="in"><p>Минифицировано вручную: <code>.chip{...}</code> в одну строку.
+Экономит читаемость, но отчёт всегда собирается одинаково и весит меньше.</p>
+<p>Минус: править такую строку на телефоне неудобно. Если планируете трогать
+CSS руками — я разверну его в нормальный формат, файл вырастет до 300 строк,
+но станет читаемым.</p></div></details></div><div class="sec" id="tokens"><h2 data-n="3">Палитра</h2>
+<p class="thesis"><b>Шесть цветов на тему.</b> Всё остальное — производное
+от них.</p>
+<table>
+<thead><tr><th>Токен</th><th>Светлая</th><th>Тёмная</th></tr></thead>
+<tbody>
+<tr><td><code>--bg</code></td><td>#f4f2ee</td><td>#0f0f10</td></tr>
+<tr><td><code>--card</code></td><td>#ffffff</td><td>#1c1c1e</td></tr>
+<tr><td><code>--ink</code></td><td>#1d1d1f</td><td>#f2f2f7</td></tr>
+<tr><td><code>--mut</code></td><td>#6b665f</td><td>#98989f</td></tr>
+<tr><td><code>--line</code></td><td>#e2ded7</td><td>#333333</td></tr>
+<tr><td><code>--soft</code></td><td>#faf8f5</td><td>#242426</td></tr>
+</tbody></table>
+<p class="mut">Плюс акценты: <code>--ok</code> зелёный и <code>--warn</code>
+жёлтый — только для бейджей.</p>
+<details class="sp"><summary><span class="t">Почему именно эти цвета</span><span class="hint">показать</span></summary><div class="in"><p>Тёплый фон <code>#f4f2ee</code> вместо белого: на телефоне вечером
+белый экран бьёт по глазам. Тёплый оттенок читается мягче, но остаётся
+светлым.</p>
+<p>Тёмная тема не инверсия: <code>#0f0f10</code> почти чёрный, карточки
+на тон светлее. Если просто инвертировать, тени превращаются в грязь —
+поэтому в тёмной теме тени отключены совсем.</p></div></details></div><div class="sec" id="css"><h2 data-n="4">Как устроена вёрстка</h2>
+<p class="thesis"><b>Две плотности из одного HTML.</b> «Карточки» и
+«компакт» — это одно и то же дерево, разные правила CSS.</p>
+<p>Переключение — атрибут <code>data-style</code> на <code>&lt;html&gt;</code>.
+Никакой перезагрузки, никакого второго файла.</p>
+<details class="sp"><summary><span class="t">Карточки против компакта</span><span class="hint">показать</span></summary><div class="in"><p><b>Карточки:</b> каждый раздел — отдельный блок с рамкой, скруглением
+16 px и лёгкой тенью. Воздух, но длинная страница.</p>
+<p><b>Компакт:</b> рамок нет, вместо них цветная линейка слева, отступы
+ужаты. Шрифт 14,5 вместо 16. Длинный технический разбор читается быстрее.</p>
+<p>Задаётся тремя правилами: <code>[data-style="cards"] .sec</code> и
+<code>[data-style="compact"] .sec</code>. Остальное наследуется.</p></div></details><details class="sp"><summary><span class="t">Спойлеры: плюс, а не треугольник</span><span class="hint">показать</span></summary><div class="in"><p>Маркер задаётся через <code>summary::before</code> — «плюс»
+в свёрнутом, «тире» в открытом. Два правила:</p>
+<pre><code>.sp>summary::before{content:"+"}
+.sp[open]>summary::before{content:"\\2013"}</code></pre>
+<p>И обязательные <code>list-style:none</code> плюс
+<code>::-webkit-details-marker{display:none}</code> — иначе Safari нарисует
+свой треугольник поверх плюса. На этом уже спотыкались.</p></div></details></div><div class="sec" id="js"><h2 data-n="5">Что делает JavaScript</h2>
+<p class="thesis"><b>Тридцать строк.</b> Переключатели, кнопка «Раскрыть всё»
+и подсветка чипа по разделу.</p>
+<table>
+<thead><tr><th>Функция</th><th>Действие</th></tr></thead>
+<tbody>
+<tr><td><code>setStyle</code></td><td>Меняет <code>data-style</code></td></tr>
+<tr><td><code>setTheme</code></td><td>Меняет <code>data-theme</code></td></tr>
+<tr><td><code>allBtn</code></td><td>Открывает все спойлеры разом</td></tr>
+<tr><td><code>IntersectionObserver</code></td><td>Подсвечивает чип</td></tr>
+</tbody></table>
+<details class="sp"><summary><span class="t">Почему подсветка чипа работает именно так</span><span class="hint">показать</span></summary><div class="in"><pre><code>{rootMargin:'-70px 0px -70% 0px'}</code></pre>
+<p>Верхний отступ 70 px — ровно высота закреплённой полосы. Нижний режет
+70% экрана: раздел считается «текущим», только когда зашёл в верхнюю треть.
+Без этого подсвечивались бы сразу три раздела.</p></div></details></div><div class="sec" id="page"><h2 data-n="6">Как собирается страница</h2>
+<p class="thesis"><b>Две функции, и всё.</b> <code>spoiler()</code> делает
+раскрывашку, <code>page()</code> — страницу из списка разделов.</p>
+<p><code>page("Заголовок", "Надзаголовок", "Описание", [разделы], "подвал")</code></p>
+<p>Раздел — это словарь из четырёх полей: <code>id</code> для чипа,
+<code>chip</code> — подпись чипа, <code>title</code> — заголовок,
+<code>html</code> — содержимое.</p>
+<details class="sp"><summary><span class="t">Почему отчёт задаётся списком, а не HTML</span><span class="hint">показать</span></summary><div class="in"><p>Ручная вёрстка на третий отчёт разъезжается: забываешь
+<code>white-space:nowrap</code> у чипа, теряешь контраст в тёмной теме.
+В модуле это задано один раз.</p>
+<p>Цена: нестандартную страницу так не собрать. Для этого можно писать HTML
+руками — скилл разрешает, просто придётся самому следить за мелочами.</p></div></details></div><div class="sec" id="limits"><h2 data-n="7">Что я сделал неидеально</h2>
+<p class="thesis"><b>Три места, которые я бы переделал.</b></p>
+<table>
+<tbody>
+<tr><td>CSS в одну строку</td><td><span class="badge warn">трудно править</span></td></tr>
+<tr><td>Токены зашиты в файл</td><td><span class="badge warn">нет темы проекта</span></td></tr>
+<tr><td>Проверки нет</td><td><span class="badge warn">375 px на глаз</span></td></tr>
+</tbody></table>
+<details class="sp tip"><summary><span class="t">Что конкретно и как исправить</span><span class="hint">показать</span></summary><div class="in"><p><b>Одна строка CSS.</b> Читать неудобно, diff в git нечитаемый.
+Лечится разворотом в многострочный вид: плюс 200 строк, минус головная боль.</p>
+<p><b>Токены в файле.</b> Если захотите другой стиль для РКШ — сейчас это
+копия файла целиком. Правильнее — вынести палитру в отдельный словарь и
+передавать в <code>page()</code>.</p>
+<p><b>Проверка на глаз.</b> «Нет горизонтального скролла, чипы не ломаются» —
+я смотрю это глазами. Автоматики нет. Можно прикрутить проверку ширины через
+headless-браузер, но это отдельная работа.</p></div></details></div><div class="sec" id="code"><h2 data-n="8">Файл целиком</h2>
+<p class="thesis">Все 144 строки, как есть. Ничего не скрыто.</p>
+<details class="sp"><summary><span class="t">Открыть код: CSS и токены, строки 5–86</span><span class="hint">показать</span></summary><div class="in"><pre><code>   5  CSS = &quot;&quot;&quot;
+   6  :root{--bg:#f4f2ee;--card:#fff;--ink:#1d1d1f;--mut:#6b665f;--line:#e2ded7;--soft:#faf8f5;--warn:#d9a41a;--ok:#2b7a4b}
+   7  [data-theme=&quot;dark&quot;]{--bg:#0f0f10;--card:#1c1c1e;--ink:#f2f2f7;--mut:#98989f;--line:#333;--soft:#242426;--warn:#e0b446;--ok:#4aa06a}
+   8  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+   9  html,body{margin:0;padding:0}
+  10  body{font-family:-apple-system,BlinkMacSystemFont,&quot;SF Pro Text&quot;,&quot;Segoe UI&quot;,Arial,sans-serif;
+  11  color:var(--ink);background:var(--bg);font-size:16px;line-height:1.62;-webkit-text-size-adjust:100%}
+  12  .wrap{max-width:820px;margin:0 auto;padding:0 12px 90px}
+  13  .bar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+  14  .chips{display:flex;gap:7px;overflow-x:auto;padding:9px 12px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+  15  .chips::-webkit-scrollbar{display:none}
+  16  .chip{flex:0 0 auto;padding:7px 13px;border-radius:999px;background:var(--soft);border:1px solid var(--line);
+  17  color:var(--mut);font-size:13px;font-weight:550;text-decoration:none;white-space:nowrap}
+  18  .chip:active{transform:scale(.96)}
+  19  .chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  20  .switches{display:flex;gap:8px;padding:0 12px 9px;align-items:center}
+  21  .seg{display:flex;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
+  22  .seg button{border:0;background:transparent;color:var(--mut);font-size:12px;font-weight:600;
+  23  padding:6px 10px;border-radius:7px;font-family:inherit}
+  24  .seg button[aria-pressed=&quot;true&quot;]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+  25  .seg.push{margin-left:auto}
+  26  .allbtn{border:1px solid var(--line);background:var(--soft);color:var(--mut);font-size:12px;
+  27  font-weight:600;padding:6px 11px;border-radius:9px;font-family:inherit}
+  28  .hero{padding:22px 4px 4px}
+  29  .hero .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:600}
+  30  .hero h1{font-size:26px;line-height:1.18;margin:8px 0 0;letter-spacing:-.02em}
+  31  .hero p{color:var(--mut);font-size:14px;margin:8px 0 0}
+  32  [data-style=&quot;cards&quot;] .sec{background:var(--card);border:1px solid var(--line);border-radius:16px;
+  33  padding:18px;margin:13px 0;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+  34  [data-theme=&quot;dark&quot;][data-style=&quot;cards&quot;] .sec{box-shadow:none}
+  35  [data-style=&quot;cards&quot;] h2{font-size:19px;margin:0;display:flex;gap:10px;align-items:center}
+  36  [data-style=&quot;cards&quot;] h2::before{content:attr(data-n);font-size:12px;font-weight:700;background:var(--ink);
+  37  color:var(--bg);width:24px;height:24px;border-radius:7px;display:inline-flex;align-items:center;
+  38  justify-content:center;flex:0 0 24px}
+  39  [data-style=&quot;compact&quot;] .sec{padding:13px 0 13px 15px;border-left:3px solid var(--line);margin:0 0 2px}
+  40  [data-style=&quot;compact&quot;] h2{font-size:16px;margin:0}
+  41  [data-style=&quot;compact&quot;] p,[data-style=&quot;compact&quot;] li{font-size:14.5px;line-height:1.5}
+  42  h2{letter-spacing:-.01em}
+  43  p{margin:9px 0}
+  44  .mut{color:var(--mut);font-size:13.5px}
+  45  .sp{margin:11px 0 0;border-radius:12px;background:var(--soft);border:1px solid var(--line);overflow:hidden}
+  46  .sp&gt;summary{list-style:none;cursor:pointer;padding:13px 14px;font-size:14.5px;font-weight:600;
+  47  display:flex;align-items:center;gap:9px}
+  48  .sp&gt;summary::-webkit-details-marker{display:none}
+  49  .sp&gt;summary::before{content:&quot;+&quot;;width:20px;height:20px;flex:0 0 20px;border-radius:6px;background:var(--ink);
+  50  color:var(--bg);font-size:14px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}
+  51  .sp[open]&gt;summary::before{content:&quot;\\2013&quot;}
+  52  .sp&gt;summary .t{flex:1}
+  53  .sp&gt;summary .hint{font-size:10px;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+  54  .sp[open]&gt;summary .hint{display:none}
+  55  .sp .in{padding:0 14px 15px;border-top:1px solid var(--line);font-size:14.5px}
+  56  .sp .in p:first-child{margin-top:12px}
+  57  .sp.tip{border-left:3px solid var(--warn)}
+  58  .thesis{font-size:15.5px;margin:0}
+  59  .flow{margin:13px 0 0}
+  60  .node{background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:10px 12px;font-size:14px}
+  61  .node b{display:block;font-size:12.5px;margin-bottom:1px}
+  62  .arrow{text-align:center;color:var(--mut);font-size:14px;padding:3px 0}
+  63  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+  64  th,td{padding:9px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  65  th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);font-weight:650}
+  66  tr:last-child td{border-bottom:none}
+  67  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:var(--soft);
+  68  border:1px solid var(--line);padding:1px 5px;border-radius:5px}
+  69  pre{background:var(--ink);color:var(--bg);padding:14px 15px;border-radius:11px;overflow-x:auto;
+  70  font-size:12.5px;line-height:1.55}
+  71  pre code{background:none;border:0;padding:0;color:inherit}
+  72  ul,ol{padding-left:20px;margin:8px 0}
+  73  li{margin:4px 0}
+  74  .steps{counter-reset:s;margin:10px 0 0;padding:0;list-style:none}
+  75  .steps li{counter-increment:s;position:relative;padding-left:34px;margin:9px 0;font-size:14.5px}
+  76  .steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:22px;height:22px;
+  77  border-radius:7px;background:var(--soft);border:1px solid var(--line);color:var(--mut);
+  78  font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  79  .badge{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  80  padding:2px 7px;border-radius:5px;background:var(--soft);border:1px solid var(--line);color:var(--mut)}
+  81  .badge.ok{color:var(--ok);border-color:var(--ok)}
+  82  .badge.warn{color:var(--warn);border-color:var(--warn)}
+  83  .footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--mut)}
+  84  @media(max-width:420px){body{font-size:15.5px}.hero h1{font-size:23px}th,td{padding:8px 7px;font-size:13px}}
+  85  &quot;&quot;&quot;
+  86  </code></pre></div></details><details class="sp"><summary><span class="t">Открыть код: скрипт, строки 88–110</span><span class="hint">показать</span></summary><div class="in"><pre><code>  88  const root=document.documentElement;
+  89  const sp=document.querySelectorAll(&#x27;details.sp&#x27;);
+  90  const allBtn=document.getElementById(&#x27;allBtn&#x27;);
+  91  function setStyle(s){root.dataset.style=s;
+  92   document.querySelectorAll(&#x27;[data-s]&#x27;).forEach(b=&gt;b.setAttribute(&#x27;aria-pressed&#x27;,b.dataset.s===s));}
+  93  function setTheme(t){root.dataset.theme=t;
+  94   document.querySelectorAll(&#x27;[data-t]&#x27;).forEach(b=&gt;b.setAttribute(&#x27;aria-pressed&#x27;,b.dataset.t===t));}
+  95  document.querySelectorAll(&#x27;[data-s]&#x27;).forEach(b=&gt;b.onclick=()=&gt;setStyle(b.dataset.s));
+  96  document.querySelectorAll(&#x27;[data-t]&#x27;).forEach(b=&gt;b.onclick=()=&gt;setTheme(b.dataset.t));
+  97  let allOpen=false;
+  98  if(allBtn){allBtn.onclick=()=&gt;{allOpen=!allOpen;sp.forEach(d=&gt;d.open=allOpen);
+  99   allBtn.textContent=allOpen?&#x27;Свернуть всё&#x27;:&#x27;Раскрыть всё&#x27;;};}
+ 100  const chips=[...document.querySelectorAll(&#x27;.chip&#x27;)];
+ 101  const secs=chips.map(c=&gt;document.querySelector(c.getAttribute(&#x27;href&#x27;))).filter(Boolean);
+ 102  if(&#x27;IntersectionObserver&#x27; in window){
+ 103   const io=new IntersectionObserver(es=&gt;{es.forEach(e=&gt;{if(e.isIntersecting){
+ 104    chips.forEach(c=&gt;c.classList.remove(&#x27;on&#x27;));
+ 105    const c=chips.find(x=&gt;x.getAttribute(&#x27;href&#x27;)===&#x27;#&#x27;+e.target.id);if(c)c.classList.add(&#x27;on&#x27;);}})},
+ 106    {rootMargin:&#x27;-70px 0px -70% 0px&#x27;});
+ 107   secs.forEach(s=&gt;io.observe(s));
+ 108  }
+ 109  setStyle(&#x27;cards&#x27;);setTheme(&#x27;light&#x27;);
+ 110  &quot;&quot;&quot;</code></pre></div></details><details class="sp"><summary><span class="t">Открыть код: функции, строки 113–152</span><span class="hint">показать</span></summary><div class="in"><pre><code> 113  def spoiler(title, html, tip=False, open_=False):
+ 114      cls = &quot;sp tip&quot; if tip else &quot;sp&quot;
+ 115      op = &quot; open&quot; if open_ else &quot;&quot;
+ 116      return (&#x27;&lt;details class=&quot;%s&quot;%s&gt;&lt;summary&gt;&lt;span class=&quot;t&quot;&gt;%s&lt;/span&gt;&#x27;
+ 117              &#x27;&lt;span class=&quot;hint&quot;&gt;показать&lt;/span&gt;&lt;/summary&gt;&lt;div class=&quot;in&quot;&gt;%s&lt;/div&gt;&lt;/details&gt;&#x27;
+ 118              % (cls, op, title, html))
+ 119  
+ 120  
+ 121  def page(title, kicker, subtitle, sections, footer=&quot;&quot;):
+ 122      &quot;&quot;&quot;sections: list of dicts {id, chip, title, html}&quot;&quot;&quot;
+ 123      chips = &quot;&quot;.join(&#x27;&lt;a class=&quot;chip&quot; href=&quot;#%s&quot;&gt;%s&lt;/a&gt;&#x27; % (s[&quot;id&quot;], s[&quot;chip&quot;]) for s in sections)
+ 124      body = []
+ 125      body.append(&#x27;&lt;div class=&quot;hero&quot;&gt;&lt;div class=&quot;k&quot;&gt;%s&lt;/div&gt;&lt;h1&gt;%s&lt;/h1&gt;&lt;p&gt;%s&lt;/p&gt;&lt;/div&gt;&#x27;
+ 126                  % (kicker, title, subtitle))
+ 127      for i, s in enumerate(sections, 1):
+ 128          body.append(&#x27;&lt;div class=&quot;sec&quot; id=&quot;%s&quot;&gt;&lt;h2 data-n=&quot;%d&quot;&gt;%s&lt;/h2&gt;%s&lt;/div&gt;&#x27;
+ 129                      % (s[&quot;id&quot;], i, s[&quot;title&quot;], s[&quot;html&quot;]))
+ 130      if footer:
+ 131          body.append(&#x27;&lt;div class=&quot;footer&quot;&gt;%s&lt;/div&gt;&#x27; % footer)
+ 132      sw = (&quot;&lt;div class=\&quot;switches\&quot;&gt;&quot;
+ 133            &quot;&lt;div class=\&quot;seg\&quot; role=\&quot;group\&quot;&gt;&lt;button data-s=\&quot;cards\&quot;&gt;Карточки&lt;/button&gt;&quot;
+ 134            &quot;&lt;button data-s=\&quot;compact\&quot;&gt;Компакт&lt;/button&gt;&lt;/div&gt;&quot;
+ 135            &quot;&lt;button class=\&quot;allbtn\&quot; id=\&quot;allBtn\&quot;&gt;Раскрыть всё&lt;/button&gt;&quot;
+ 136            &quot;&lt;div class=\&quot;seg push\&quot; role=\&quot;group\&quot;&gt;&lt;button data-t=\&quot;light\&quot;&gt;Свет&lt;/button&gt;&quot;
+ 137            &quot;&lt;button data-t=\&quot;dark\&quot;&gt;Тьма&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&quot;)
+ 138      return (&quot;&lt;!DOCTYPE html&gt;&lt;html lang=\&quot;ru\&quot; data-style=\&quot;cards\&quot; data-theme=\&quot;light\&quot;&gt;&lt;head&gt;&quot;
+ 139              &quot;&lt;meta charset=\&quot;utf-8\&quot;&gt;&lt;meta name=\&quot;viewport\&quot; content=\&quot;width=device-width, &quot;
+ 140              &quot;initial-scale=1, viewport-fit=cover\&quot;&gt;&lt;meta name=\&quot;theme-color\&quot; content=\&quot;#f4f2ee\&quot;&gt;&quot;
+ 141              &quot;&lt;title&gt;%s&lt;/title&gt;&lt;style&gt;%s&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;div class=\&quot;bar\&quot;&gt;&quot;
+ 142              &quot;&lt;div class=\&quot;chips\&quot;&gt;%s&lt;/div&gt;%s&lt;/div&gt;&lt;div class=\&quot;wrap\&quot;&gt;%s&lt;/div&gt;&quot;
+ 143              &quot;&lt;script&gt;%s&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;&quot;
+ 144              % (title, CSS, chips, sw, &quot;&quot;.join(body), JS))</code></pre></div></details></div><div class="footer"><a href="index.html" style="color:inherit">← К обновлениям</a> · <a href="skills.html" style="color:inherit">Скиллы</a> · 26.11.2026</div></div><script>
+const root=document.documentElement;
+const sp=document.querySelectorAll('details.sp');
+const allBtn=document.getElementById('allBtn');
+function setStyle(s){root.dataset.style=s;
+ document.querySelectorAll('[data-s]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.s===s));}
+function setTheme(t){root.dataset.theme=t;
+ document.querySelectorAll('[data-t]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===t));}
+document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>setStyle(b.dataset.s));
+document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+let allOpen=false;
+if(allBtn){allBtn.onclick=()=>{allOpen=!allOpen;sp.forEach(d=>d.open=allOpen);
+ allBtn.textContent=allOpen?'Свернуть всё':'Раскрыть всё';};}
+const chips=[...document.querySelectorAll('.chip')];
+const secs=chips.map(c=>document.querySelector(c.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+ const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  chips.forEach(c=>c.classList.remove('on'));
+  const c=chips.find(x=>x.getAttribute('href')==='#'+e.target.id);if(c)c.classList.add('on');}})},
+  {rootMargin:'-70px 0px -70% 0px'});
+ secs.forEach(s=>io.observe(s));
+}
+setStyle('cards');setTheme('light');
+</script></body></html>
