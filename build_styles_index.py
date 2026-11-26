@@ -38,7 +38,7 @@ def main():
     cards = []
     for f in items:
         cards.append(
-            '<a class="card" href="styles/%s"><b>%s</b><span>%s</span></a>'
+            '<a class="card" href="%s"><b>%s</b><span>%s</span></a>'
             % (f.name, f.stem.replace("-", " "), "стиль оформления")
         )
     if not cards:
