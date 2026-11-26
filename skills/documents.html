@@ -1,0 +1,682 @@
+<!DOCTYPE html><html lang="ru" data-style="cards" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#f4f2ee"><title>Документы Word и PDF</title><style>:root{--bg:#f4f2ee;--card:#ffffff;--ink:#1d1d1f;--mut:#6b665f;--line:#e2ded7;--soft:#faf8f5;--warn:#d9a41a;--ok:#2b7a4b}
+[data-theme="dark"]{--bg:#0f0f10;--card:#1c1c1e;--ink:#f2f2f7;--mut:#98989f;--line:#333333;--soft:#242426;--warn:#e0b446;--ok:#4aa06a}
+:root {
+  --bg:#f4f2ee;
+  --card:#fff;
+  --ink:#1d1d1f;
+  --mut:#6b665f;
+  --line:#e2ded7;
+  --soft:#faf8f5;
+  --warn:#d9a41a;
+  --ok:#2b7a4b
+}
+[data-theme="dark"] {
+  --bg:#0f0f10;
+  --card:#1c1c1e;
+  --ink:#f2f2f7;
+  --mut:#98989f;
+  --line:#333;
+  --soft:#242426;
+  --warn:#e0b446;
+  --ok:#4aa06a
+}
+* {
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent
+}
+html,body {
+  margin:0;
+  padding:0
+}
+body {
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Arial,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  font-size:16px;
+  line-height:1.62;
+  -webkit-text-size-adjust:100%
+}
+.wrap {
+  max-width:820px;
+  margin:0 auto;
+  padding:0 12px 90px
+}
+.bar {
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:var(--bg);
+  border-bottom:1px solid var(--line)
+}
+.chips {
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding:9px 12px 8px;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:smooth
+}
+.chips::-webkit-scrollbar {
+  display:none
+}
+.chip {
+  flex:0 0 auto;
+  padding:7px 13px;
+  border-radius:999px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  color:var(--mut);
+  font-size:13px;
+  font-weight:550;
+  text-decoration:none;
+  white-space:nowrap
+}
+.chip:active {
+  transform:scale(.96)
+}
+.chip.on {
+  background:var(--ink);
+  color:var(--bg);
+  border-color:var(--ink)
+}
+.switches {
+  display:flex;
+  gap:8px;
+  padding:0 12px 9px;
+  align-items:center
+}
+.seg {
+  display:flex;
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:3px;
+  gap:2px
+}
+.seg button {
+  border:0;
+  background:transparent;
+  color:var(--mut);
+  font-size:12px;
+  font-weight:600;
+  padding:6px 10px;
+  border-radius:7px;
+  font-family:inherit
+}
+.seg button[aria-pressed="true"] {
+  background:var(--card);
+  color:var(--ink);
+  box-shadow:0 1px 2px rgba(0,0,0,.12)
+}
+.seg.push {
+  margin-left:auto
+}
+.allbtn {
+  border:1px solid var(--line);
+  background:var(--soft);
+  color:var(--mut);
+  font-size:12px;
+  font-weight:600;
+  padding:6px 11px;
+  border-radius:9px;
+  font-family:inherit
+}
+.hero {
+  padding:22px 4px 4px
+}
+.hero .k {
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--mut);
+  font-weight:600
+}
+.hero h1 {
+  font-size:26px;
+  line-height:1.18;
+  margin:8px 0 0;
+  letter-spacing:-.02em
+}
+.hero p {
+  color:var(--mut);
+  font-size:14px;
+  margin:8px 0 0
+}
+[data-style="cards"] .sec {
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:18px;
+  margin:13px 0;
+  box-shadow:0 1px 2px rgba(0,0,0,.05)
+}
+[data-theme="dark"][data-style="cards"] .sec {
+  box-shadow:none
+}
+[data-style="cards"] h2 {
+  font-size:19px;
+  margin:0;
+  display:flex;
+  gap:10px;
+  align-items:center
+}
+[data-style="cards"] h2::before {
+  content:attr(data-n);
+  font-size:12px;
+  font-weight:700;
+  background:var(--ink);
+  color:var(--bg);
+  width:24px;
+  height:24px;
+  border-radius:7px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 24px
+}
+[data-style="compact"] .sec {
+  padding:13px 0 13px 15px;
+  border-left:3px solid var(--line);
+  margin:0 0 2px
+}
+[data-style="compact"] h2 {
+  font-size:16px;
+  margin:0
+}
+[data-style="compact"] p,[data-style="compact"] li {
+  font-size:14.5px;
+  line-height:1.5
+}
+h2 {
+  letter-spacing:-.01em
+}
+p {
+  margin:9px 0
+}
+.mut {
+  color:var(--mut);
+  font-size:13.5px
+}
+.sp {
+  margin:11px 0 0;
+  border-radius:12px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  overflow:hidden
+}
+.sp>summary {
+  list-style:none;
+  cursor:pointer;
+  padding:13px 14px;
+  font-size:14.5px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:9px
+}
+.sp>summary::-webkit-details-marker {
+  display:none
+}
+.sp>summary::before {
+  content:"+";
+  width:20px;
+  height:20px;
+  flex:0 0 20px;
+  border-radius:6px;
+  background:var(--ink);
+  color:var(--bg);
+  font-size:14px;
+  font-weight:700;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center
+}
+.sp[open]>summary::before {
+  content:"3"
+}
+.sp>summary .t {
+  flex:1
+}
+.sp>summary .hint {
+  font-size:10px;
+  font-weight:700;
+  color:var(--mut);
+  text-transform:uppercase;
+  letter-spacing:.06em
+}
+.sp[open]>summary .hint {
+  display:none
+}
+.sp .in {
+  padding:0 14px 15px;
+  border-top:1px solid var(--line);
+  font-size:14.5px
+}
+.sp .in p:first-child {
+  margin-top:12px
+}
+.sp.tip {
+  border-left:3px solid var(--warn)
+}
+.thesis {
+  font-size:15.5px;
+  margin:0
+}
+.flow {
+  margin:13px 0 0
+}
+.node {
+  background:var(--soft);
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:10px 12px;
+  font-size:14px
+}
+.node b {
+  display:block;
+  font-size:12.5px;
+  margin-bottom:1px
+}
+.arrow {
+  text-align:center;
+  color:var(--mut);
+  font-size:14px;
+  padding:3px 0
+}
+table {
+  width:100%;
+  border-collapse:collapse;
+  margin:10px 0;
+  font-size:14px
+}
+th,td {
+  padding:9px;
+  text-align:left;
+  border-bottom:1px solid var(--line);
+  vertical-align:top
+}
+th {
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:var(--mut);
+  font-weight:650
+}
+tr:last-child td {
+  border-bottom:none
+}
+code {
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:.88em;
+  background:var(--soft);
+  border:1px solid var(--line);
+  padding:1px 5px;
+  border-radius:5px
+}
+pre {
+  background:var(--ink);
+  color:var(--bg);
+  padding:14px 15px;
+  border-radius:11px;
+  overflow-x:auto;
+  font-size:12.5px;
+  line-height:1.55
+}
+pre code {
+  background:none;
+  border:0;
+  padding:0;
+  color:inherit
+}
+ul,ol {
+  padding-left:20px;
+  margin:8px 0
+}
+li {
+  margin:4px 0
+}
+.steps {
+  counter-reset:s;
+  margin:10px 0 0;
+  padding:0;
+  list-style:none
+}
+.steps li {
+  counter-increment:s;
+  position:relative;
+  padding-left:34px;
+  margin:9px 0;
+  font-size:14.5px
+}
+.steps li::before {
+  content:counter(s);
+  position:absolute;
+  left:0;
+  top:1px;
+  width:22px;
+  height:22px;
+  border-radius:7px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  color:var(--mut);
+  font-size:12px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+.badge {
+  display:inline-block;
+  font-size:10.5px;
+  font-weight:700;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  padding:2px 7px;
+  border-radius:5px;
+  background:var(--soft);
+  border:1px solid var(--line);
+  color:var(--mut)
+}
+.badge.ok {
+  color:var(--ok);
+  border-color:var(--ok)
+}
+.badge.warn {
+  color:var(--warn);
+  border-color:var(--warn)
+}
+.footer {
+  margin-top:26px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+  font-size:12.5px;
+  color:var(--mut)
+}
+@media(max-width:420px) {
+body {
+  font-size:15.5px
+}
+.hero h1 {
+  font-size:23px
+}
+th,td {
+  padding:8px 7px;
+  font-size:13px
+}
+}
+</style></head><body><div class="bar"><div class="chips"><a class="chip" href="#documents">Ваш скилл</a></div><div class="switches"><div class="seg" role="group"><button data-s="cards">Карточки</button><button data-s="compact">Компакт</button></div><button class="allbtn" id="allBtn">Раскрыть всё</button><div class="seg push" role="group"><button data-t="light">Свет</button><button data-t="dark">Тьма</button></div></div></div><div class="wrap"><div class="hero"><div class="k">ИИ-Консьерж · скилл</div><h1>Документы Word и PDF</h1><p>сервисный · productivity · DOCX, PDF, формы</p></div><div class="sec" id="documents"><h2 data-n="1">Документы Word и PDF</h2><p class="thesis"><b>Создание и правка Word, заполнение форм, извлечение содержимого, объединение страниц и сравнение версий с проверкой файла.</b></p><p><a class="lnk" href="skills/documents.html">Открыть отдельной страницей →</a></p><div class="sect-mini">Файлы</div><table><tbody><tr><td><code>SKILL.md</code></td><td>Выбор операции и порядок проверки готового документа</td><td><span class="badge ok">есть</span></td></tr><tr><td><code>references/docx-workflows.md</code></td><td>Создание и правка DOCX, стили, правки</td><td><span class="badge ok">есть</span></td></tr><tr><td><code>references/pdf-workflows.md</code></td><td>PDF: сборка, объединение, страницы</td><td><span class="badge ok">есть</span></td></tr><tr><td><code>references/pdf-operations.md</code></td><td>Точечные операции с PDF и их проверка</td><td><span class="badge ok">есть</span></td></tr><tr><td><code>references/editorial-workflows.md</code></td><td>Вычитка, единообразие, сравнение версий</td><td><span class="badge ok">есть</span></td></tr><tr><td><code>references/markitdown.md</code></td><td>Преобразование содержимого в читаемый текст</td><td><span class="badge ok">есть</span></td></tr><tr><td><code>references/runtime-and-delivery.md</code></td><td>Среда, проверка и передача файла</td><td><span class="badge ok">есть</span></td></tr><tr><td><code>assets/document-style.json</code></td><td>Готовый набор оформления документа</td><td><span class="badge ok">есть</span></td></tr></tbody></table><details class="sp"><summary><span class="t">Читать: SKILL.md</span><span class="hint">показать</span></summary><div class="in"><p>&lt;!--</p>
+<p>ПРОИСХОЖДЕНИЕ: ОРИГИНАЛ РАЗРАБОТЧИКА, НЕ ИЗМЕНЁН</p>
+<p>Получено чтением из каталога скиллов сервиса, записано байт в байт.</p>
+<p>--&gt;</p>
+<p>---</p>
+<p>name: documents</p>
+<p>description: &gt;-</p>
+<p>  Создавать и редактировать Word/DOCX и PDF, заполнять формы, извлекать содержимое,</p>
+<p>  объединять страницы и сравнивать версии документов с проверкой итогового файла.</p>
+<p>  Короткие тексты в чате не требуют навыка; исследование большого корпуса с цитатами — source-research.</p>
+<p>---</p>
+<h2>Документы</h2>
+<p>Выбирай нужную операцию; простой текст без файла пиши в чате.</p>
+<p>Для файлов и sandbox прочитай <span class="lnk">references/runtime-and-delivery.md</span>.</p>
+<p>| Задача | Прочитать перед соответствующим этапом |</p>
+<p>|---|---|</p>
+<p>| Создать или править Word/DOCX | <span class="lnk">references/docx-workflows.md</span> |</p>
+<p>| Читать, создавать или менять PDF, страницы и формы | <span class="lnk">references/pdf-operations.md</span> |</p>
+<p>| Протокол, письмо по материалам, сравнение версий | <span class="lnk">references/editorial-workflows.md</span> |</p>
+<p>| Извлечь содержимое DOCX/PPTX/HTML для преобразования | <span class="lnk">references/markitdown.md</span> |</p>
+<h3>Работа с содержанием</h3>
+<p>Сохрани оригиналы. Установи назначение, читателя, формат и шаблон из запроса;</p>
+<p>уточняй только пробелы, меняющие результат. Сохраняй стиль и неподлежащие изменению</p>
+<p>части существующего документа. Для нового DOCX используй при необходимости</p>
+<p><span class="lnk">assets/document-style.json</span>.</p>
+<p>Проверяй имена, суммы, даты, решения и реквизиты по материалам. Не превращай</p>
+<p>предложение в принятое решение. Голосовые обрабатывай штатным STT; черновик письма</p>
+<p>или протокол сам по себе не поручает отправку, создание задач или событий.</p>
+<p>MarkItDown извлекает содержимое, но не сохраняет исходную вёрстку для редактирования.</p>
+<p>У PDF сохраняй реальные номера страниц, отмечай неполное извлечение и OCR-неуверенность.</p>
+<p>Для таблиц с важными ячейками используй форматный reader; не восстанавливай номера</p>
+<p>страниц или координаты ячеек из предположений о Markdown.</p>
+<p>Вопросы по большому корпусу, суммаризацию книг и поиск с проверяемыми цитатами</p>
+<p>передавай source-research с исходниками и целью. Обычное чтение одного документа</p>
+<p>не требует создания корпуса. XLSX/CSV выполняет spreadsheets, статистику и</p>
+<p>аналитические дашборды — data-analysis, презентации — presentations.</p>
+<h3>Проверка и доставка</h3>
+<p>Повторно открой итоговый файл, сверь содержание, структуру и существенные значения.</p>
+<p>Отрендери все новые/изменённые страницы и проверь таблицы, переносы, поля и шрифты.</p>
+<p>Для полей/оглавления нужен совместимый Office renderer с обновлением полей;</p>
+<p>при его отсутствии обозначь непроверенную часть. После экспорта проверь PDF отдельно.</p>
+<p>Сохраняй исходник и проверяй именно последнюю редакцию. Выдай заказанный файл</p>
+<p>штатной доставкой; дополнительный HTML создавай по запросу или когда он помогает задаче.</p></div></details><details class="sp"><summary><span class="t">Читать: references/docx-workflows.md</span><span class="hint">показать</span></summary><div class="in"><p>&lt;!--</p>
+<p>ПРОИСХОЖДЕНИЕ: ОРИГИНАЛ РАЗРАБОТЧИКА, НЕ ИЗМЕНЁН</p>
+<p>Получено чтением из каталога скиллов сервиса, записано байт в байт.</p>
+<p>--&gt;</p>
+<h2>DOCX: технические решения</h2>
+<h3>Обычные операции</h3>
+<p>python-docx позволяет создавать paragraphs, styles, таблицы, изображения, sections и headers/footers. Для новых документов задай Normal и Heading styles и размеры/поля страницы до наполнения. Размеры указывай через библиотечные единицы, например <code>Cm</code>/<code>Pt</code>, а не случайные EMU.</p>
+<p>Для точечной правки сохраняй runs с разными стилями; совпадение текста может пересекать несколько runs. Сначала выясни структуру и выбери поддерживающий её метод. Hyperlinks, content controls, footnotes, tracked changes и некоторые embedded objects требуют отдельной проверки возможностей выбранного инструмента.</p>
+<p>Не присваивай paragraph.text вслепую для локальной замены: это уничтожает runs</p>
+<p>и встроенные элементы. Для сложной сохранности предпочитай доступную Office</p>
+<p>автоматизацию. Кириллица требует совместимого шрифта; заголовок должен оставаться</p>
+<p>с последующим текстом. Не имитируй таблицы пробелами и page breaks пустыми абзацами.</p>
+<h3>Списки, таблицы и страницы</h3>
+<p>Используй существующие numbering definitions для правки шаблона. Для нового документа применяй соответствующие paragraph styles/numbering; отступы и табуляция должны быть согласованы. Таблицы не должны выходить за полезную ширину страницы; повтор заголовков проверяй в рендере. Для крупных таблиц горизонтальная секция или приложение лучше сверхмелкого шрифта.</p>
+<p>Колонтитулы и page numbers зависят от sections и link-to-previous. Проверяй первую страницу, переходы sections и последнюю страницу. Не обещай конкретное число страниц до рендера: шрифты и layout engine меняют пагинацию.</p>
+<h3>Render и PDF</h3>
+<p>LibreOffice/Word работают с копией и отдельным output directory. Для headless LibreOffice используй изолированный profile, чтобы не конфликтовать с другим процессом. Пересоздай preview после последней правки. PDF/скриншоты подтверждают внешний вид; повторное чтение DOCX подтверждает содержание. Нужны оба вида проверки, если задача включает верстку.</p>
+<p>Официальная документация: https://python-docx.readthedocs.io/en/latest/user/quickstart.html</p></div></details><details class="sp"><summary><span class="t">Читать: references/pdf-workflows.md</span><span class="hint">показать</span></summary><div class="in"><p>&lt;!--</p>
+<p>ПРОИСХОЖДЕНИЕ: ОРИГИНАЛ РАЗРАБОТЧИКА, НЕ ИЗМЕНЁН</p>
+<p>Получено чтением из каталога скиллов сервиса, записано байт в байт.</p>
+<p>--&gt;</p>
+<h2>PDF: извлечение, OCR и создание</h2>
+<h3>Извлечение по страницам</h3>
+<p>В PyMuPDF используй <code>page.get_text("text", sort=True)</code> как начальную точку; порядок чтения всё равно проверяй на сложной верстке. В pypdf используй <code>page.extract_text()</code> и сохраняй page index. PDF без текста требует OCR. Для таблиц pdfplumber позволяет пробовать линии/координаты; геометрическая таблица не гарантирует правильную семантику.</p>
+<p>Для передачи notebook составь UTF-8 JSON с <code>locator</code> и <code>text</code> для каждой страницы. Пустые страницы сохрани в отчёте извлечения, но не представляй как успешный OCR. Длинные таблицы можно извлекать отдельно в CSV с привязкой к страницам.</p>
+<h3>OCR</h3>
+<p>Проверь установленные языки Tesseract; для русского обычно нужен <code>rus</code>, для смешанного текста — <code>rus+eng</code>. OCRmyPDF добавляет text layer и полезен для поискового PDF, но не обязательно исправляет reading order. Не заменяй исходник. На числах, датах, таблицах и именах сделай выборочную сверку с увеличенными изображениями, особенно если они используются в решении.</p>
+<h3>Создание</h3>
+<p>В ReportLab предпочитай flow-based Platypus для многостраничных документов. Зарегистрируй доступный Unicode TTF, настрой styles и повтор заголовков таблиц. В HTML-печати явно задай A4/Letter, page margins, print styles, break-inside/break-before и скрытие интерфейса. Страницы и таблицы должны проверяться после финальной конвертации.</p>
+<p>Для страниц pypdf/PyMuPDF используют индексы с нуля: пользовательские «страницы 2–5» означают индексы 1–4. После склейки проверь оглавление, ссылки, ориентацию и формы, если требуется их сохранение.</p>
+<p>Официальные руководства: https://pymupdf.readthedocs.io/en/latest/recipes-text.html, https://pypdf.readthedocs.io/en/stable/ и https://ocrmypdf.readthedocs.io/en/latest/</p></div></details><details class="sp"><summary><span class="t">Читать: references/pdf-operations.md</span><span class="hint">показать</span></summary><div class="in"><p>&lt;!--</p>
+<p>ПРОИСХОЖДЕНИЕ: ОРИГИНАЛ РАЗРАБОТЧИКА, НЕ ИЗМЕНЁН</p>
+<p>Получено чтением из каталога скиллов сервиса, записано байт в байт.</p>
+<p>--&gt;</p>
+<h2>Работа с PDF</h2>
+<p>Работай в пользовательской sandbox, сохраняя исходный файл. Проверь доступные инструменты: pypdf/PyMuPDF для чтения/страниц, pdfplumber для таблиц, Tesseract/OCRmyPDF для сканов, ReportLab или HTML-печать для создания, Poppler/браузер для рендера. Не предполагай, что все они установлены.</p>
+<h3>Режим</h3>
+<ul>
+<li><b>Чтение:</b> осмотри metadata/page count, извлеки текст со страницами; сложные колонки/таблицы проверяй по рендеру.</li>
+<li><b>Скан:</b> отсутствие text layer не означает пустой документ. Примени доступный OCR с нужным языком и проверь числа, имена и таблицы по изображению.</li>
+<li><b>Извлечение таблиц:</b> сначала установи реальные заголовки и структуру, затем экспортируй CSV/XLSX. Не считай строки с переносом отдельными записями.</li>
+<li><b>Создание:</b> выбери понятную иерархию, шрифты с кириллицей, размеры страницы, поля, колонтитулы и правила переноса таблиц.</li>
+<li><b>Правка/страницы:</b> сохрани исходник, порядок страниц и важные bookmarks/формы/annotations, если они входят в задачу. Для redaction используй настоящее удаление содержимого, а не белый прямоугольник.</li>
+</ul>
+<p>Технические приёмы: <span class="lnk">references/pdf-workflows.md</span>.</p>
+<h3>Проверка</h3>
+<p>После сохранения открой файл заново, проверь page count и извлечение ключевого текста. Отрендери и просмотри все новые/изменённые страницы; для созданного с нуля PDF — каждую страницу. Проверь обрезки, таблицы, непреднамеренные пустые страницы, пропавшие glyphs и переполнение колонтитулов.</p>
+<p>После удаления чувствительного текста проверь не только изображение, но извлечение текста, annotations и вложения. Не называй документ обезличенным по одному визуальному просмотру.</p>
+<h3>Большие источники</h3>
+<p>Для суммаризации передай source-research извлечённые страницы в JSON <code>[{"locator":"стр. 1","text":"..."}]</code>. Сохрани оригинальный PDF и отметку OCR, чтобы цитаты можно было проверить. Не помещай многосотстраничный текст целиком в основной диалог.</p>
+<p>Передай итоговый PDF и, если создан отчёт, редактируемый источник по запросу. Укажи неполные/OCR-неуверенные участки, если они влияют на вывод.</p></div></details><details class="sp"><summary><span class="t">Читать: references/editorial-workflows.md</span><span class="hint">показать</span></summary><div class="in"><p>&lt;!--</p>
+<p>ПРОИСХОЖДЕНИЕ: ОРИГИНАЛ РАЗРАБОТЧИКА, НЕ ИЗМЕНЁН</p>
+<p>Получено чтением из каталога скиллов сервиса, записано байт в байт.</p>
+<p>--&gt;</p>
+<h2>Письма, протоколы, отчёты и версии</h2>
+<h3>Протокол встречи</h3>
+<p>Работай с доступной транскрипцией/заметками; исходное аудио сначала проходит</p>
+<p>нативный STT workflow Hermes. Входящие голосовые могут уже содержать транскрипцию:</p>
+<p>переиспользуй её, сохрани привязку к сообщению/записи и доступные timestamps.</p>
+<p>Для аудиофайла используй доступное штатное распознавание; MarkItDown/audio extras</p>
+<p>или собственный STT сервер ради протокола не нужны. Не приписывай реплики</p>
+<p>участникам, если speaker labels не подтверждены. Ошибки распознавания имён,</p>
+<p>сумм и дат отметь и уточни перед включением в решения.</p>
+<p>Разделяй обсуждение, предложение и принятое решение.</p>
+<p>Для задачи фиксируй действие, явно названного ответственного, срок и evidence.</p>
+<p>Не назначай человека или дату из предположения; пометь «не указан» и уточни</p>
+<p>существенный пробел. Противоречащие версии решения показывай раздельно.</p>
+<p>Файл может содержать краткое резюме, решения, задачи и открытые вопросы.</p>
+<p>Создание todo/calendar/cron — отдельное поручение через нативные инструменты.</p>
+<h3>Письмо и заявление</h3>
+<p>Определи адресата, цель, желаемое действие, факты и тон из контекста. Реквизиты,</p>
+<p>даты, суммы и номера берутся из пользователя/источника; пробелы видны в черновике.</p>
+<p>Для заявления предпочитай приложенный действующий шаблон, сохраняй его поля.</p>
+<p>Требования не определяй по старому образцу; при запросе на них нужна отдельная</p>
+<p>актуальная проверка. Черновик доступен в чате; файл — по задаче.</p>
+<p>Отправлять только по поручению, с подтверждёнными адресатами и фактическим outcome.</p>
+<p>Письмо подрядчику должно содержать конкретное требуемое действие, основания из</p>
+<p>переписки, согласованные условия и срок, если он известен. При смене тона не</p>
+<p>меняй обязательства. Заполненное заявление проверь по каждому полю шаблона;</p>
+<p>неизвестные обязательные поля выведи списком, не заполняй примерными данными.</p>
+<h3>Отчёт и предложение</h3>
+<p>Выдели цель, выводы, факты/расчёты, условия и следующие действия. Условия,</p>
+<p>обещания и цены не добавляются из шаблонного примера. Таблицы со значимыми</p>
+<p>расчётами передай spreadsheet workflow, итоговые сведения сверяй с источником.</p>
+<p>Оформление использует единый стиль документа; проверяй страницы после рендера.</p>
+<p>Для коммерческого предложения собери задачу клиента, объём работ, результат,</p>
+<p>этапы/сроки, цену/валюту/налоги и условия, только если они заданы. Сделай читаемые</p>
+<p>заголовки и таблицу условий, проверь итоговые суммы. По запросу выдай редактируемый</p>
+<p>DOCX и отдельный PDF, сверив содержание и вёрстку обоих артефактов.</p>
+<h3>Редактура и сравнение версий</h3>
+<p>Отделяй орфографию/стиль от смыслового изменения. Проверь реквизиты, даты,</p>
+<p>суммы, ссылки на пункты, повторение и противоречия. Сравнивай разделы и таблицы,</p>
+<p>а не только порядок абзацев: перемещение не всегда удаление/новый текст.</p>
+<p>В выдаче указывай исходную и новую формулировки, location и последствие изменения.</p>
+<p>Полное сравнение требует пройти все разделы обеих версий и сопоставить структуру,</p>
+<p>включая добавленные/удалённые пункты, таблицы, обязательства, даты и суммы.</p>
+<p>Поиск по top-K не является исчерпывающим diff. Для вопроса по отдельной теме</p>
+<p>В source-research grounded search/ask с двумя --source-id автоматически балансирует источники;</p>
+<p>--per-source включает этот режим для всех активных источников. Проверь coverage</p>
+<p>и missing_source_ids: отсутствие evidence одного документа не доказывает</p>
+<p>отсутствие условия. Полный change log готовь по последовательному сравнению</p>
+<p>извлечённых разделов и сверяй существенные изменения с оригиналами.</p>
+<p>Не обещай Word tracked changes, если выбранный renderer/library их не поддерживает;</p>
+<p>передай отдельный change log или проверенную redline версию. Оригиналы сохраняй.</p>
+<p>Для большого сравнения по запросу создай HTML с фильтром разделов, old/new и</p>
+<p>переходами к evidence. Основной интерактив — уточнения и правки с пользователем.</p>
+<p>Перед отправкой документа проверь орфографию, согласованность условий,</p>
+<p>нумерацию/ссылки на пункты, реквизиты и актуальность подставленных данных.</p>
+<p>После последней правки выполни render QA по docx-workflows/pdf-operations;</p>
+<p>проверка текста не подтверждает отсутствие обрезанных таблиц или пустых страниц.</p></div></details><details class="sp"><summary><span class="t">Читать: references/markitdown.md</span><span class="hint">показать</span></summary><div class="in"><p>&lt;!--</p>
+<p>ПРОИСХОЖДЕНИЕ: ОРИГИНАЛ РАЗРАБОТЧИКА, НЕ ИЗМЕНЁН</p>
+<p>Получено чтением из каталога скиллов сервиса, записано байт в байт.</p>
+<p>--&gt;</p>
+<h2>MarkItDown: first-use преобразование содержимого</h2>
+<p>Принят релиз <span class="lnk">0.1.8</span>, MIT,</p>
+<p>Python &gt;=3.10,&lt;3.15. Это внешняя библиотека sandbox, не скопированный upstream</p>
+<p>runtime. Наличие инструкции не означает установку в пользовательской среде.</p>
+<p>Через coder проверь текущую project-local venv, Python и installed version.</p>
+<p>Переиспользуй проверенную установку; отдельную .venv-documents создавай только</p>
+<p>если среды ещё нет. Устанавливай нужные extras, например</p>
+<p><code>python -m pip install 'markitdown[docx,pptx]==0.1.8'</code> внутри этой среды.</p>
+<p>Не устанавливай [all], Azure/audio extras или MCP ради одного DOCX. Не заменяй</p>
+<p>системную среду и не добавляй глобальный сервер. При несовместимости pin проверь</p>
+<p>поддерживаемый релиз и повтори smoke, не переходи молча на floating main.</p>
+<p>Обычное чтение локального файла:</p>
+<pre><code>
+from markitdown import MarkItDown
+result = MarkItDown(enable_plugins=False).convert_local("source.docx")
+markdown = result.markdown
+</code></pre>
+<p>В source-research этот вызов использует bundled document_readers.py. Библиотека устанавливается</p>
+<p>отдельно при первом вызове; portable broker tests подменяют converter fixture.</p>
+<p>Smoke: небольшой русский DOCX с heading/table → конверсия → проверить фактические</p>
+<p>значения и структуру. Для нужного другого формата выполнить отдельный smoke.</p>
+<p>Не печатай содержимое конфиденциального документа в диагностику целиком.</p>
+<p>MarkItDown преобразует содержимое для анализа; сохранение исходного DOCX layout,</p>
+<p>правки, render QA и печатный PDF используют форматные инструменты documents.</p>
+<p>convert_stream принимает BinaryIO, но результат — готовая строка Markdown;</p>
+<p>не считай это доказанной потоковой постраничной обработкой.</p>
+<p>Public MarkItDown() создаёт Magika classifier; это небольшая локальная neural</p>
+<p>модель определения формата, не LLM. Даже базовый пакет содержит Magika dependency.</p>
+<p>При строгом требовании «никаких локальных моделей» не объявляй обычный вызов</p>
+<p>совместимым: нужен отдельно проверенный прямой converter/другой reader.</p>
+<p>Не патчи библиотеку или не ставь её без обязательных зависимостей ради обхода.</p>
+<p>Для grounded цитат обычный Markdown не гарантирует страницы. PDF извлекай с</p>
+<p>page locators через pypdf; generic DOCX-конверсия — converted_markdown</p>
+<p>chars/lines, а heading/paragraph/table требуют отдельного проверенного адаптера; EPUB/FB2 — главы,</p>
+<p>spine/anchors/paragraphs. Неподтверждённые страницы не добавляй.</p>
+<p>Скан без текста требует отдельного OCR, не считается пустым источником.</p></div></details><details class="sp"><summary><span class="t">Читать: references/runtime-and-delivery.md</span><span class="hint">показать</span></summary><div class="in"><p>&lt;!--</p>
+<p>ПРОИСХОЖДЕНИЕ: ОРИГИНАЛ РАЗРАБОТЧИКА, НЕ ИЗМЕНЁН</p>
+<p>Получено чтением из каталога скиллов сервиса, записано байт в байт.</p>
+<p>--&gt;</p>
+<h2>Среда, проверка и доставка</h2>
+<p>Читай для файлов, интерактивного HTML или исполнения задачи; уже прочитанную</p>
+<p>общую инструкцию в текущей беседе повторно не загружай. Предметные критерии</p>
+<p>проверки определяет выбранный навык.</p>
+<h3>Объём работы и среда</h3>
+<p>Простой ответ, короткий черновик, обычный рецепт или расчёт выполняй в чате.</p>
+<p>Создавай HTML для сложного плана, сравнения, динамики или по запросу; один пункт</p>
+<p>не требует страницы. Файл в заказанном формате остаётся обязательным.</p>
+<p>Переиспользуй native web/vision/STT, coder/исполнение, browser и sender.</p>
+<p>Проверяй реально выданные инструменты и их схемы. Не создавай второй scheduler,</p>
+<p>browser runtime или sender. API/MCP используй только при доступном подключении;</p>
+<p>допуск стороннего MCP требует &gt;1000 GitHub-звёзд, официальные API разрешены напрямую.</p>
+<p>Файлы и зависимости находятся в личной sandbox, не в gateway. Skills prepare</p>
+<p>возвращает путь пакета; пути вложений получай через штатный импорт/список файлов.</p>
+<p>Путь для vision и байты для обработки могут требовать разных инструментов.</p>
+<p>Установи только зависимости нужной ветки в проектную среду при первом вызове;</p>
+<p>переиспользуй рабочие версии, сохраняй lockfile и оригиналы. Личные устройства</p>
+<p>и аккаунты не становятся доступными из облачной sandbox автоматически.</p>
+<h3>Проверка</h3>
+<p>Проверь сохранённый итоговый файл, независимые расчёты и необходимые предметные</p>
+<p>условия. HTML проверяй headless через доступный browser-use/Chromium: реальные</p>
+<p>действия, связанные показатели, empty/error states, desktop/mobile и console.</p>
+<p>Сохрани настоящие скриншоты. Снимок другого представления не доказывает качество</p>
+<p>DOCX/PDF/PPTX, статичный кадр — плавность анимации. Детали рендера задаёт форматная ветка.</p>
+<p>Долгую работу веди штатно с реальным job/operation handle. Проверяй существующую</p>
+<p>операцию, не запускай дубль при busy/pending. Сохраняй exit code и связывай проверку</p>
+<p>с актуальной версией файла; отменённая проверка остаётся непроверенной.</p>
+<h3>Инструкции при передаче исполнителю</h3>
+<p>В задании coder/другому исполнителю укажи точный <code>skill_ref</code> из успешного чтения</p>
+<p>и пути references для текущего этапа. Исполнитель должен прочитать SKILL.md и эти</p>
+<p>references перед предметной работой: по закреплённой версии через native read</p>
+<p>или из пакета, подготовленного по тому же skill_ref. Укажи результат, входные</p>
+<p>материалы и критерии проверки. Не считай одно название навыка доказательством</p>
+<p>прочитанных инструкций; при новом этапе загружай только нужную ветку.</p>
+<h3>Состояние и передача</h3>
+<p>Страница без backend показывает snapshot. Не обещай live chat, общую историю или</p>
+<p>автоматическое сохранение: дай экспорт и проверяемый путь импорта в личный workspace,</p>
+<p>если они нужны. Не помещай секреты в HTML/архив и не публикуй личные данные по умолчанию.</p>
+<p>Передай заказанный файл штатным sender по подтверждённому пути. Скриншоты</p>
+<p>отправляй по запросу или когда они помогают объяснить результат; сохранение</p>
+<p>скриншотов для QA само по себе не требует их доставки.</p>
+<p>Локальный путь или localhost не являются пользовательской ссылкой. Login/captcha</p>
+<p>передавай через штатный handoff. Неизвестный исход внешней операции сначала проверь</p>
+<p>по фактическому состоянию. Создание файла не разрешает покупку, отправку или запись.</p>
+<p>Календарь, порученные напоминания и доставка остаются native. Наблюдение за</p>
+<p>изменениями передавай change-monitoring с объектом, источником, условием и частотой;</p>
+<p>он владеет baseline/сравнением, штатный cron — расписанием и доставкой.</p></div></details><details class="sp"><summary><span class="t">Читать: assets/document-style.json</span><span class="hint">показать</span></summary><div class="in"><p>{</p>
+<p>  "page": {"size": "A4", "margin_cm": 2.2},</p>
+<p>  "font": {"preferred": "Arial", "requires": "Проверить установленный шрифт и кириллицу в рендере"},</p>
+<p>  "styles": {</p>
+<p>    "Normal": {"size_pt": 11, "line_spacing": 1.15, "space_after_pt": 6, "color": "243746"},</p>
+<p>    "Title": {"size_pt": 26, "bold": true, "space_after_pt": 16},</p>
+<p>    "Heading 1": {"size_pt": 16, "bold": true, "space_before_pt": 16, "space_after_pt": 8, "keep_with_next": true},</p>
+<p>    "Heading 2": {"size_pt": 13, "bold": true, "space_before_pt": 12, "space_after_pt": 6, "keep_with_next": true},</p>
+<p>    "Caption": {"size_pt": 9, "color": "5E6D76"}</p>
+<p>  },</p>
+<p>  "table": {"header_fill": "EEF3F6", "repeat_header": true, "avoid_vertical_grid": true}</p>
+<p>}</p></div></details></div><div class="footer"><a href="../skills.html" style="color:inherit">← Все скиллы</a> · <a href="../index.html" style="color:inherit">К обновлениям</a></div></div><script>
+const root=document.documentElement;
+const sp=document.querySelectorAll('details.sp');
+const allBtn=document.getElementById('allBtn');
+function setStyle(s){root.dataset.style=s;
+ document.querySelectorAll('[data-s]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.s===s));}
+function setTheme(t){root.dataset.theme=t;
+ document.querySelectorAll('[data-t]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===t));}
+document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>setStyle(b.dataset.s));
+document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+let allOpen=false;
+if(allBtn){allBtn.onclick=()=>{allOpen=!allOpen;sp.forEach(d=>d.open=allOpen);
+ allBtn.textContent=allOpen?'Свернуть всё':'Раскрыть всё';};}
+const chips=[...document.querySelectorAll('.chip')];
+const secs=chips.map(c=>document.querySelector(c.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+ const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  chips.forEach(c=>c.classList.remove('on'));
+  const c=chips.find(x=>x.getAttribute('href')==='#'+e.target.id);if(c)c.classList.add('on');}})},
+  {rootMargin:'-70px 0px -70% 0px'});
+ secs.forEach(s=>io.observe(s));
+}
+setStyle('cards');setTheme('light');
+</script></body></html>
