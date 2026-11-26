@@ -1,3 +1,7 @@
+<!--
+ПРОИСХОЖДЕНИЕ: ОРИГИНАЛ РАЗРАБОТЧИКА, НЕ ИЗМЕНЁН
+Получено чтением из каталога скиллов сервиса, записано байт в байт.
+-->
 # Device and format notes (from the real-device corpus)
 
 What `probe.py` will show and what to do about it. Learned from running the

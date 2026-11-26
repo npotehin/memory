@@ -1,3 +1,7 @@
+<!--
+ПРОИСХОЖДЕНИЕ: ОРИГИНАЛ РАЗРАБОТЧИКА, НЕ ИЗМЕНЁН
+Получено чтением из каталога скиллов сервиса, записано байт в байт.
+-->
 # FFmpeg в пользовательской sandbox
 
 Основа — [kajisho5/ffmpeg-skill](https://github.com/kajisho5/ffmpeg-skill), закреплённая ревизия `008333aaf6722083392eb6bd8bd67b59884a2a26`. Авторство и MIT-лицензия сохранены в `LICENSE.upstream`. Прочитай [references/ffmpeg/upstream-skill.md](references/ffmpeg/upstream-skill.md) перед работой: это полный исходный workflow и маршрутизация запросов на скрипты. Дополнительные справочники: [references/ffmpeg/scripts.md](references/ffmpeg/scripts.md), [references/ffmpeg/gotchas.md](references/ffmpeg/gotchas.md), [references/ffmpeg/devices.md](references/ffmpeg/devices.md).

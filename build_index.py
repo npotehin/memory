@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# ─────────────────────────────────────────────────────────────────────────
+#  ПРОИСХОЖДЕНИЕ: НАШЕ, НАПИСАНО С НУЛЯ
+#  Автор: ИИ-Консьерж для Никиты Потехина, 25-26.11.2026
+# ─────────────────────────────────────────────────────────────────────────
 # -*- coding: utf-8 -*-
 """Собирает index.html — ленту изменений: все HTML-файлы репозитория с датами."""
 
@@ -66,6 +70,15 @@ def collect():
     return files
 
 
+def origin_of(rel):
+    """Происхождение файла: наше / оригинал+правки / оригинал."""
+    if rel.startswith("skills-src/") and "/origin/" in "/"+rel+"/":
+        return "оригинал"
+    if rel.startswith("skills-src/"):
+        return "оригинал+правки" if "/scripts/" in rel else "оригинал"
+    return "наше"
+
+
 def human(path, dates):
     rel = path.relative_to(ROOT).as_posix()
     d = dates.get(rel)
@@ -73,7 +86,7 @@ def human(path, dates):
         import datetime
         d = datetime.date.fromtimestamp(path.stat().st_mtime).isoformat()
     title = path.stem.replace("-", " ").replace("_", " ")
-    return rel, title, d
+    return rel, title, d, origin_of(rel)
 
 
 def main():
@@ -82,16 +95,19 @@ def main():
     rows = sorted((human(p, dates) for p in files), key=lambda t: t[2], reverse=True)
 
     groups = {}
-    for rel, title, d in rows:
+    for rel, title, d, org in rows:
         if rel.startswith("styles/"):
             g = "Стили"
         elif rel.startswith("projects/"):
             g = "Проекты"
         else:
             g = "Отчёты"
-        groups.setdefault(g, []).append((rel, title, d))
+        groups.setdefault(g, []).append((rel, title, d, org))
 
     html_parts = []
+    html_parts.append('<a class="row" href="ORIGIN.md"><div class="ic">OR</div>'
+                      '<div class="body"><b>Чьё это</b><span>как понять, где наше, где разработчика</span></div>'
+                      '<div class="date">правило</div></a>')
     html_parts.append('<a class="row" href="skills.html"><div class="ic">SK</div>'
                       '<div class="body"><b>Скиллы</b><span>что установлено, из чего состоит</span></div>'
                       '<div class="date">каталог</div></a>')
@@ -99,13 +115,15 @@ def main():
         if g not in groups:
             continue
         html_parts.append('<div class="sect">%s</div>' % g)
-        for rel, title, d in groups[g]:
+        for rel, title, d, org in groups[g]:
             icon = "ST" if g == "Стили" else ("PR" if g == "Проекты" else "RE")
+            tag = {"наше": "наше", "оригинал+правки": "разработчик + наши правки",
+                   "оригинал": "разработчик"}[org]
             html_parts.append(
                 '<a class="row" href="%s"><div class="ic">%s</div>'
-                '<div class="body"><b>%s</b><span>%s</span></div>'
+                '<div class="body"><b>%s</b><span>%s · %s</span></div>'
                 '<div class="date">%s</div></a>'
-                % (rel, icon, title, rel, d[8:10] + "." + d[5:7] if len(d) == 10 else d)
+                % (rel, icon, title, rel, tag, d[8:10] + "." + d[5:7] if len(d) == 10 else d)
             )
 
     doc = ("<!DOCTYPE html><html lang=\"ru\"><head><meta charset=\"utf-8\">"

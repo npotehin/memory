@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Локальная страница" />
+    <title>Новая страница</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: system-ui, sans-serif;
+        color: #18212b;
+        background: #fff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      main {
+        max-width: 70rem;
+        margin: auto;
+        padding: clamp(1.5rem, 5vw, 5rem);
+      }
+      h1 {
+        font-size: clamp(2rem, 6vw, 4rem);
+        line-height: 1.1;
+      }
+      p {
+        max-width: 65ch;
+        line-height: 1.6;
+      }
+      :focus-visible {
+        outline: 3px solid #1769aa;
+        outline-offset: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Новая страница</h1>
+      <p>Замените этот стартовый текст содержанием из запроса пользователя.</p>
+    </main>
+  </body>
+</html>

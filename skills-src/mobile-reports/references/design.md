@@ -1,3 +1,7 @@
+<!--
+ПРОИСХОЖДЕНИЕ: ОРИГИНАЛ РАЗРАБОТЧИКА, НЕ ИЗМЕНЁН
+Получено чтением из каталога скиллов сервиса, записано байт в байт.
+-->
 # Design for the brief
 
 Adapted from Anthropic's Apache-2.0 frontend-design skill. Modified for

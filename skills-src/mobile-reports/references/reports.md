@@ -1,3 +1,7 @@
+<!--
+ПРОИСХОЖДЕНИЕ: ОРИГИНАЛ РАЗРАБОТЧИКА, НЕ ИЗМЕНЁН
+Получено чтением из каталога скиллов сервиса, записано байт в байт.
+-->
 # Reports and data pages
 
 Adapted from MultiTool's former `html-report` skill; its design guidance derives

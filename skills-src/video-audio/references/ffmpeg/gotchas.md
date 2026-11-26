@@ -1,3 +1,7 @@
+<!--
+ПРОИСХОЖДЕНИЕ: ОРИГИНАЛ РАЗРАБОТЧИКА, НЕ ИЗМЕНЁН
+Получено чтением из каталога скиллов сервиса, записано байт в байт.
+-->
 # Gotchas and things that look right but are wrong
 
 The long form of SKILL.md's "Things that look right but are wrong" and "Gotchas"
