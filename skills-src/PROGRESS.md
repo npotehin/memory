@@ -41,3 +41,12 @@
 ## Итог
 19 скиллов выложено, 1 пропущен (personal-apps). skills.html, папка skills/ и
 build_skills.py не изменялись.
+
+## Добор: код и тесты mobile-reports
+
+- scripts/site.cjs — 25 КБ, 602 строки. Собран по частям из прочитанного текста, синтаксис проверен (node --check). Запуск без vendor/parsers.cjs невозможен — падает на загрузке модуля, это ожидаемо.
+- scripts/build_mindmap.cjs — 21 КБ, 525 строк. Работает: собран HTML из JSON, заголовок «РКШ — интеллект-карта», 11 699 байт.
+- scripts/templates/html/index.html — 1 137 байт.
+- scripts/templates/react/ — 5 файлов (index.html, src/main.js, src/style.css, package.json, vite.config.js).
+- tests/test_websites.py — 3 теста, 1 839 байт.
+- vendor/parsers.cjs — НЕ выгружен: 640 730 символов, чтение обрезается. Сторонние парсеры HTML/JS/CSS/ZIP.

@@ -1,0 +1,28 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color: #18212b;
+  background: #fff;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+main {
+  max-width: 70rem;
+  margin: auto;
+  padding: clamp(1.5rem, 5vw, 5rem);
+}
+h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1.1;
+}
+p {
+  max-width: 65ch;
+  line-height: 1.6;
+}
+:focus-visible {
+  outline: 3px solid #1769aa;
+  outline-offset: 4px;
+}
